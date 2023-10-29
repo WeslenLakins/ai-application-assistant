@@ -8,9 +8,10 @@ const {
 } = require('../controllers/userController')
 const { protect } = require('../middleware/authMiddleware')
 
-// Routes
+// Routes: /api/users, /api/users/login, /api/users/me (protected).
 router.post('/', registerUser)
 router.post('/login', loginUser)
 router.get('/me', protect, getMe)
 
+// Export the router.
 module.exports = router

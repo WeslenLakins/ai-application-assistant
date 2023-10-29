@@ -1,3 +1,4 @@
+// Error handler middleware function to catch errors and send a response with the appropriate status code and error message.
 const errorHandler = (err, req, res, next) => {
   const statusCode = res.statusCode ? res.statusCode : 500
   res.status(statusCode)
@@ -7,4 +8,5 @@ const errorHandler = (err, req, res, next) => {
   })
 }
 
+// Export the errorHandler function.
 module.exports = { errorHandler }

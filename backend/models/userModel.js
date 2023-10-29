@@ -28,4 +28,5 @@ const userSchema = mongoose.Schema(
   }
 )
 
+// Export the user model schema as a model named 'User' using the userSchema model and the mongoose.model() method.
 module.exports = mongoose.model('User', userSchema)
