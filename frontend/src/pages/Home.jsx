@@ -28,11 +28,11 @@ function Home() {
       </section>
 
       <Link to='/new-ticket' className='btn btn-reverse btn-block'>
-        <FaQuestionCircle /> Cover Letter
+        <FaQuestionCircle /> Generate Cover Letter
       </Link>
 
       <Link to='/tickets' className='btn btn-block'>
-        <FaTicketAlt /> Personal Statement
+        <FaTicketAlt /> View Cover Letters
       </Link>
     </>
   )
