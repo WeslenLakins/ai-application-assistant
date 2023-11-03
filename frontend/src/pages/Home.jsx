@@ -27,7 +27,7 @@ function Home() {
         <p>Please choose from an option below.</p>
       </section>
 
-      <Link to='/new-ticket' className='btn btn-reverse btn-block'>
+      <Link to='/new-job' className='btn btn-reverse btn-block'>
         <FaQuestionCircle /> Generate Cover Letter
       </Link>
 
