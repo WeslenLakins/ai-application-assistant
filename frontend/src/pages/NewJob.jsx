@@ -18,7 +18,7 @@ function NewJob() {
   return (
     <>
       <section className='heading'>
-        <h1>Create A New Job Application</h1>
+        <h1>Cover Letter & Job Application</h1>
         <p>Please fill out the form below</p>
       </section>
 
@@ -79,7 +79,7 @@ function NewJob() {
           </div>
           <div className='form-group'>
             <button className='btn btn-block'>
-              Generate Application & Cover Letter
+              Generate Cover Letter & Job Application
             </button>
           </div>
         </form>
