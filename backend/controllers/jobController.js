@@ -6,7 +6,7 @@ const Job = require('../models/jobModel')
 
 const openai = new OpenAI()
 
-// @desc:     Get user jobs
+// @desc:     Get jobs
 // @route:    GET /api/jobs
 // @access:   Private
 const getJobs = asyncHandler(async (req, res) => {
@@ -25,7 +25,39 @@ const getJobs = asyncHandler(async (req, res) => {
   res.status(200).json(jobs)
 })
 
-// @desc:     Create a new job
+// @desc:     Get job
+// @route:    GET /api/jobs/:id
+// @access:   Private
+const getJob = asyncHandler(async (req, res) => {
+  // Get the user using the id in the token.
+  const user = await User.findById(req.user._id)
+
+  // If the user is not found, throw an error.
+  if (!user) {
+    res.status(401)
+    throw new Error('User not found.')
+  }
+
+  // Get the job for the user.
+  const job = await Job.findById(req.params.id)
+
+  // If the job is not found, throw an error.
+  if (!job) {
+    res.status(404)
+    throw new Error('Job not found.')
+  }
+
+  // If the user is not the owner of the job, throw an error.
+  if (job.user.toString() !== req.user.id) {
+    res.status(401)
+    throw new Error('User not authorized.')
+  }
+
+  // Return the job.
+  res.status(200).json(job)
+})
+
+// @desc:     Create job
 // @route:    POST /api/jobs
 // @access:   Private
 const createJob = asyncHandler(async (req, res) => {
@@ -78,10 +110,86 @@ const createJob = asyncHandler(async (req, res) => {
     coverLetter,
   })
 
+  // Return the created job.
   res.status(201).json(job)
+})
+
+// @desc:     Delete job
+// @route:    DELETE /api/jobs/:id
+// @access:   Private
+const deleteJob = asyncHandler(async (req, res) => {
+  // Get the user using the id in the token.
+  const user = await User.findById(req.user._id)
+
+  // If the user is not found, throw an error.
+  if (!user) {
+    res.status(401)
+    throw new Error('User not found.')
+  }
+
+  // Get the jobs for the user.
+  const job = await Job.findById(req.params.id)
+
+  // If the job is not found, throw an error.
+  if (!job) {
+    res.status(404)
+    throw new Error('Job not found.')
+  }
+
+  // If the user is not the owner of the job, throw an error.
+  if (job.user.toString() !== req.user.id) {
+    res.status(401)
+    throw new Error('User not authorized.')
+  }
+
+  // Delete the job.
+  await Job.findByIdAndDelete(req.params.id)
+
+  // Return success.
+  res.status(200).json({ success: true })
+})
+
+// @desc:     Upate job
+// @route:    PUT /api/jobs/:id
+// @access:   Private
+const updateJob = asyncHandler(async (req, res) => {
+  // Get the user using the id in the token.
+  const user = await User.findById(req.user._id)
+
+  // If the user is not found, throw an error.
+  if (!user) {
+    res.status(401)
+    throw new Error('User not found.')
+  }
+
+  // Get the jobs for the user.
+  const job = await Job.findById(req.params.id)
+
+  // If the job is not found, throw an error.
+  if (!job) {
+    res.status(404)
+    throw new Error('Job not found.')
+  }
+
+  // If the user is not the owner of the job, throw an error.
+  if (job.user.toString() !== req.user.id) {
+    res.status(401)
+    throw new Error('User not authorized.')
+  }
+
+  // Update the job.
+  const updatedJob = await Job.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  })
+
+  // Return the job.
+  res.status(200).json(updatedJob)
 })
 
 module.exports = {
   getJobs,
+  getJob,
   createJob,
+  deleteJob,
+  updateJob,
 }
