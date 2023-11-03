@@ -78,7 +78,9 @@ function NewJob() {
               onChange={(e) => setResume(e.target.value)}></textarea>
           </div>
           <div className='form-group'>
-            <button className='btn btn-block'>Generate Cover Letter</button>
+            <button className='btn btn-block'>
+              Generate Application & Cover Letter
+            </button>
           </div>
         </form>
       </section>
