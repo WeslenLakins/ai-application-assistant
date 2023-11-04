@@ -22,17 +22,17 @@ function Home() {
     <>
       <section className='heading'>
         <h1>
-          <FaLaptop /> What do you need help with?
+          <FaLaptop /> AI Application Assistant
         </h1>
-        <p>Please choose from an option below.</p>
+        <p>How can we help streamline your application process?</p>
       </section>
 
       <Link to='/new-job' className='btn btn-reverse btn-block'>
-        <FaQuestionCircle /> Generate Cover Letter
+        <FaQuestionCircle /> Generate Cover Letter & Job Application
       </Link>
 
-      <Link to='/tickets' className='btn btn-block'>
-        <FaTicketAlt /> View Cover Letters
+      <Link to='/jobs' className='btn btn-block'>
+        <FaTicketAlt /> View Cover Letters & Job Applications
       </Link>
     </>
   )

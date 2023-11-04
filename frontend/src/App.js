@@ -27,6 +27,8 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import NewJob from './pages/NewJob'
+import Jobs from './pages/Jobs'
+import Job from './pages/Job'
 
 function App() {
   return (
@@ -40,6 +42,12 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/new-job' element={<PrivateRoute />}>
               <Route path='/new-job' element={<NewJob />} />
+            </Route>
+            <Route path='/jobs' element={<PrivateRoute />}>
+              <Route path='/jobs' element={<Jobs />} />
+            </Route>
+            <Route path='/job/:jobId' element={<PrivateRoute />}>
+              <Route path='/job/:jobId' element={<Job />} />
             </Route>
           </Routes>
         </div>

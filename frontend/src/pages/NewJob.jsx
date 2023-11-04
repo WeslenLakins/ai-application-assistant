@@ -1,9 +1,17 @@
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import { createJob, reset } from '../features/jobs/jobSlice'
+import Spinner from '../components/Spinner'
+import BackButton from '../components/BackButton'
 
 function NewJob() {
   // eslint-disable-next-line no-unused-vars
   const user = useSelector((state) => state.auth)
+  const { isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.jobs
+  )
 
   const [jobTitle, setJobTitle] = useState('')
   const [company, setCompany] = useState('')
@@ -11,12 +19,36 @@ function NewJob() {
   const [jobDescription, setJobDescription] = useState('')
   const [resume, setResume] = useState('')
 
+  // Initialize dispatch and navigate
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message)
+      dispatch(reset())
+    }
+
+    if (isSuccess) {
+      dispatch(reset())
+      navigate('/jobs')
+    }
+
+    dispatch(reset())
+  }, [isError, isSuccess, message, dispatch, navigate])
+
   const onSubmit = (e) => {
     e.preventDefault()
+    dispatch(createJob({ jobTitle, company, location, jobDescription, resume }))
+  }
+
+  if (isLoading) {
+    return <Spinner />
   }
 
   return (
     <>
+      <BackButton url='/' />
       <section className='heading'>
         <h1>Cover Letter & Job Application</h1>
         <p>Please fill out the form below</p>

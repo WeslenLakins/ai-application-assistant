@@ -13,9 +13,11 @@ This setup allows the application to use Redux for state management. The auth sl
 */
 import { configureStore } from '@reduxjs/toolkit'
 import authReducer from '../features/auth/authSlice'
+import jobReducer from '../features/jobs/jobSlice'
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    jobs: jobReducer,
   },
 })
