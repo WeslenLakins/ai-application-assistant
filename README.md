@@ -1,7 +1,11 @@
 # 💻 ai-application-assistant 💻
-A web application designed to streamline routine parts of application process such as drafting cover letters for job application and writing personal statements for college applications.
 
-[logo]:https://phx02pap002files.storage.live.com/y4m8UNDmunf6kicv7SzA3Q6EQkFoJrbIFrnJytgI4-lNmrjdtEYWSr7oIjq8EBQ_0UA_ytNB49D-ZtZHE8MvFQh47hSmW6OucON9JcNiymZYEuH0vHal32TVE6LJACyGdQeD1fjmH11wmgz3n6Y_1p-grrlbarZ52o4HkVBQpbzXmO0SvZGepXhDv87fXj1dxAkO2q40fdCwi4PpQaKrXrcBstg-B2kh9ILsQFt3l0q7wo?encodeFailures=1&width=875&height=875
+## 🧑‍🚀 General Information 🧑‍🚀
+- **Author:** Weslen T. Lakins
+- **Description:** A web application designed to streamline routine parts of application process such as drafting cover letters for job application and writing personal statements for college applications.
+- **Deployment Url:** https://aiapplicationassistant.com
+
+![ai-application-assistant-logo](https://github.com/WeslenLakins/ai-application-assistant/assets/90317130/82eb6549-27bd-458c-867b-04d66eef4124)
 
 ## ⭐Features ⭐
 - **User Authentication**: Secure login and registration system with JWT Authentication.
@@ -25,7 +29,7 @@ Before you begin, ensure you have the following:
 
 ### 📂 Installation 📂 
 
-1. Clone the repository to your local machine:
+1. Clone the repository to your local machine: [How to clone a GitHub Repository in Visual Studio Code](https://learn.microsoft.com/en-us/azure/developer/javascript/how-to/with-visual-studio-code/clone-github-repository#:~:text=Open%20the%20command%20palette%20with,from%20GitHub%2C%20then%20press%20Enter.)
 
 ```
 git clone https://github.com/WeslenLakins/ai-application-assistant.git
