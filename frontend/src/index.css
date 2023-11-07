@@ -377,7 +377,10 @@ p.status-complete {
   color: green;
 }
 
-footer {
+.footer {
+  border: 2x solid #000;
+  padding: 15px;
+  background-color: f9f9f9;
   position: sticky;
   top: 95vh;
   text-align: center;
@@ -450,4 +453,98 @@ footer {
     padding: 0.375rem 0.75rem;
     font-size: 0.95rem;
   }
+}
+
+/* Add styles for your user profile form and elements */
+.user-profile {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.user-profile h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.user-profile form {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-profile form .form-group {
+  margin-bottom: 1rem;
+}
+
+.user-profile form .form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.user-profile form .form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.user-profile form button {
+  padding: 0.5rem 1rem;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+  appearance: button;
+}
+
+.user-profile form button:hover {
+  background-color: darkgray;
+}
+
+.boxed-section {
+  border: 2px solid #000;
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+/* FormInput.module.css */
+.formGroup {
+  margin-bottom: 15px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+/* UserProfile.module.css */
+.userProfile {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.updateButton {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #5cb85c;
+  color: white;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 10px;
 }

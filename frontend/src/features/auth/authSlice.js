@@ -23,7 +23,7 @@ import authService from './authService'
 const user = JSON.parse(localStorage.getItem('user'))
 
 const initialState = {
-  user: user ? null : null,
+  user: user || null,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -68,6 +68,47 @@ export const logout = createAsyncThunk('auth/logout', async () => {
   await authService.logout()
 })
 
+// Async thunk for fetching user profile data from the API endpoint /api/users/profile.
+export const getUserProfile = createAsyncThunk(
+  'auth/getUserProfile',
+  async (user, thunkAPI) => {
+    try {
+      return user
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
+// Async thunk for updating user profile data using the API endpoint /api/users/profile.
+export const updateUserProfile = createAsyncThunk(
+  'auth/updateUserProfile',
+  async (user, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token
+      const updatedUser = await authService.updateUserProfile(user, token)
+
+      return updatedUser
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 export const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -110,6 +151,34 @@ export const authSlice = createSlice({
         state.user = null
       })
       .addCase(logout.fulfilled, (state) => {
+        state.user = null
+      })
+      .addCase(getUserProfile.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(getUserProfile.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.user = action.payload
+      })
+      .addCase(getUserProfile.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+        state.user = null
+      })
+      .addCase(updateUserProfile.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(updateUserProfile.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.user = action.payload.user
+      })
+      .addCase(updateUserProfile.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
         state.user = null
       })
   },

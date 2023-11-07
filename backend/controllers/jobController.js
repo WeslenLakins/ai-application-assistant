@@ -149,7 +149,7 @@ const deleteJob = asyncHandler(async (req, res) => {
   res.status(200).json({ success: true })
 })
 
-// @desc:     Upate job
+// @desc:     Update job
 // @route:    PUT /api/jobs/:id
 // @access:   Private
 const updateJob = asyncHandler(async (req, res) => {

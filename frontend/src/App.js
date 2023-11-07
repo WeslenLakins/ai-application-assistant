@@ -29,6 +29,7 @@ import Register from './pages/Register'
 import NewJob from './pages/NewJob'
 import Jobs from './pages/Jobs'
 import Job from './pages/Job'
+import UserProfile from './pages/UserProfile'
 
 function App() {
   return (
@@ -48,6 +49,9 @@ function App() {
             </Route>
             <Route path='/job/:jobId' element={<PrivateRoute />}>
               <Route path='/job/:jobId' element={<Job />} />
+            </Route>
+            <Route path='/user/:userId' element={<PrivateRoute />}>
+              <Route path='/user/:userId' element={<UserProfile />} />
             </Route>
           </Routes>
         </div>

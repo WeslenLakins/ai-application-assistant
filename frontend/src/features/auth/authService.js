@@ -41,10 +41,38 @@ const login = async (userData) => {
 // Logout a user
 const logout = () => localStorage.removeItem('user')
 
+// Fetch user profile data using the API endpoint /api/users/profile (requires authentication) and return the response data as JSON.
+const getUserProfile = async (userData, token) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  const response = await axios.get(API_URL + 'profile', userData, config)
+
+  return response.data
+}
+
+// Update user profile data using the API endpoint /api/users/profile (requires authentication) and return the response data as JSON.
+const updateUserProfile = async (userData, token) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  }
+
+  const response = await axios.put(API_URL + 'profile', userData, config)
+  return response.data
+}
+
 const authService = {
   register,
   logout,
   login,
+  getUserProfile,
+  updateUserProfile,
 }
 
 export default authService

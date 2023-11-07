@@ -16,7 +16,13 @@ The selected code is a React component named Header. This component is used to d
     Finally, the Header component is exported as the default export from this module, so it can be imported and used in other parts of the application.
 */
 
-import { FaSignInAlt, FaHome, FaSignOutAlt, FaUser } from 'react-icons/fa'
+import {
+  FaSignInAlt,
+  FaHome,
+  FaSignOutAlt,
+  FaUser,
+  FaUserCircle,
+} from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
@@ -41,12 +47,19 @@ function Header() {
       </div>
       <ul>
         {user ? (
-          <li>
-            <button className='btn' onClick={onLogout}>
-              <FaSignOutAlt />
-              Logout
-            </button>
-          </li>
+          <>
+            <li>
+              <Link to={`/user/${user.id}`}>
+                <FaUserCircle /> Profile
+              </Link>
+            </li>
+            <li>
+              <button className='btn' onClick={onLogout}>
+                <FaSignOutAlt />
+                Logout
+              </button>
+            </li>
+          </>
         ) : (
           <>
             <li>

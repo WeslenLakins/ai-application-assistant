@@ -50,7 +50,7 @@ function NewJob() {
     <>
       <BackButton url='/' />
       <section className='heading'>
-        <h1>Cover Letter & Job Application</h1>
+        <h1>Generate Cover Letter</h1>
         <p>Please fill out the form below</p>
       </section>
 
@@ -110,11 +110,17 @@ function NewJob() {
               onChange={(e) => setResume(e.target.value)}></textarea>
           </div>
           <div className='form-group'>
-            <button className='btn btn-block'>
-              Generate Cover Letter & Job Application
-            </button>
+            <button className='btn btn-block'>Generate Cover Letter</button>
           </div>
         </form>
+      </section>
+      <section className='footer boxed-section'>
+        <h1>Important Note</h1>
+        <p>
+          It can take up to 2 minutes to generate a new cover letter. Please do
+          not exit or refresh the page until your new cover letter has been
+          created.
+        </p>
       </section>
     </>
   )

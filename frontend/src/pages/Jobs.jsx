@@ -29,12 +29,12 @@ function Jobs() {
   return (
     <>
       <BackButton url='/' />
-      <h1>Jobs</h1>
+      <h1>Cover Letters</h1>
       <div className='tickets'>
         <div className='ticket-headings'>
-          <div>Date Applied</div>
-          <div>Position</div>
-          <div>Company</div>
+          <div>Date Created</div>
+          <div>Position Title</div>
+          <div>Company Name</div>
           <div></div>
         </div>
         {jobs.map((job) => (

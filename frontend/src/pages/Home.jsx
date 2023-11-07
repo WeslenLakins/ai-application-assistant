@@ -15,7 +15,7 @@ The code below is a React component named Home. This component appears to be the
 */
 
 import { Link } from 'react-router-dom'
-import { FaLaptop, FaQuestionCircle, FaTicketAlt } from 'react-icons/fa'
+import { FaLaptop, FaListAlt, FaSyncAlt } from 'react-icons/fa'
 
 function Home() {
   return (
@@ -28,11 +28,11 @@ function Home() {
       </section>
 
       <Link to='/new-job' className='btn btn-reverse btn-block'>
-        <FaQuestionCircle /> Generate Cover Letter & Job Application
+        <FaSyncAlt /> Generate Cover Letter
       </Link>
 
       <Link to='/jobs' className='btn btn-block'>
-        <FaTicketAlt /> View Cover Letters & Job Applications
+        <FaListAlt /> Review Cover Letters
       </Link>
     </>
   )

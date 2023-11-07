@@ -93,9 +93,65 @@ const generateToken = (id) => {
   })
 }
 
+// @desc:     Get user profile
+// @route:    GET /api/users/:id
+// @access:   Private
+const getUserProfile = asyncHandler(async (req, res) => {
+  // Get the user
+  const user = await User.findById(req.user._id)
+
+  // If the user exists, send back the user object
+  if (user) {
+    res.status(200).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      password: user.password,
+    })
+  } else {
+    res.status(404)
+    throw new Error('User not found.')
+  }
+})
+
+//@desc:      Update user profile
+//@route:     PUT /api/users/:id
+//@access:    Private
+const updateUserProfile = asyncHandler(async (req, res) => {
+  // Get the user
+  const user = await User.findById(req.user._id)
+
+  // If the user is not found, throw an error.
+  if (!user) {
+    res.status(401)
+    throw new Error('User not found.')
+  }
+
+  // Update the user fields
+  user.name = req.body.name || user.name
+  user.email = req.body.email || user.email
+  if (req.body.password) {
+    const salt = await bcrypt.genSalt(10)
+    user.password = await bcrypt.hash(req.body.password, salt)
+  }
+
+  // Save the updated user
+  const updatedUser = await user.save()
+
+  // Return the updated user
+  res.status(200).json({
+    _id: updatedUser._id,
+    name: updatedUser.name,
+    email: updatedUser.email,
+    password: updatedUser.password,
+    token: generateToken(updatedUser._id),
+  })
+})
 // Export the functions
 module.exports = {
   registerUser,
   loginUser,
   getMe,
+  getUserProfile,
+  updateUserProfile,
 }
