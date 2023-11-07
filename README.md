@@ -4,6 +4,8 @@
 - **Author:** Weslen T. Lakins
 - **Description:** A web application designed to streamline routine parts of application process such as drafting cover letters for job application and writing personal statements for college applications.
 - **Deployment Url:** https://aiapplicationassistant.com
+- **Demo:** https://youtu.be/1bJABKCcagg
+- **Twitter/X**: https://twitter.com/WeslenLakins
 
 ![ai-application-assistant-logo](https://github.com/WeslenLakins/ai-application-assistant/assets/90317130/82eb6549-27bd-458c-867b-04d66eef4124)
 
@@ -36,24 +38,28 @@ git clone https://github.com/WeslenLakins/ai-application-assistant.git
 cd ai-application-assistant
 ```
 
-2. Install the necessary dependencies for the backend:
+2. Remove .example from the .env file and add values for the variables.
+  
+
+4. Install the necessary dependencies for the backend in the root directory of the project:
 
 ```
 npm install
 ```
 
-3. In a new terminal, navigate to the frontend directory and install the necessary dependencies for the frontend:
+5. In a new terminal, navigate to the frontend directory and install the necessary dependencies for the frontend:
 
 ```
 cd frontend
 npm install
 ```
 
-4. Ensure all neccesary dependencies have been installed in the root directory and frontend folder, then proceed to start the application :
+6. Ensure all neccesary dependencies have been installed in the root directory and frontend folder, then proceed to start the application by opening a new command prompt and executing the following command in the root directory of the project:
 
 ```
 npm run dev
 ```
+7. Drown in job/scholarship offers 🏊
 
 ### 🏁 Your application should now be running on http://localhost:3000. 🏁
 
