@@ -63,8 +63,20 @@ npm run dev
 
 ### 🏁 Your application should now be running on http://localhost:3000. 🏁
 
-[Photo of Homepage]:
-[Demo registration, login, getUserProfile, updateUserProfile, createCoverLetter, viewCoverLetters, viewCoverLetter, and signout functionalities]:
+## 🙂 Flow of Web App 🙂
+
+![RegisterPage](https://github.com/WeslenLakins/ai-application-assistant/assets/90317130/9e052d30-3d3d-4556-a94a-4d3f0c58d69b)
+
+![HomePage](https://github.com/WeslenLakins/ai-application-assistant/assets/90317130/b366443d-0cd5-4bbc-a145-90d6873e6d75)
+
+![GenerateCoverLetterPage](https://github.com/WeslenLakins/ai-application-assistant/assets/90317130/e793606f-5d40-4d0e-89bb-2c911306f163)
+
+![CoverLettersPage](https://github.com/WeslenLakins/ai-application-assistant/assets/90317130/9b33be4b-2b36-4708-9cfd-e8af248b302d)
+
+![CoverLetterPage](https://github.com/WeslenLakins/ai-application-assistant/assets/90317130/a1bce41e-63a9-4d4e-bf91-ed4a2d995eb1)
+
+![ProfilePage](https://github.com/WeslenLakins/ai-application-assistant/assets/90317130/09a5ab55-296a-449d-86ee-d68772111a11)
+
 
 ## ⛑️ Support ⛑️
 
