@@ -19,15 +19,15 @@
 - **Stripe API Integration**: 🚧 Under construction 🚧
 - **Deployment**: 🚧 Under construction 🚧
  
-## 👩‍💻 Getting Started 🧑‍💻
+## 👩‍💻 Running the App Locally 🧑‍💻
 
 ### ⚙️ Prerequisites ⚙️
 
 Before you begin, ensure you have the following:
-- Node.js
-- npm or yarn
-- MongoDB (for local development)
-- Create .env folder in root directory to add values to the environmental variables using your API Keys and associated credentials. 
+- Node.js: https://nodejs.org/en/download
+- npm: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+- Create A Valid MongoDB MONGO_URI: https://www.mongodb.com/
+- Create an OpenAI_API_Key: [https://openai](https://openai.com/)
 
 ### 📂 Installation 📂 
 
@@ -38,7 +38,7 @@ git clone https://github.com/WeslenLakins/ai-application-assistant.git
 cd ai-application-assistant
 ```
 
-2. Remove .example from the .env file and add values for the variables.
+2. Remove .example from the .env file and add values for the variables. Set the NODE_ENV to development, the PORT to 5000 or wherever your sever usually runs, and the JWT_SECRET can be set to any value you would like. Input the values you obtained earlier for the MONGO_URI & OPENAI_API_KEY values. 
   
 3. Install the necessary dependencies for the backend in the root directory of the project:
 
@@ -62,6 +62,7 @@ npm run dev
 6. Your application should now be running on http://localhost:3000 🏁
 
 7. Drown in job/scholarship offers 🏊
+
 
 ## 🙂 Flow of Web App 🙂
 
