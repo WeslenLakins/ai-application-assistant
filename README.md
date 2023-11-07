@@ -1,4 +1,4 @@
-# 💻 ai-application-assistant 💻
+# 💻 AI Application Assistant 💻
 
 ## 🧑‍🚀 General Information 🧑‍🚀
 - **Author:** Weslen T. Lakins
