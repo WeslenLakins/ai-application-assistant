@@ -40,30 +40,31 @@ cd ai-application-assistant
 
 2. Remove .example from the .env file and add values for the variables.
   
-
-4. Install the necessary dependencies for the backend in the root directory of the project:
+3. Install the necessary dependencies for the backend in the root directory of the project:
 
 ```
 npm install
 ```
 
-5. In a new terminal, navigate to the frontend directory and install the necessary dependencies for the frontend:
+4. In a new terminal, navigate to the frontend directory and install the necessary dependencies for the frontend:
 
 ```
 cd frontend
 npm install
 ```
 
-6. Ensure all neccesary dependencies have been installed in the root directory and frontend folder, then proceed to start the application by opening a new command prompt and executing the following command in the root directory of the project:
+5. Ensure all neccesary dependencies have been installed in the root directory and frontend folder, then proceed to start the application by opening a new command prompt and executing the following command in the root directory of the project:
 
 ```
 npm run dev
 ```
+
+6. Your application should now be running on http://localhost:3000 🏁
+
 7. Drown in job/scholarship offers 🏊
 
-### 🏁 Your application should now be running on http://localhost:3000. 🏁
-
 ## 🙂 Flow of Web App 🙂
+
 
 ![RegisterPage](https://github.com/WeslenLakins/ai-application-assistant/assets/90317130/9e052d30-3d3d-4556-a94a-4d3f0c58d69b)
 
