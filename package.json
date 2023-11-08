@@ -1,7 +1,7 @@
 {
-  "name": "support-desk",
+  "name": "ai-application-assistant",
   "version": "1.0.0",
-  "description": "Support ticket app",
+  "description": "An AI assistant that helps you craft customized cover letters, personal statements, resumes and more for various types of applications.",
   "main": "server.js",
   "scripts": {
     "start": "node backend/server.js",
@@ -10,7 +10,7 @@
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Weslen T. Lakins",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
