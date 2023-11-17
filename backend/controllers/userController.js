@@ -55,6 +55,12 @@ const registerUser = asyncHandler(async (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
 
+  // Validation & Error Handling
+  if (!password || !email) {
+    res.status(400)
+    throw new Error('Please complete all fields to update profile.')
+  }
+
   const user = await User.findOne({ email })
 
   // If the user exists and the password is correct, send back the user object. Otherwise, throw an error.
@@ -118,6 +124,14 @@ const getUserProfile = asyncHandler(async (req, res) => {
 //@route:     PUT /api/users/:id
 //@access:    Private
 const updateUserProfile = asyncHandler(async (req, res) => {
+  const { name, email, password } = req.body;
+
+   // Validation & Error Handling
+   if (!name || !email) {
+    res.status(400)
+    throw new Error('Please complete all fields to update profile.')
+  }
+
   // Get the user
   const user = await User.findById(req.user._id)
 
@@ -128,11 +142,11 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   }
 
   // Update the user fields
-  user.name = req.body.name || user.name
-  user.email = req.body.email || user.email
-  if (req.body.password) {
+  user.name = name || user.name
+  user.email = email || user.email
+  if (password) {
     const salt = await bcrypt.genSalt(10)
-    user.password = await bcrypt.hash(req.body.password, salt)
+    user.password = await bcrypt.hash(password, salt)
   }
 
   // Save the updated user

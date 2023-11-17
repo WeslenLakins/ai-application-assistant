@@ -548,3 +548,7 @@ p.status-complete {
   box-sizing: border-box;
   margin-top: 10px;
 }
+
+.error {
+  color: red;
+}

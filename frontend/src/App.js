@@ -35,7 +35,7 @@ function App() {
   return (
     <>
       <Router>
-        <div class='container'>
+        <div className='container'>
           <Header />
           <Routes>
             <Route path='/' element={<Home />} />
@@ -50,8 +50,8 @@ function App() {
             <Route path='/job/:jobId' element={<PrivateRoute />}>
               <Route path='/job/:jobId' element={<Job />} />
             </Route>
-            <Route path='/user/:userId' element={<PrivateRoute />}>
-              <Route path='/user/:userId' element={<UserProfile />} />
+            <Route path='/profile' element={<PrivateRoute />}>
+              <Route path='/profile' element={<UserProfile />} />
             </Route>
           </Routes>
         </div>
