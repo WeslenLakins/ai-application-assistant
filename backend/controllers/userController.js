@@ -58,7 +58,7 @@ const loginUser = asyncHandler(async (req, res) => {
   // Validation & Error Handling
   if (!password || !email) {
     res.status(400)
-    throw new Error('Please complete all fields to update profile.')
+    throw new Error('Please complete all fields to login user.')
   }
 
   const user = await User.findOne({ email })
