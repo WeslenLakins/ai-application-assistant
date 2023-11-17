@@ -18,7 +18,10 @@ const UserProfile = () => {
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
     email: Yup.string()
-      .email("Invalid email address")
+      .matches(
+        /^(?!\d+@)\w+([-+.']\w+)*@(?!\d+\.)\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+        "Invalid Email"
+      )
       .required("Email is required"),
     password: Yup.string().min(6, "Password must be at least 6 characters"),
   });
