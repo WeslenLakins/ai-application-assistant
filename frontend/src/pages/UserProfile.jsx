@@ -1,19 +1,27 @@
-import React, { useEffect } from "react";
-import { useFormik } from "formik";
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import * as Yup from "yup";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserProfile, updateUserProfile } from "../features/auth/authSlice";
+import { useFormik } from "formik";
+import { getUserProfile, updateUserProfile } from '../features/auth/authSlice'
 
 const UserProfile = () => {
-  const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch()
+  const { user } = useSelector((state) => state.auth) // Assuming the user's state is in auth
+  const { userId } = useParams() // Get the user ID from the URL
+  console.log('UserId:', userId)
+
+  // State for form data
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '', // It's not typical to handle passwords this way
+  })
 
   useEffect(() => {
     // When the component mounts, if the user is not already loaded, fetch the user profile
-    if (!user) {
-      dispatch(getUserProfile());
-    }
-  }, [dispatch, user]);
+    dispatch(getUserProfile(userId))
+  }, [dispatch, userId])
 
   const validationSchema = Yup.object({
     name: Yup.string().required("Name is required"),
@@ -35,10 +43,23 @@ const UserProfile = () => {
     },
     validationSchema,
     onSubmit: (values) => {
+      const updatedData = {
+        ...formData,
+        currentPassword,
+        newPassword: formData.password,
+      }
+      dispatch(updateUserProfile({ userId, userData: updatedData }))
       dispatch(updateUserProfile(values));
     },
   });
 
+  const [currentPassword, setCurrentPassword] = useState('')
+
+  const onChangeCurrentPassword = (e) => {
+    setCurrentPassword(e.target.value)
+  }
+
+  // JSX for the form
   return (
     <div className="user-profile">
       <h2>My Profile</h2>
@@ -71,6 +92,19 @@ const UserProfile = () => {
             <div className="error">{formik.errors.email}</div>
           ) : null}
         </div>
+
+        <div>
+          <label>Current Password</label>
+          <br />
+          <input
+            type='password'
+            name='currentPassword'
+            placeholder='Enter current password'
+            value={currentPassword}
+            onChange={onChangeCurrentPassword}
+          />
+        </div>
+
         <div>
           <label>Password</label>
           <br />

@@ -112,11 +112,11 @@ const generateToken = (id) => {
 };
 
 // @desc:     Get user profile
-// @route:    GET /api/users/:id
+// @route:    GET /api/user/:id
 // @access:   Private
 const getUserProfile = asyncHandler(async (req, res) => {
   // Get the user
-  const user = await User.findById(req.user._id);
+  const user = await User.findById(req.params.id)
 
   // If the user exists, send back the user object
   if (user) {
@@ -133,7 +133,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 });
 
 //@desc:      Update user profile
-//@route:     PUT /api/users/:id
+//@route:     PUT /api/user/:id
 //@access:    Private
 const updateUserProfile = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
@@ -158,32 +158,37 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   // Get the user
   const user = await User.findById(req.user._id);
 
-  // If the user is not found, throw an error.
   if (!user) {
     res.status(401);
     throw new Error("User not found.");
   }
 
-  // Update the user fields
-  user.name = name || user.name;
-  user.email = email || user.email;
-  if (password) {
-    const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(password, salt);
+  // Check if the current password is correct
+  if (
+    req.body.currentPassword &&
+    !(await bcrypt.compare(req.body.currentPassword, user.password))
+  ) {
+    res.status(401)
+    throw new Error('Current password is incorrect.')
   }
 
-  // Save the updated user
-  const updatedUser = await user.save();
+  user.name = req.body.name || user.name
+  user.email = req.body.email || user.email
 
-  // Return the updated user
+  if (req.body.newPassword) {
+    const salt = await bcrypt.genSalt(10)
+    user.password = await bcrypt.hash(req.body.newPassword, salt)
+  }
+
+  const updatedUser = await user.save()
+
   res.status(200).json({
     _id: updatedUser._id,
     name: updatedUser.name,
     email: updatedUser.email,
-    password: updatedUser.password,
-    token: generateToken(updatedUser._id),
-  });
-});
+    // Avoid sending back the password and token in response
+  })
+})
 // Export the functions
 module.exports = {
   registerUser,

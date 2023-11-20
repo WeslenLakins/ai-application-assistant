@@ -41,21 +41,21 @@ const login = async (userData) => {
 // Logout a user
 const logout = () => localStorage.removeItem('user')
 
-// Fetch user profile data using the API endpoint /api/users/profile (requires authentication) and return the response data as JSON.
-const getUserProfile = async (userData, token) => {
+// Fetch user profile data using the API endpoint /api/user/:userId
+const getUserProfile = async (userId, token) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
   }
-  const response = await axios.get(API_URL + 'profile', userData, config)
+  const response = await axios.get(API_URL + userId, config)
 
   return response.data
 }
 
-// Update user profile data using the API endpoint /api/users/profile (requires authentication) and return the response data as JSON.
-const updateUserProfile = async (userData, token) => {
+// Update user profile data using the API endpoint /api/user/:userId
+const updateUserProfile = async (userId, userData, token) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ const updateUserProfile = async (userData, token) => {
     },
   }
 
-  const response = await axios.put(API_URL + 'profile', userData, config)
+  const response = await axios.put(API_URL + userId, userData, config)
   return response.data
 }
 

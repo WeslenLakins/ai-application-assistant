@@ -6,6 +6,8 @@ import { useParams } from 'react-router-dom'
 import BackButton from '../components/BackButton'
 import Spinner from '../components/Spinner'
 import { get } from 'mongoose'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { jsPDF } from 'jspdf'
 
 function Job() {
   const { job, isLoading, isSuccess, isError, message } = useSelector(
@@ -33,6 +35,13 @@ function Job() {
     return <h3>Something Went Wrong</h3>
   }
 
+  const downloadCoverLetter = () => {
+    const doc = new jsPDF()
+    const text = doc.splitTextToSize(job.coverLetter, 180) // Split the text to fit within a width of 180
+    doc.text(text, 10, 10) // Use the split text here
+    doc.save('AIApplicationAssistant-CoverLetter.pdf')
+  }
+
   return (
     <div className='ticket-page'>
       <header className='ticket-header'>
@@ -58,8 +67,49 @@ function Job() {
         <br />
         <hr />
         <h1>Cover Letter</h1>
-        <p>{job.coverLetter}</p>
         <br />
+        <div style={{ margin: '10px', lineHeight: '1.6' }}>
+          {job.coverLetter &&
+            job.coverLetter.split('\n').map((paragraph, index) => (
+              <p key={index} style={{ marginBottom: '20px' }}>
+                {paragraph}
+              </p>
+            ))}
+        </div>
+        <br />
+        <CopyToClipboard text={job.coverLetter}>
+          <button
+            style={{
+              backgroundColor: '#525252',
+              color: 'white',
+              padding: '14px 20px',
+              margin: '20px 10px', // Increased margin
+              border: 'none',
+              borderRadius: '5px', // Rounded corners
+              boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.1)', // Shadow effect
+              cursor: 'pointer',
+              width: '20%',
+              transition: 'all 0.3s ease 0s', // Smooth transition
+            }}>
+            Copy Cover Letter
+          </button>
+        </CopyToClipboard>
+        <button
+          onClick={downloadCoverLetter}
+          style={{
+            backgroundColor: '#000000',
+            color: 'white',
+            padding: '14px 20px',
+            margin: '20px 10px', // Increased margin
+            border: 'none',
+            borderRadius: '5px', // Rounded corners
+            boxShadow: '0px 8px 15px rgba(0, 0, 0, 0.1)', // Shadow effect
+            cursor: 'pointer',
+            width: '20%',
+            transition: 'all 0.3s ease 0s', // Smooth transition
+          }}>
+          Download Cover Letter
+        </button>
       </header>
     </div>
   )
