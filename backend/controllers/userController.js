@@ -118,33 +118,37 @@ const getUserProfile = asyncHandler(async (req, res) => {
 //@route:     PUT /api/user/:id
 //@access:    Private
 const updateUserProfile = asyncHandler(async (req, res) => {
-  // Get the user
   const user = await User.findById(req.user._id)
 
-  // If the user is not found, throw an error.
   if (!user) {
     res.status(401)
     throw new Error('User not found.')
   }
 
-  // Update the user fields
-  user.name = req.body.name || user.name
-  user.email = req.body.email || user.email
-  if (req.body.password) {
-    const salt = await bcrypt.genSalt(10)
-    user.password = await bcrypt.hash(req.body.password, salt)
+  // Check if the current password is correct
+  if (
+    req.body.currentPassword &&
+    !(await bcrypt.compare(req.body.currentPassword, user.password))
+  ) {
+    res.status(401)
+    throw new Error('Current password is incorrect.')
   }
 
-  // Save the updated user
+  user.name = req.body.name || user.name
+  user.email = req.body.email || user.email
+
+  if (req.body.newPassword) {
+    const salt = await bcrypt.genSalt(10)
+    user.password = await bcrypt.hash(req.body.newPassword, salt)
+  }
+
   const updatedUser = await user.save()
 
-  // Return the updated user
   res.status(200).json({
     _id: updatedUser._id,
     name: updatedUser.name,
     email: updatedUser.email,
-    password: updatedUser.password,
-    token: generateToken(updatedUser._id),
+    // Avoid sending back the password and token in response
   })
 })
 // Export the functions

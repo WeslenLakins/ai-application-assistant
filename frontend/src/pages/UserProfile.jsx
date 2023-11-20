@@ -40,12 +40,21 @@ const UserProfile = () => {
     }))
   }
 
-  const onSubmit = (e) => {
-    e.preventDefault()
-    // Dispatch the update user profile action
-    dispatch(updateUserProfile({ userId, userData: formData }))
+  const [currentPassword, setCurrentPassword] = useState('')
+
+  const onChangeCurrentPassword = (e) => {
+    setCurrentPassword(e.target.value)
   }
 
+  const onSubmit = (e) => {
+    e.preventDefault()
+    const updatedData = {
+      ...formData,
+      currentPassword,
+      newPassword: formData.password,
+    }
+    dispatch(updateUserProfile({ userId, userData: updatedData }))
+  }
   // JSX for the form
   return (
     <div className='user-profile'>
@@ -71,6 +80,19 @@ const UserProfile = () => {
             onChange={onChange}
           />
         </div>
+
+        <div>
+          <label>Current Password</label>
+          <br />
+          <input
+            type='password'
+            name='currentPassword'
+            placeholder='Enter current password'
+            value={currentPassword}
+            onChange={onChangeCurrentPassword}
+          />
+        </div>
+
         <div>
           <label>Password</label>
           <br />
