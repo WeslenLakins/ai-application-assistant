@@ -30,6 +30,7 @@ import NewJob from './pages/NewJob'
 import Jobs from './pages/Jobs'
 import Job from './pages/Job'
 import UserProfile from './pages/UserProfile'
+import Subscription from './pages/Subscription'
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
             <Route path='/user/:userId' element={<PrivateRoute />}>
               <Route path='/user/:userId' element={<UserProfile />} />
             </Route>
+            <Route path='/subscription' element={<Subscription />}/>
           </Routes>
         </div>
       </Router>
