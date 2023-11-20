@@ -43,7 +43,7 @@ const UserProfile = () => {
   const onSubmit = (e) => {
     e.preventDefault()
     // Dispatch the update user profile action
-    dispatch(updateUserProfile(formData))
+    dispatch(updateUserProfile({ userId, userData: formData }))
   }
 
   // JSX for the form
