@@ -94,11 +94,11 @@ const generateToken = (id) => {
 }
 
 // @desc:     Get user profile
-// @route:    GET /api/users/:id
+// @route:    GET /api/user/:id
 // @access:   Private
 const getUserProfile = asyncHandler(async (req, res) => {
   // Get the user
-  const user = await User.findById(req.user._id)
+  const user = await User.findById(req.params.id)
 
   // If the user exists, send back the user object
   if (user) {
@@ -115,7 +115,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 })
 
 //@desc:      Update user profile
-//@route:     PUT /api/users/:id
+//@route:     PUT /api/user/:id
 //@access:    Private
 const updateUserProfile = asyncHandler(async (req, res) => {
   // Get the user

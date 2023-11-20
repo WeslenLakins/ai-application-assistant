@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import { getUserProfile, updateUserProfile } from '../features/auth/authSlice'
 
 const UserProfile = () => {
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.auth) // Assuming the user's state is in auth
+  const { userId } = useParams() // Get the user ID from the URL
+  console.log('UserId:', userId)
 
   // State for form data
   const [formData, setFormData] = useState({
@@ -15,10 +18,8 @@ const UserProfile = () => {
 
   useEffect(() => {
     // When the component mounts, if the user is not already loaded, fetch the user profile
-    if (!user) {
-      dispatch(getUserProfile())
-    }
-  }, [dispatch, user])
+    dispatch(getUserProfile(userId))
+  }, [dispatch, userId])
 
   useEffect(() => {
     // When the user data is fetched or updated, update the local state

@@ -68,12 +68,13 @@ export const logout = createAsyncThunk('auth/logout', async () => {
   await authService.logout()
 })
 
-// Async thunk for fetching user profile data from the API endpoint /api/users/profile.
+// Async thunk for fetching user profile data from the API endpoint /api/user/:userId
 export const getUserProfile = createAsyncThunk(
   'auth/getUserProfile',
-  async (user, thunkAPI) => {
+  async (userId, thunkAPI) => {
     try {
-      return user
+      const token = thunkAPI.getState().auth.user.token // Get the token from the state
+      return await authService.getUserProfile(userId, token) // Pass userId to the service function
     } catch (error) {
       const message =
         (error.response &&
@@ -87,7 +88,7 @@ export const getUserProfile = createAsyncThunk(
   }
 )
 
-// Async thunk for updating user profile data using the API endpoint /api/users/profile.
+// Async thunk for updating user profile data using the API endpoint /api/user/:userId.
 export const updateUserProfile = createAsyncThunk(
   'auth/updateUserProfile',
   async (user, thunkAPI) => {
