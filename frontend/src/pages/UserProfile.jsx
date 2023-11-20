@@ -1,63 +1,56 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import * as Yup from "yup";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { string, object } from "yup";
 import { useFormik } from "formik";
-import { getUserProfile, updateUserProfile } from '../features/auth/authSlice'
+import { getUserProfile, updateUserProfile } from "../features/auth/authSlice";
+import { toast } from "react-toastify";
+
+const passwordSchema = string().min(6)
+
+const validationSchema = object({
+  name: string().required(),
+  email: string()
+    .matches(
+      /^(?!\d+@)\w+([-+.']\w+)*@(?!\d+\.)\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+      "Invalid Email"
+    )
+    .required(),
+  newPassword: passwordSchema.label("New Password"),
+  currentPassword: passwordSchema.label("Current Password").when("newPassword", (newPassword, schema) => {
+    if(newPassword)
+      return schema.required()
+    return schema
+  }),
+});
 
 const UserProfile = () => {
-  const dispatch = useDispatch()
-  const { user } = useSelector((state) => state.auth) // Assuming the user's state is in auth
-  const { userId } = useParams() // Get the user ID from the URL
-  console.log('UserId:', userId)
+  const dispatch = useDispatch();
+  const { user, isError, message } = useSelector((state) => state.auth); // Assuming the user's state is in auth
 
-  // State for form data
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '', // It's not typical to handle passwords this way
-  })
+  useEffect(() => {
+    if (isError) {
+      toast.error(message)
+    }
+  },[isError, message])
 
   useEffect(() => {
     // When the component mounts, if the user is not already loaded, fetch the user profile
-    dispatch(getUserProfile(userId))
-  }, [dispatch, userId])
-
-  const validationSchema = Yup.object({
-    name: Yup.string().required("Name is required"),
-    email: Yup.string()
-      .matches(
-        /^(?!\d+@)\w+([-+.']\w+)*@(?!\d+\.)\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
-        "Invalid Email"
-      )
-      .required("Email is required"),
-    password: Yup.string().min(6, "Password must be at least 6 characters"),
-  });
+    dispatch(getUserProfile());
+  }, [dispatch]);
 
   const formik = useFormik({
     initialValues: {
       _id: user ? user._id : "",
       name: user ? user.name : "",
       email: user ? user.email : "",
-      password: "",
+      newPassword: "",
+      currentPassword: "",
     },
     validationSchema,
     onSubmit: (values) => {
-      const updatedData = {
-        ...formData,
-        currentPassword,
-        newPassword: formData.password,
-      }
-      dispatch(updateUserProfile({ userId, userData: updatedData }))
-      dispatch(updateUserProfile(values));
+      dispatch(updateUserProfile({userId: user._id, userData: values}));
     },
   });
-
-  const [currentPassword, setCurrentPassword] = useState('')
-
-  const onChangeCurrentPassword = (e) => {
-    setCurrentPassword(e.target.value)
-  }
 
   // JSX for the form
   return (
@@ -97,12 +90,16 @@ const UserProfile = () => {
           <label>Current Password</label>
           <br />
           <input
-            type='password'
-            name='currentPassword'
-            placeholder='Enter current password'
-            value={currentPassword}
-            onChange={onChangeCurrentPassword}
+            type="password"
+            name="currentPassword"
+            placeholder="Enter current password"
+            value={formik.values.currentPassword}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.touched.currentPassword && formik.errors.currentPassword ? (
+            <div className="error">{formik.errors.currentPassword}</div>
+          ) : null}
         </div>
 
         <div>
@@ -110,14 +107,14 @@ const UserProfile = () => {
           <br />
           <input
             type="password"
-            name="password"
+            name="newPassword"
             placeholder="Enter new password"
-            value={formik.values.password}
+            value={formik.values.newPassword}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
           />
-          {formik.touched.password && formik.errors.password ? (
-            <div className="error">{formik.errors.password}</div>
+          {formik.touched.newPassword && formik.errors.newPassword ? (
+            <div className="error">{formik.errors.newPassword}</div>
           ) : null}
         </div>
         <button type="submit">Update Profile</button>
