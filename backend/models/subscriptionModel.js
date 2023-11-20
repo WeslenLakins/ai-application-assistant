@@ -34,7 +34,7 @@ const subscriptionSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    planId: {
+    priceId: {
       type: String,
       required: true,
     },

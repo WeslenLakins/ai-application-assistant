@@ -11,7 +11,7 @@ const paymentLogSchema = new mongoose.Schema(
     response: {
       type: Object,
     },
-    paymentStatus: {
+    status: {
       type: String,
       default: "pending", //pending ,success,cancel, stripe status
     },
