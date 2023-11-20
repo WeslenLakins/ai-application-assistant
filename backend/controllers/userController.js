@@ -136,7 +136,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
 //@route:     PUT /api/user/:id
 //@access:    Private
 const updateUserProfile = asyncHandler(async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, email, password, currentPassword } = req.body;
 
   // Validation & Error Handling
   if (!name || !email) {
@@ -151,7 +151,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please Enter valid email.");
   }
-  if(password.length < 6){
+  if((password && password.length < 6) || (currentPassword && currentPassword.length < 6)){
     res.status(400);
     throw new Error("Password must be at least 6 characters");
   }
@@ -168,7 +168,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     req.body.currentPassword &&
     !(await bcrypt.compare(req.body.currentPassword, user.password))
   ) {
-    res.status(401)
+    res.status(400)
     throw new Error('Current password is incorrect.')
   }
 
