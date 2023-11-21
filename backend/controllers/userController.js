@@ -83,25 +83,6 @@ const getMe = asyncHandler(async (req, res) => {
     email: req.user.email,
   };
 
-  const sub = await Subscription.findOne({
-    $and: [
-      { userId: req.user._id },
-      {
-        $or: [
-          { subscriptionStatus: "active" },
-          { subscriptionStatus: "trialing" },
-        ],
-      },
-      { endDate: { $gte: new Date() } },
-    ],
-  });
-
-  if (sub) {
-    user.subscription = {
-      subscriptionId: sub.subscriptionId,
-    };
-  }
-
   // Get the user object and send it back
   res.status(200).json(user);
 });

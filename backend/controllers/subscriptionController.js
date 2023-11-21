@@ -40,7 +40,7 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
   const { _id } = req.user;
   const user = await User.findById(_id);
   if (!user) {
-    res.status(401);
+    res.status(404);
     throw new Error("User not found.");
   }
 
@@ -58,7 +58,7 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
   }).select({ _id: 1 });
 
   if (activeSub) {
-    res.status(401);
+    res.status(400);
     throw new Error("Subscription already exist.");
   }
 
@@ -95,12 +95,12 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
       subscription_data,
       metadata: metaDataObj,
       success_url: `${successUrl}`,
-      cancel_url: `${cancelUrl}?id=${payment._id.toString()}`,
+      cancel_url: `${cancelUrl}&id=${payment._id.toString()}`,
     });
 
     res.status(200).json({ url: session.url });
   } else {
-    res.status(401);
+    res.status(404);
     throw new Error("Plan not found.");
   }
 });
@@ -236,9 +236,73 @@ const cancelSubscription = asyncHandler(async (req, res) => {
   res.status(200).json({ success: true });
 });
 
+const getProduct = asyncHandler(async (req, res) => {
+  const products = await stripe.products.list({ expand: ["data.prices"] });
+  const product = await Promise.all(
+    products.data.map(async (pro) => {
+      const price = await stripe.prices.list({
+        product: pro.id,
+      });
+      return {
+        ...pro,
+        price: price.data,
+      };
+    })
+  );
+
+  res.status(200).json(product);
+});
+
+const getCurrentSubscription = asyncHandler(async (req, res) => {
+  let subscription = {};
+
+  const sub = await Subscription.findOne({
+    $and: [
+      { userId: req.user._id },
+      {
+        $or: [
+          { subscriptionStatus: "active" },
+          { subscriptionStatus: "trialing" },
+        ],
+      },
+      { endDate: { $gte: new Date() } },
+    ],
+  });
+
+  if (sub) {
+    const stripeSub = await stripe.subscriptions.retrieve(sub.subscriptionId);
+    const product = await stripe.products.retrieve(stripeSub.plan.product);
+    const price = await stripe.prices.list({
+      product: product.id,
+    });
+
+    if (price.data.length > 0 && product) {
+      subscription = {
+        id: stripeSub.id,
+        cancel_at_period_end: stripeSub.cancel_at_period_end,
+        current_period_end: stripeSub.current_period_end,
+        current_period_start: stripeSub.current_period_start,
+        status: stripeSub.status,
+        product: {
+          name: product.name,
+          description: product.description,
+          images: product.images,
+          amount: price.data[0].unit_amount,
+          interval: price.data[0].recurring.interval,
+        },
+      };
+    }
+  }
+
+  // Get the user object and send it back
+  res.status(200).json(subscription);
+});
+
 module.exports = {
   createCheckoutSession,
   webHook,
   cancelPayment,
   cancelSubscription,
+  getProduct,
+  getCurrentSubscription,
 };

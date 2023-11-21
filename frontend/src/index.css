@@ -26,7 +26,7 @@ The selected code is a CSS stylesheet that styles various elements of a web appl
 This CSS file is used to style a web application, and it includes styles for a variety of elements, including headers, links, paragraphs, lists, containers, forms, buttons, status labels, and a loading spinner.
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
 * {
   margin: 0;
@@ -35,7 +35,7 @@ This CSS file is used to style a web application, and it includes styles for a v
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   height: 100vh;
 }
 
@@ -549,221 +549,209 @@ p.status-complete {
   margin-top: 10px;
 }
 
-      section {
-          padding: 2em 0;
-          min-height: 100%;
-          position: relative;
-          -webkit-font-smoothing: antialiased;
-          z-index:10;
-      }
-
-      .pricing {
-          display: -webkit-flex;
-          display: flex;
-          -webkit-flex-wrap: wrap;
-          flex-wrap: wrap;
-          -webkit-justify-content: center;
-          justify-content: center;
-          width: 100%;
-          margin: 0 auto;
-      }
-
-      .pricing-item {
-          position: relative;
-          display: -webkit-flex;
-          display: flex;
-          -webkit-flex-direction: column;
-          flex-direction: column;
-          -webkit-align-items: stretch;
-          align-items: stretch;
-          text-align: center;
-          -webkit-flex: 0 1 330px;
-          flex: 0 1 330px;
-      }
-
-      .pricing-action {
-          color: inherit;
-          border: none;
-          background: none;
-          cursor: pointer;
-      }
-
-      .pricing-action:focus {
-          outline: none;
-      }
-
-      .pricing-feature-list {
-          text-align: left;
-      }
-
-      .pricing-palden .pricing-item {
-          font-family: 'Open Sans', sans-serif;
-          cursor: default;
-          color: #84697c;
-          background: #fff;
-          box-shadow: 0 0 10px rgba(46, 59, 125, 0.23);
-          border-radius: 20px 20px 10px 10px;
-          margin: 1em;
-      }
-
-      @media screen and (min-width: 66.25em) {
-          .pricing-palden .pricing-item {
-              margin: 1em -0.5em;
-          }
-          .pricing-palden .pricing__item--featured {
-              margin: 0;
-              z-index: 10;
-              box-shadow: 0 0 20px rgba(46, 59, 125, 0.23);
-          }
-      }
-
-      .pricing-palden .pricing-deco {
-          border-radius: 10px 10px 0 0;
-          background: linear-gradient(135deg,#4097f9,#0af0c7);
-          padding: 4em 0 9em;
-          position: relative;
-      }
-
-      .pricing-palden .pricing-deco-img {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 100%;
-          height: 160px;
-      }
-
-      .pricing-palden .pricing-title {
-          font-size: 0.75em;
-          margin: 0;
-          text-transform: uppercase;
-          letter-spacing: 5px;
-          color: #fff;
-      }
-
-      .pricing-palden .deco-layer {
-          -webkit-transition: -webkit-transform 0.5s;
-          transition: transform 0.5s;
-      }
-
-      .pricing-palden .pricing-item:hover .deco-layer--1 {
-          -webkit-transform: translate3d(15px, 0, 0);
-          transform: translate3d(15px, 0, 0);
-      }
-
-      .pricing-palden .pricing-item:hover .deco-layer--2 {
-          -webkit-transform: translate3d(-15px, 0, 0);
-          transform: translate3d(-15px, 0, 0);
-      }
-
-      .pricing-palden .icon {
-          font-size: 2.5em;
-      }
-
-      .pricing-palden .pricing-price {
-          font-size: 5em;
-          font-weight: bold;
-          padding: 0;
-          color: #fff;
-          margin: 0 0 0.25em 0;
-          line-height: 0.75;
-      }
-
-      .pricing-palden .pricing-currency {
-          font-size: 0.15em;
-          vertical-align: top;
-      }
-
-      .pricing-palden .pricing-period {
-          font-size: 0.15em;
-          padding: 0 0 0 0.5em;
-          font-style: italic;
-      }
-
-      .pricing-palden .pricing__sentence {
-          font-weight: bold;
-          margin: 0 0 1em 0;
-          padding: 0 0 0.5em;
-      }
-
-      .pricing-palden .pricing-feature-list {
-          margin: 0;
-          padding: 0.25em 0 2.5em;
-          list-style: none;
-          text-align: center;
-      }
-
-      .pricing-palden .pricing-feature {
-          padding: 1em 0;
-      }
-
-      .pricing-palden .pricing-action {
-          font-weight: bold;
-          margin: auto 3em 2em 3em;
-          padding: 1em 2em;
-          color: #fff;
-          border-radius: 30px;
-          background: linear-gradient(135deg,#a93bfe,#584efd);
-          -webkit-transition: background-color 0.3s;
-          transition: background-color 0.3s;
-      }
-
-      .pricing-palden .pricing-action:hover,
-      .pricing-palden .pricing-action:focus {
-          background: linear-gradient(135deg,#fd7d57,#f55d59);
-      }
-
-      .pricing-palden .pricing-item--featured .pricing-deco {
-          padding: 5em 0 8.885em 0;
-      }
-
-.inner-header {
-height:100%;
-width:100%;
-margin: 0;
-padding: 0;
+section {
+  padding: 2em 0;
+  min-height: 100%;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  z-index: 10;
 }
 
-.flex { /*Flexbox for containers*/
-justify-content: center;
-align-items: center;
-text-align: center;
+.product-desc {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.inner-header {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.flex {
+  /*Flexbox for containers*/
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .waves {
-position:relative;
-width: 100%;
-height:150vh;
-margin-bottom:-7px; /*Fix for safari gap*/
-min-height:100px;
-max-height:250px;
+  position: relative;
+  width: 100%;
+  height: 150vh;
+  margin-bottom: -7px; /*Fix for safari gap*/
+  min-height: 100px;
+  max-height: 250px;
 }
+/* ===================================================================================================================== */
+.payment-card {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 1px solid #dddddd61;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.payment-desc {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.product-img {
+  width: 30%;
+}
+.product-main-flex {
+  display: flex;
+  align-items: center;
+}
+.product-img img {
+  width: 100%;
+  height: auto;
+}
+.product-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product-card {
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+.pricing-price {
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  padding: 0;
+  line-height: 0.75;
+}
+.left-container {
+  display: flex;
+  align-items: center;
+}
+.left-container-margin {
+  margin: 0 20px;
+}
+.v-center {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.pricing-title {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.subscribe-btn {
+  padding: 10px 50px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  margin-left: 5px;
+}
+.not-allow:hover {
+  cursor: not-allowed;
+}
+.free-trial-btn {
+  padding: 10px 50px;
+  border: 1px solid #00000038;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  margin-left: 5px;
+}
+.mt {
+  margin-top: 5px;
+}
+.status {
+  width: fit-content;
+  padding: 0px 7px;
+  border-radius: 5px;
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 15px;
+}
+.trialing {
+  background-color: #008000a8;
+}
+.active {
+  background-color: #008000;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+.product-card-flex {
+  display: flex;
+  align-items: center;
+}
+
+.manage-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+  appearance: button;
+  margin-top: 10px;
+}
+@media screen and (max-width: 991px) {
+  .product-main-flex {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .product-card-flex {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .product-img {
+    width: 65%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .product-flex {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .left-container-margin {
+    width: 100%;
+  }
+}
+
+/* ===================================================================================================================== */
 
 /* Animation */
 
 .parallax > use {
-animation: move-forever 25s cubic-bezier(.55,.5,.45,.5)     infinite;
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
 }
 .parallax > use:nth-child(1) {
-animation-delay: -2s;
-animation-duration: 7s;
+  animation-delay: -2s;
+  animation-duration: 7s;
 }
 .parallax > use:nth-child(2) {
-animation-delay: -3s;
-animation-duration: 10s;
+  animation-delay: -3s;
+  animation-duration: 10s;
 }
 .parallax > use:nth-child(3) {
-animation-delay: -4s;
-animation-duration: 13s;
+  animation-delay: -4s;
+  animation-duration: 13s;
 }
 .parallax > use:nth-child(4) {
-animation-delay: -5s;
-animation-duration: 20s;
+  animation-delay: -5s;
+  animation-duration: 20s;
 }
 @keyframes move-forever {
-0% {
- transform: translate3d(-90px,0,0);
-}
-100% {
-  transform: translate3d(85px,0,0);
-}
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
 }
