@@ -1,23 +1,40 @@
 const asyncHandler = require("express-async-handler");
-const Plan = require("../models/planModel");
 const User = require("../models/userModel");
 const Subscription = require("../models/subscriptionModel");
 const PaymentLog = require("../models/paymentLogModel");
-const { changeUnixTimestampFormat, compareDate } = require("../common");
+const { changeUnixTimestampFormat } = require("../common");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+
+const handleCreateSubscription = async (subData, subscriptionType) => {
+  return await Subscription.create({
+    userId: subData.metadata.userId,
+    subscriptionId: subData.id,
+    subscriptionStatus: subData.status,
+    startDate: changeUnixTimestampFormat(subData.created),
+    endDate: changeUnixTimestampFormat(subData.current_period_end),
+    paymentStatus: "complete",
+    subscriptionType: subscriptionType,
+    customerId: subData.customer,
+    priceId: subData.metadata.priceId,
+  });
+};
 
 // @desc:     create checkout session for subscription payment.
 // @route:    /api/subscription
 // @access:   Private
 const createCheckoutSession = asyncHandler(async (req, res) => {
   const params = req.body;
-  const planId = params.planId ? params.planId : "";
+  const type = params.type ? params.type : "";
   const successUrl = params.successUrl ? params.successUrl : "";
   const cancelUrl = params.cancelUrl ? params.cancelUrl : "";
 
-  if (!planId || !successUrl || !cancelUrl) {
+  if (!successUrl || !cancelUrl) {
     res.status(400);
     throw new Error("Please pass required all parameters.");
+  }
+  if (type && type !== "trial") {
+    res.status(400);
+    throw new Error("Please pass valid type");
   }
 
   const { _id } = req.user;
@@ -28,9 +45,16 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
   }
 
   const activeSub = await Subscription.findOne({
-    userId: _id,
-    subscriptionStatus: "active",
-    endDate: { $gte: new Date() },
+    $and: [
+      { userId: _id },
+      {
+        $or: [
+          { subscriptionStatus: "active" },
+          { subscriptionStatus: "trialing" },
+        ],
+      },
+      { endDate: { $gte: new Date() } },
+    ],
   }).select({ _id: 1 });
 
   if (activeSub) {
@@ -38,45 +62,47 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
     throw new Error("Subscription already exist.");
   }
 
-  const plan = await Plan.findOne({ _id: planId }).select({
-    priceId: 1,
-    _id: 1,
-  });
+  const products = await stripe.products.list();
+  if (products && products.data.length > 0) {
+    const reqObj = {
+      price: products.data[0].default_price,
+      quantity: 1,
+    };
+    const payment = await PaymentLog.create({
+      userId: _id,
+      request: reqObj,
+    });
+    const metaDataObj = {
+      paymentLog: payment._id.toString(),
+      userId: _id.toString(),
+      priceId: products.data[0].default_price,
+    };
+    const subscription_data = {
+      metadata: metaDataObj,
+    };
+    if (type === "trial") {
+      subscription_data.trial_settings = {
+        end_behavior: {
+          missing_payment_method: "cancel",
+        },
+      };
+      subscription_data.trial_period_days = 3;
+    }
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ["card"],
+      line_items: [reqObj],
+      mode: "subscription",
+      subscription_data,
+      metadata: metaDataObj,
+      success_url: `${successUrl}`,
+      cancel_url: `${cancelUrl}?id=${payment._id.toString()}`,
+    });
 
-  if (!plan) {
+    res.status(200).json({ url: session.url });
+  } else {
     res.status(401);
     throw new Error("Plan not found.");
   }
-  const reqObj = {
-    price: plan.priceId,
-    quantity: 1,
-  };
-  const payment = await PaymentLog.create({
-    userId: _id,
-    request: reqObj,
-  });
-
-  const metaDataObj = {
-    paymentLog: payment._id.toString(),
-    userId: _id.toString(),
-    planId: plan._id.toString(),
-  };
-  const session = await stripe.checkout.sessions.create({
-    payment_method_types: ["card"],
-    line_items: [reqObj],
-    mode: "subscription",
-    subscription_data: {
-      metadata: metaDataObj,
-    },
-    metadata: metaDataObj,
-    // success_url: `${successUrl}?planId=${plan._id.toString()}`,
-    success_url: `${successUrl}`,
-    cancel_url: `${cancelUrl}?id=${payment._id.toString()}`,
-  });
-
-  console.log("session created:-", session);
-
-  res.status(200).json({ url: session.url });
 });
 
 // @desc:     handle stripe webhook.
@@ -86,10 +112,9 @@ const webHook = asyncHandler(async (req, res) => {
   const params = req.body;
   const { type, data } = params;
   console.log("type===============>", type);
-  console.log("data===============>", data);
   const createObj = {
     response: params,
-    paymentStatus:
+    status:
       data.object && data.object.status ? data.object.status : "NO-STATUS",
     event: type,
   };
@@ -119,68 +144,36 @@ const webHook = asyncHandler(async (req, res) => {
   //add data in subscription table when create subscription
   if (type === "customer.subscription.created") {
     const subData = data.object;
-    await Subscription.create({
-      userId: subData.metadata.userId,
-      subscriptionId: subData.id,
-      subscriptionStatus: subData.status,
-      startDate: changeUnixTimestampFormat(subData.created),
-      endDate: changeUnixTimestampFormat(subData.current_period_end),
-      paymentStatus: "complete",
-      subscriptionType: "new",
-      customerId: subData.customer,
-      planId: subData.metadata.planId,
-    });
+    await handleCreateSubscription(subData, subData.status);
   }
   if (type === "customer.subscription.updated") {
     const subData = data.object;
     const sub = await Subscription.findOne({
       subscriptionId: subData.id,
+      subscriptionStatus: "incomplete",
     });
     if (sub) {
-      console.log("if1");
-      //condition for check when call subscription update like first time subscribe or renew subscription
-      if (!compareDate(sub.startDate)) {
-        console.log("if2");
-        //check condition when call subscription update event for cancel subscription
-        if (!subData.cancel_at_period_end) {
-          console.log("if3");
-          await Subscription.create({
-            userId: subData.metadata.userId,
-            subscriptionId: subData.id,
-            subscriptionStatus: subData.status,
-            startDate: changeUnixTimestampFormat(subData.created),
-            endDate: changeUnixTimestampFormat(subData.current_period_end),
-            paymentStatus: "complete",
-            subscriptionType: "renewal",
-            customerId: subData.customer,
-            planId: subData.metadata.planId,
-          });
-        }
-      } else {
-        console.log("else1");
-        if (!subData.cancel_at_period_end) {
-          console.log("if4");
-          await Subscription.updateOne(
-            {
-              subscriptionId: subData.id,
-            },
-            {
-              subscriptionStatus: subData.status,
-            }
-          );
-        }
-      }
-
-      // update payment status in payment log table
-      await PaymentLog.updateOne(
-        { _id: data.object.metadata.paymentLog },
+      await Subscription.updateOne(
+        { _id: sub._id },
         {
-          response: params,
-          paymentStatus:
-            data.object.status === "active" ? "success" : data.object.status,
-          event: type,
+          subscriptionStatus: "active",
+          subscriptionType: "new",
         }
       );
+    } else {
+      //check condition when call subscription update event for renewal subscription not a cancel
+      if (!subData.cancel_at_period_end) {
+        await handleCreateSubscription(subData, "renewal");
+        await PaymentLog.updateOne(
+          { _id: data.object.metadata.paymentLog },
+          {
+            response: params,
+            status:
+              data.object.status === "active" ? "success" : data.object.status,
+            event: type,
+          }
+        );
+      }
     }
   }
   res.status(200).json();
@@ -201,7 +194,7 @@ const cancelPayment = asyncHandler(async (req, res) => {
     {
       _id: paymentId,
     },
-    { paymentStatus: "cancel", event: "cancel" }
+    { status: "cancel", event: "cancel" }
   );
   res.status(200).json({ success: true });
 });
@@ -217,7 +210,19 @@ const cancelSubscription = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please pass required all parameters.");
   }
-  const sub = await Subscription.findOne({ subscriptionId });
+  const sub = await Subscription.findOne({
+    $and: [
+      { userId: req.user._id },
+      { subscriptionId: subscriptionId },
+      {
+        $or: [
+          { subscriptionStatus: "active" },
+          { subscriptionStatus: "trialing" },
+        ],
+      },
+      { endDate: { $gte: new Date() } },
+    ],
+  });
   if (!sub) {
     res.status(400);
     throw new Error("Subscription does not exist.");
