@@ -50,9 +50,6 @@ const UserProfile = () => {
   // JSX for the form
   return (
     <>
-      <button className="manage-btn" onClick={() => navigate("/subscription")}>
-        Manage Subscription
-      </button>
       <div className="user-profile">
         <h2>My Profile</h2>
         <form onSubmit={onSubmit}>
@@ -87,7 +84,10 @@ const UserProfile = () => {
               onChange={onChange}
             />
           </div>
-          <button type="submit">Update Profile</button>
+          <button className="btn-profile" type="submit">Update Profile</button>
+          <button className="btn-profile btn-reverse btn-block" onClick={() => navigate("/subscription")}>
+            Manage Subscription
+          </button>
         </form>
       </div>
     </>

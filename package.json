@@ -21,7 +21,8 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.6.3",
     "openai": "^4.14.2",
-    "stripe": "^14.5.0"
+    "stripe": "^14.5.0",
+    "sweetalert2": "^11.10.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",

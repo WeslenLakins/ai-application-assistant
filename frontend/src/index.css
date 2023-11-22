@@ -185,8 +185,8 @@ h3 {
 }
 
 .btn-reverse {
-  background: #fff;
-  color: #000;
+  background-color: #fff !important;
+  color: #000 !important;
 }
 
 .btn-block {
@@ -207,6 +207,10 @@ h3 {
 .btn-back {
   width: 150px;
   margin-bottom: 20px;
+}
+
+.btn-margin {
+  margin-right: 10px;
 }
 
 .btn:hover {
@@ -262,7 +266,7 @@ h3 {
   justify-self: center;
   border-radius: 10px;
   font-size: 16px;
-  text-align: center;
+  text-align: center
 }
 
 .status-new {
@@ -490,7 +494,7 @@ p.status-complete {
   border-radius: 4px;
 }
 
-.user-profile form button {
+.user-profile form .btn-profile {
   padding: 0.5rem 1rem;
   background-color: #000;
   color: #fff;
@@ -501,8 +505,8 @@ p.status-complete {
   appearance: button;
 }
 
-.user-profile form button:hover {
-  background-color: darkgray;
+.user-profile form .btn-profile:hover {
+  transform: scale(0.98);
 }
 
 .boxed-section {
@@ -558,7 +562,7 @@ section {
 }
 
 .product-desc {
-  margin-top: 10px;
+  margin-top: 5px;
   margin-bottom: 10px;
 }
 .inner-header {
@@ -597,7 +601,7 @@ section {
   margin-bottom: 4px;
 }
 .product-img {
-  width: 30%;
+  width: 20%;
 }
 .product-main-flex {
   display: flex;
@@ -609,7 +613,6 @@ section {
 }
 .product-flex {
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 .product-card {
@@ -620,7 +623,7 @@ section {
 }
 .pricing-price {
   text-align: center;
-  font-size: 40px;
+  font-size: 28px;
   font-weight: bold;
   padding: 0;
   line-height: 0.75;
@@ -631,14 +634,16 @@ section {
 }
 .left-container-margin {
   margin: 0 20px;
+  text-align: left;
 }
 .v-center {
   margin-top: auto;
   margin-bottom: auto;
 }
 .pricing-title {
-  font-size: 16px;
+  font-size: 18px;
   text-transform: uppercase;
+  margin-bottom: 0 !important;
 }
 .subscribe-btn {
   padding: 10px 50px;
@@ -664,8 +669,8 @@ section {
   font-weight: 700;
   cursor: pointer;
   text-align: center;
-  appearance: button;
   margin-left: 5px;
+  background-color: transparent;
 }
 .mt {
   margin-top: 5px;
@@ -677,7 +682,20 @@ section {
   color: #fff;
   text-transform: capitalize;
   font-size: 15px;
+  margin-left: 10px;
+  display: inline-flex;
 }
+
+.swal2-styled{
+  background-color: #000 !important;
+}
+.swal2-styled:focus{
+  box-shadow: none !important;
+}
+.swal2-styled:hover {
+  transform: scale(0.98) !important;
+}
+
 .trialing {
   background-color: #008000a8;
 }
@@ -690,6 +708,8 @@ section {
 .product-card-flex {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .manage-btn {
@@ -701,6 +721,18 @@ section {
   appearance: button;
   margin-top: 10px;
 }
+.product-price-flex{
+  display: flex;
+  align-items: end;
+}
+.price-year-text{
+  font-size: 14px;
+  position: relative;
+  top: 4px;
+  left: 3px;
+  color: #000;
+}
+
 @media screen and (max-width: 991px) {
   .product-main-flex {
     flex-wrap: wrap;
@@ -711,8 +743,12 @@ section {
     justify-content: center;
   }
   .product-img {
-    width: 65%;
+    width: 40%;
   }
+  .left-container-margin{
+    margin-bottom: 15px;
+  }
+
 }
 @media screen and (max-width: 768px) {
   .product-flex {
@@ -721,6 +757,14 @@ section {
   }
   .left-container-margin {
     width: 100%;
+  }
+  .left-container-margin{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 15px;
+  }
+  .product-price-flex{
+    justify-content: center;
   }
 }
 

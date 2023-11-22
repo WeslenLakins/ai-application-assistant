@@ -1,5 +1,6 @@
 const SubscriptionCard = (props) => {
-  const { product, handleOnClick, subscription, handleCancel } = props;
+  const { product, handleOnClick, subscription, handleCancel, togglePopup } =
+    props;
 
   const formatDate = (unixDate) => {
     const fDate = new Date(unixDate * 1000);
@@ -11,6 +12,34 @@ const SubscriptionCard = (props) => {
     };
     const formattedDate = fDate.toLocaleDateString("en-US", options);
     return formattedDate;
+  };
+
+  const Swal = require("sweetalert2");
+
+  const showSweetAlert = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You are about to cancel your subscription!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, Cancel",
+      cancelButtonText: "No, Go Back",
+      customClass: {
+        confirmButton: "btn btn-reverse btn-margin",
+        cancelButton: "btn",
+      },
+      buttonsStyling: false,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleCancel();
+        togglePopup();
+        Swal.fire(
+          "Cancelled!",
+          "Your subscription has been cancelled.",
+          "success"
+        );
+      }
+    });
   };
 
   return (
@@ -36,47 +65,70 @@ const SubscriptionCard = (props) => {
               <div className="left-container-margin">
                 <h3 className="pricing-title">
                   {subscription ? subscription.product.name : product.name}
+                  {subscription && (
+                    <span
+                      className={`status ${
+                        subscription.status === "trialing"
+                          ? "trialing"
+                          : "active"
+                      }`}
+                    >
+                      {subscription.status}
+                    </span>
+                  )}
                 </h3>
-                <div className="pricing-price">
-                  $
-                  {subscription
-                    ? subscription.product.amount / 100
-                    : product.price[0].unit_amount / 100}
-                </div>
                 <div className="product-desc">
                   {subscription
                     ? subscription.product.description
                     : product.description}
                 </div>
+                <div className="product-price-flex">
+                  <div className="pricing-price">
+                    $
+                    {subscription
+                      ? subscription.product.amount / 100
+                      : product.price[0].unit_amount / 100}
+                  </div>
+                  {product ? (
+                    <div className="price-year-text">
+                      {product.price[0].recurring.interval === "month"
+                        ? "/ Monthly"
+                        : product.price[0].recurring.interval}
+                    </div>
+                  ) : (
+                    <div className="price-year-text">
+                      {subscription.product.interval === "month"
+                        ? "/ Monthly"
+                        : subscription.product.interval}
+                    </div>
+                  )}
+                </div>
                 {subscription && (
-                  <>
-                    <div>
-                      <b>Status: </b>
-                      <span
-                        className={`status ${
-                          subscription.status === "trialing"
-                            ? "trialing"
-                            : "active"
-                        }`}
-                      >
-                        {subscription.status}
-                      </span>
-                    </div>
-                    <div>
-                      <b>End Date: </b>
-                      {formatDate(subscription.current_period_end)}
-                    </div>
-                  </>
+                  <div>
+                    {subscription.cancel_at_period_end
+                      ? `Expire on ${formatDate(
+                          subscription.current_period_end
+                        )}`
+                      : subscription.status === "trialing"
+                      ? "trialing"
+                      : "active"
+                      ? `Renew on ${formatDate(
+                          subscription.current_period_end
+                        )}`
+                      : `Expired on ${formatDate(
+                          subscription.current_period_end
+                        )}`}
+                  </div>
                 )}
               </div>
               <div className="left-container v-center">
                 <div className="v-center">
                   {subscription ? (
                     <button
-                      className={`subscribe-btn mt-20 ${
+                      className={`subscribe-btn btn mt-20 ${
                         subscription.cancel_at_period_end ? "not-allow" : ""
                       }`}
-                      onClick={() => handleCancel()}
+                      onClick={() => showSweetAlert()}
                       disabled={subscription.cancel_at_period_end}
                     >
                       {subscription.cancel_at_period_end
@@ -86,13 +138,13 @@ const SubscriptionCard = (props) => {
                   ) : (
                     <>
                       <button
-                        className="free-trial-btn"
+                        className="free-trial-btn btn btn-reverse"
                         onClick={() => handleOnClick("trial")}
                       >
                         Free Trial
                       </button>
                       <button
-                        className="subscribe-btn mt-20"
+                        className="subscribe-btn btn mt-20"
                         onClick={() => handleOnClick()}
                       >
                         Subscribe

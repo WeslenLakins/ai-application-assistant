@@ -23,6 +23,12 @@ const Subscription = () => {
   } = useSelector((state) => state.subscription);
   const dispatch = useDispatch();
   const [params, setParams] = useState();
+  const [isPopupVisible, setPopupVisibility] = useState(false);
+
+  const togglePopup = () => {
+    setPopupVisibility(!isPopupVisible);
+  };
+
 
   const handleSubscription = (type) => {
     const payload = {
@@ -37,7 +43,7 @@ const Subscription = () => {
 
   const handleCancelSubscription = () => {
     if (!subscription.cancel_at_period_end) {
-      dispatch(cancelSubscription({ subscriptionId: subscription.id }));
+      // dispatch(cancelSubscription({ subscriptionId: subscription.id }));
     }
   };
 
@@ -87,6 +93,7 @@ const Subscription = () => {
           <SubscriptionCard
             subscription={subscription}
             handleCancel={handleCancelSubscription}
+            togglePopup={togglePopup}
           />
         ) : (
           <>
@@ -94,6 +101,7 @@ const Subscription = () => {
               <SubscriptionCard
                 product={product}
                 handleOnClick={handleSubscription}
+                togglePopup={togglePopup}
               />
             ))}
           </>
