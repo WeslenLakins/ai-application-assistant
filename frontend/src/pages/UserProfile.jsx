@@ -6,7 +6,7 @@ import { getUserProfile, updateUserProfile } from "../features/auth/authSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 
-const passwordSchema = string().min(6)
+const passwordSchema = string().min(6);
 
 const validationSchema = object({
   name: string().required(),
@@ -17,11 +17,12 @@ const validationSchema = object({
     )
     .required(),
   newPassword: passwordSchema.label("New Password"),
-  currentPassword: passwordSchema.label("Current Password").when("newPassword", (newPassword, schema) => {
-    if(newPassword)
-      return schema.required()
-    return schema
-  }),
+  currentPassword: passwordSchema
+    .label("Current Password")
+    .when("newPassword", (newPassword, schema) => {
+      if (newPassword) return schema.required();
+      return schema;
+    }),
 });
 
 const UserProfile = () => {
@@ -31,9 +32,9 @@ const UserProfile = () => {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message)
+      toast.error(message);
     }
-  },[isError, message])
+  }, [isError, message]);
 
   useEffect(() => {
     // When the component mounts, if the user is not already loaded, fetch the user profile
@@ -50,53 +51,88 @@ const UserProfile = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      dispatch(updateUserProfile({userId: user._id, userData: values}));
+      dispatch(updateUserProfile({ userId: user._id, userData: values }));
     },
   });
 
   // JSX for the form
   return (
-    <div className='user-profile'>
+    <div className="user-profile">
       <h2>My Profile</h2>
-      <form onSubmit={onSubmit}>
-        <div>
+
+      <form onSubmit={formik.handleSubmit}>
+        <div className="form-group">
           <label>Name</label>
-          <br />
           <input
-            type='text'
-            name='name'
-            value={formData.name}
-            onChange={onChange}
+            type="text"
+            name="name"
+            className="form-control"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.touched.name && formik.errors.name ? (
+            <div className="error">{formik.errors.name}</div>
+          ) : null}
         </div>
-        <div>
+        <div className="form-group">
           <label>Email</label>
-          <br />
           <input
-            type='email'
-            name='email'
-            value={formData.email}
-            onChange={onChange}
+            type="email"
+            name="email"
+            className="form-control"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.touched.email && formik.errors.email ? (
+            <div className="error">{formik.errors.email}</div>
+          ) : null}
         </div>
-        <div>
-          <label>Password</label>
-          <br />
+
+        <div className="form-group">
+          <label>Current Password</label>
           <input
-            type='password'
-            name='password'
-            placeholder='Enter new password'
-            value={formData.password}
-            onChange={onChange}
+            type="password"
+            name="currentPassword"
+            className="form-control"
+            placeholder="Enter current password"
+            value={formik.values.currentPassword}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
+          {formik.touched.currentPassword && formik.errors.currentPassword ? (
+            <div className="error">{formik.errors.currentPassword}</div>
+          ) : null}
         </div>
-        <button className="btn-profile" type="submit">Update Profile</button>
-        <button className="btn-profile btn-reverse btn-block" onClick={() => navigate("/subscription")}>
+
+        <div className="form-group">
+          <label>New Password</label>
+          <input
+            type="password"
+            name="newPassword"
+            className="form-control"
+            placeholder="Enter new password"
+            value={formik.values.newPassword}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.touched.newPassword && formik.errors.newPassword ? (
+            <div className="error">{formik.errors.newPassword}</div>
+          ) : null}
+        </div>
+        <button className="btn-profile" type="submit">
+          Update Profile
+        </button>
+        <button
+          className="btn-profile btn-reverse btn-block"
+          onClick={() => navigate("/subscription")}
+        >
           Manage Subscription
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default UserProfile;
