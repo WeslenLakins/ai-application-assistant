@@ -33,8 +33,8 @@ const Subscription = () => {
   const handleSubscription = (type, id) => {
     const payload = {
       priceId: id,
-      successUrl: `${process.env.REACT_APP_SUBSCRIPTION_URL}/?status=success`,
-      cancelUrl: `${process.env.REACT_APP_SUBSCRIPTION_URL}/?status=cancel`,
+      successUrl: `${window.location.href}/?status=success`,
+      cancelUrl: `${window.location.href}/?status=cancel`,
     };
     if (type) {
       payload.type = type;
