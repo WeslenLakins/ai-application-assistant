@@ -44,7 +44,7 @@ const Subscription = () => {
 
   const handleCancelSubscription = () => {
     if (!subscription.cancel_at_period_end) {
-      // dispatch(cancelSubscription({ subscriptionId: subscription.id }));
+      dispatch(cancelSubscription({ subscriptionId: subscription.id }));
     }
   };
 
