@@ -49,7 +49,7 @@ function Header() {
         {user ? (
           <>
             <li>
-              <Link to={`/user/${user._id}`}>
+              <Link to={`/profile`}>
                 <FaUserCircle /> Profile
               </Link>
             </li>
