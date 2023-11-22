@@ -19,10 +19,10 @@
     "express": "^4.18.2",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^9.0.2",
+    "jspdf": "^2.5.1",
     "mongoose": "^7.6.3",
     "openai": "^4.14.2",
-    "stripe": "^14.5.0",
-    "sweetalert2": "^11.10.1"
+    "stripe": "^14.5.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",

@@ -51,8 +51,8 @@ function App() {
             <Route path="/job/:jobId" element={<PrivateRoute />}>
               <Route path="/job/:jobId" element={<Job />} />
             </Route>
-            <Route path="/user/:userId" element={<PrivateRoute />}>
-              <Route path="/user/:userId" element={<UserProfile />} />
+            <Route path="/profile" element={<PrivateRoute />}>
+              <Route path="/profile" element={<UserProfile />} />
             </Route>
             <Route path="/subscription" element={<PrivateRoute />}>
               <Route path="/subscription" element={<Subscription />} />

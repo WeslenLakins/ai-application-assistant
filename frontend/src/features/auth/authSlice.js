@@ -68,12 +68,13 @@ export const logout = createAsyncThunk('auth/logout', async () => {
   await authService.logout()
 })
 
-// Async thunk for fetching user profile data from the API endpoint /api/users/profile.
+// Async thunk for fetching user profile data from the API endpoint /api/user/:userId
 export const getUserProfile = createAsyncThunk(
   'auth/getUserProfile',
-  async (user, thunkAPI) => {
+  async (userId, thunkAPI) => {
     try {
-      return user
+      const token = thunkAPI.getState().auth.user.token // Get the token from the state
+      return await authService.getUserProfile(userId, token) // Pass userId to the service function
     } catch (error) {
       const message =
         (error.response &&
@@ -87,13 +88,17 @@ export const getUserProfile = createAsyncThunk(
   }
 )
 
-// Async thunk for updating user profile data using the API endpoint /api/users/profile.
+// Async thunk for updating user profile data using the API endpoint /api/user/:userId.
 export const updateUserProfile = createAsyncThunk(
   'auth/updateUserProfile',
-  async (user, thunkAPI) => {
+  async ({ userId, userData }, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token
-      const updatedUser = await authService.updateUserProfile(user, token)
+      const updatedUser = await authService.updateUserProfile(
+        userId,
+        userData,
+        token
+      )
 
       return updatedUser
     } catch (error) {
@@ -103,8 +108,12 @@ export const updateUserProfile = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString()
-
-      return thunkAPI.rejectWithValue(message)
+      // Send status code, to ensure user logs out if Unauthorized
+      // But stays login if other API error
+      return thunkAPI.rejectWithValue({
+        message,
+        status: error.response.status
+      })
     }
   }
 )
@@ -159,7 +168,7 @@ export const authSlice = createSlice({
       .addCase(getUserProfile.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
-        state.user = action.payload
+        state.user = { ...state.user, ...action.payload }
       })
       .addCase(getUserProfile.rejected, (state, action) => {
         state.isLoading = false
@@ -178,8 +187,11 @@ export const authSlice = createSlice({
       .addCase(updateUserProfile.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
-        state.message = action.payload
-        state.user = null
+        state.message = action.payload.message
+      // User logs out if Unauthorized
+        if(action.payload.status === 401) {
+          state.user = null
+        }
       })
   },
 })
