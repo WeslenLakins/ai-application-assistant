@@ -51,7 +51,12 @@ const subscriptionProtect = expressAsyncHandler(async (req, res, next) => {
       endDate: { $gte: new Date() },
     }).select({ _id: 1 });
     if (sub) {
-      next();
+      if (userJob >= 10000) {
+        res.status(402);
+        throw new Error("Only 10,000 jobs are acceptable.");
+      } else {
+        next();
+      }
     } else {
       res.status(402);
       throw new Error(

@@ -1,18 +1,16 @@
 import { useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { useSelector, useDispatch } from 'react-redux'
-import { getJob, reset } from '../features/jobs/jobSlice'
+import { getJob } from '../features/jobs/jobSlice'
 import { useParams } from 'react-router-dom'
 import BackButton from '../components/BackButton'
 import Spinner from '../components/Spinner'
-import { get } from 'mongoose'
 
 function Job() {
-  const { job, isLoading, isSuccess, isError, message } = useSelector(
+  const { job, isLoading, isError, message } = useSelector(
     (state) => state.jobs
   )
 
-  const params = useParams()
   const dispatch = useDispatch()
   const { jobId } = useParams()
 

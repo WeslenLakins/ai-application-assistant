@@ -733,6 +733,11 @@ section {
   color: #000;
 }
 
+.back-flex{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
 @media screen and (max-width: 991px) {
   .product-main-flex {
     flex-wrap: wrap;

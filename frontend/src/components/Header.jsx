@@ -26,6 +26,7 @@ import {
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
+import {  reset as subscriptionReset } from '../features/subscription/subscriptionSlice'
 
 function Header() {
   const navigate = useNavigate()
@@ -35,6 +36,7 @@ function Header() {
   const onLogout = () => {
     dispatch(logout())
     dispatch(reset())
+    dispatch(subscriptionReset())
     navigate('/')
   }
 

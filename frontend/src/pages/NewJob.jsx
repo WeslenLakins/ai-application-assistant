@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { createJob, getJobs, reset } from "../features/jobs/jobSlice";
+import { createJob, reset } from "../features/jobs/jobSlice";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
 
@@ -11,9 +11,6 @@ function NewJob() {
   const user = useSelector((state) => state.auth);
   const { isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.jobs
-  );
-  const { isSuccess: success, subscription } = useSelector(
-    (state) => state.subscription
   );
 
   const [jobTitle, setJobTitle] = useState("");
@@ -40,15 +37,6 @@ function NewJob() {
     // dispatch(reset());
   }, [isError, isSuccess, message, dispatch, navigate]);
 
-  useEffect(() => {
-    if (
-      success &&
-      (Object.keys(subscription).length === 0 ||
-        (subscription && subscription.status === "trialing"))
-    ) {
-      dispatch(getJobs());
-    }
-  }, [dispatch, subscription, success]);
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(

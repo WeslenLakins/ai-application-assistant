@@ -106,18 +106,13 @@ const SubscriptionCard = (props) => {
                 {subscription && (
                   <div>
                     {subscription.cancel_at_period_end
-                      ? `Expire on ${formatDate(
-                          subscription.current_period_end
-                        )}`
+                      ? "Expire "
                       : subscription.status === "trialing"
-                      ? "trialing"
-                      : "active"
-                      ? `Renew on ${formatDate(
-                          subscription.current_period_end
-                        )}`
-                      : `Expired on ${formatDate(
-                          subscription.current_period_end
-                        )}`}
+                      ? "Expired "
+                      : subscription.status === "active"
+                      ? "Renew "
+                      : "Expired "}
+                    {"on " + formatDate(subscription.current_period_end)}
                   </div>
                 )}
               </div>
@@ -139,7 +134,9 @@ const SubscriptionCard = (props) => {
                     <>
                       <button
                         className="free-trial-btn btn btn-reverse"
-                        onClick={() => handleOnClick("trial", product.default_price)}
+                        onClick={() =>
+                          handleOnClick("trial", product.default_price)
+                        }
                       >
                         Free Trial
                       </button>

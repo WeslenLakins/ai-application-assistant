@@ -112,7 +112,6 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
 const webHook = asyncHandler(async (req, res) => {
   const params = req.body;
   const { type, data } = params;
-  console.log("type===============>", type);
   const createObj = {
     response: params,
     status:
@@ -237,6 +236,9 @@ const cancelSubscription = asyncHandler(async (req, res) => {
   res.status(200).json({ success: true });
 });
 
+// @desc:     handle get product
+// @route:    /api/subscription/product
+// @access:   Private
 const getProduct = asyncHandler(async (req, res) => {
   const products = await stripe.products.list({ expand: ["data.prices"] });
   const product = await Promise.all(
@@ -254,6 +256,9 @@ const getProduct = asyncHandler(async (req, res) => {
   res.status(200).json(product);
 });
 
+// @desc:     get current subscription
+// @route:    /api/subscription
+// @access:   Private
 const getCurrentSubscription = asyncHandler(async (req, res) => {
   let subscription = {};
 
