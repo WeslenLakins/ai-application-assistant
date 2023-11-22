@@ -6,7 +6,6 @@ import { cancelPayment } from "../features/subscription/subscriptionSlice";
 
 const PaymentCard = ({ params }) => {
   const { status, paymentId } = params;
-  console.log("status", status, "paymentId", paymentId);
   const dispatch = useDispatch();
 
   useEffect(() => {

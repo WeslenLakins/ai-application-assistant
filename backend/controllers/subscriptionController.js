@@ -2,6 +2,7 @@ const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 const Subscription = require("../models/subscriptionModel");
 const PaymentLog = require("../models/paymentLogModel");
+const Job = require("../models/jobModel");
 const { changeUnixTimestampFormat } = require("../common");
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
@@ -24,11 +25,12 @@ const handleCreateSubscription = async (subData, subscriptionType) => {
 // @access:   Private
 const createCheckoutSession = asyncHandler(async (req, res) => {
   const params = req.body;
+  const priceId = params.priceId ? params.priceId : "";
   const type = params.type ? params.type : "";
   const successUrl = params.successUrl ? params.successUrl : "";
   const cancelUrl = params.cancelUrl ? params.cancelUrl : "";
 
-  if (!successUrl || !cancelUrl) {
+  if (!successUrl || !cancelUrl || !priceId) {
     res.status(400);
     throw new Error("Please pass required all parameters.");
   }
@@ -62,32 +64,31 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
     throw new Error("Subscription already exist.");
   }
 
-  const products = await stripe.products.list();
-  if (products && products.data.length > 0) {
-    const reqObj = {
-      price: products.data[0].default_price,
-      quantity: 1,
+  const reqObj = {
+    price: priceId,
+    quantity: 1,
+  };
+  const payment = await PaymentLog.create({
+    userId: _id,
+    request: reqObj,
+  });
+  const metaDataObj = {
+    paymentLog: payment._id.toString(),
+    userId: _id.toString(),
+    priceId: priceId,
+  };
+  const subscription_data = {
+    metadata: metaDataObj,
+  };
+  if (type === "trial") {
+    subscription_data.trial_settings = {
+      end_behavior: {
+        missing_payment_method: "cancel",
+      },
     };
-    const payment = await PaymentLog.create({
-      userId: _id,
-      request: reqObj,
-    });
-    const metaDataObj = {
-      paymentLog: payment._id.toString(),
-      userId: _id.toString(),
-      priceId: products.data[0].default_price,
-    };
-    const subscription_data = {
-      metadata: metaDataObj,
-    };
-    if (type === "trial") {
-      subscription_data.trial_settings = {
-        end_behavior: {
-          missing_payment_method: "cancel",
-        },
-      };
-      subscription_data.trial_period_days = 3;
-    }
+    subscription_data.trial_period_days = 3;
+  }
+  try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       line_items: [reqObj],
@@ -99,9 +100,9 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
     });
 
     res.status(200).json({ url: session.url });
-  } else {
-    res.status(404);
-    throw new Error("Plan not found.");
+  } catch (e) {
+    res.status(500);
+    throw new Error(e.message);
   }
 });
 
@@ -269,6 +270,7 @@ const getCurrentSubscription = asyncHandler(async (req, res) => {
     ],
   });
 
+  const userJob = await Job.count({ user: req.user._id });
   if (sub) {
     const stripeSub = await stripe.subscriptions.retrieve(sub.subscriptionId);
     const product = await stripe.products.retrieve(stripeSub.plan.product);
@@ -283,6 +285,10 @@ const getCurrentSubscription = asyncHandler(async (req, res) => {
         current_period_end: stripeSub.current_period_end,
         current_period_start: stripeSub.current_period_start,
         status: stripeSub.status,
+        allowJob:
+          sub.subscriptionStatus === "active" ||
+          (!sub && userJob < 2) ||
+          (sub && sub.subscriptionStatus === "trialing" && userJob < 2),
         product: {
           name: product.name,
           description: product.description,
@@ -292,6 +298,8 @@ const getCurrentSubscription = asyncHandler(async (req, res) => {
         },
       };
     }
+  } else {
+    subscription.allowJob = userJob < 2;
   }
 
   // Get the user object and send it back
