@@ -5,12 +5,11 @@ import { toast } from "react-toastify";
 import { createJob, getJobs, reset } from "../features/jobs/jobSlice";
 import Spinner from "../components/Spinner";
 import BackButton from "../components/BackButton";
-import { getSubscriptions } from "../features/subscription/subscriptionSlice";
 
 function NewJob() {
   // eslint-disable-next-line no-unused-vars
   const user = useSelector((state) => state.auth);
-  const { isLoading, isError, isSuccess, message, jobs } = useSelector(
+  const { isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.jobs
   );
   const { isSuccess: success, subscription } = useSelector(
@@ -33,17 +32,13 @@ function NewJob() {
       dispatch(reset());
     }
 
-    if (jobs.length <= 0 && isSuccess) {
+    if (isSuccess) {
       dispatch(reset());
       navigate("/jobs");
     }
 
     // dispatch(reset());
-  }, [isError, isSuccess, message, dispatch, navigate, jobs.length]);
-
-  useEffect(() => {
-    dispatch(getSubscriptions());
-  }, [dispatch]);
+  }, [isError, isSuccess, message, dispatch, navigate]);
 
   useEffect(() => {
     if (
@@ -56,14 +51,9 @@ function NewJob() {
   }, [dispatch, subscription, success]);
   const onSubmit = (e) => {
     e.preventDefault();
-    if (subscription.status === "active" || jobs.length < 2) {
-      dispatch(
-        createJob({ jobTitle, company, location, jobDescription, resume })
-      );
-    } else {
-      toast.error("Subscription is required for create more than 2 jobs.");
-      navigate("/subscription");
-    }
+    dispatch(
+      createJob({ jobTitle, company, location, jobDescription, resume })
+    );
   };
 
   if (isLoading) {

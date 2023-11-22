@@ -24,8 +24,9 @@ const Subscription = () => {
   const dispatch = useDispatch();
   const [params, setParams] = useState();
 
-  const handleSubscription = (type) => {
+  const handleSubscription = (type, id) => {
     const payload = {
+      priceId: id,
       successUrl: `${process.env.REACT_APP_SUBSCRIPTION_URL}/?status=success`,
       cancelUrl: `${process.env.REACT_APP_SUBSCRIPTION_URL}/?status=cancel`,
     };
@@ -42,8 +43,10 @@ const Subscription = () => {
   };
 
   useEffect(() => {
-    dispatch(getSubscriptions());
-  }, [dispatch]);
+    if (Object.keys(subscription).length <= 0) {
+      dispatch(getSubscriptions());
+    }
+  }, [dispatch, subscription]);
 
   useEffect(() => {
     const params = new URLSearchParams(document.location.search);
@@ -56,14 +59,15 @@ const Subscription = () => {
       }
     }
   }, []);
+
   useEffect(() => {
     if (isError) {
       toast.error(message);
     }
-  }, [dispatch, isError, isSuccess, message]);
+  }, [isError, message]);
 
   useEffect(() => {
-    if (isSuccess && Object.keys(subscription).length === 0) {
+    if (isSuccess && Object.keys(subscription).length <= 1) {
       dispatch(getSubscriptionProducts());
     }
   }, [dispatch, isSuccess, subscription]);
@@ -77,13 +81,13 @@ const Subscription = () => {
   if (isLoading) {
     return <Spinner />;
   }
-  console.log("subscription.product.images--------------", subscription);
+
   return (
     <>
       <div className="inner-header flex">
         {params ? (
           <PaymentCard params={params} />
-        ) : Object.keys(subscription).length > 0 ? (
+        ) : Object.keys(subscription).length > 1 ? (
           <SubscriptionCard
             subscription={subscription}
             handleCancel={handleCancelSubscription}
