@@ -3,6 +3,7 @@ const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
+const Subscription = require("../models/subscriptionModel");
 
 // @desc:     Register a new user.
 // @route:    /api/users
@@ -116,7 +117,7 @@ const generateToken = (id) => {
 // @access:   Private
 const getUserProfile = asyncHandler(async (req, res) => {
   // Get the user
-  const user = await User.findById(req.params.id)
+  const user = await User.findById(req.user._id);
 
   // If the user exists, send back the user object
   if (user) {
@@ -172,15 +173,16 @@ const updateUserProfile = asyncHandler(async (req, res) => {
     throw new Error('Current password is incorrect.')
   }
 
-  user.name = req.body.name || user.name
-  user.email = req.body.email || user.email
+  user.name = req.body.name || user.name;
+  user.email = req.body.email || user.email;
 
   if (req.body.newPassword) {
-    const salt = await bcrypt.genSalt(10)
-    user.password = await bcrypt.hash(req.body.newPassword, salt)
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(req.body.newPassword, salt);
   }
 
-  const updatedUser = await user.save()
+  // Save the updated user
+  const updatedUser = await user.save();
 
   res.status(200).json({
     _id: updatedUser._id,

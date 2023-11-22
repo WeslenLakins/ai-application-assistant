@@ -11,13 +11,15 @@ The selected code is setting up a Redux store for a JavaScript application using
 
 This setup allows the application to use Redux for state management. The auth slice of the state can be updated by dispatching actions that are handled by authReducer.
 */
-import { configureStore } from '@reduxjs/toolkit'
-import authReducer from '../features/auth/authSlice'
-import jobReducer from '../features/jobs/jobSlice'
+import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "../features/auth/authSlice";
+import jobReducer from "../features/jobs/jobSlice";
+import subscriptionReducer from "../features/subscription/subscriptionSlice";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     jobs: jobReducer,
+    subscription: subscriptionReducer,
   },
-})
+});

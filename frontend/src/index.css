@@ -26,7 +26,7 @@ The selected code is a CSS stylesheet that styles various elements of a web appl
 This CSS file is used to style a web application, and it includes styles for a variety of elements, including headers, links, paragraphs, lists, containers, forms, buttons, status labels, and a loading spinner.
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
 * {
   margin: 0;
@@ -35,7 +35,7 @@ This CSS file is used to style a web application, and it includes styles for a v
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   height: 100vh;
 }
 
@@ -185,8 +185,8 @@ h3 {
 }
 
 .btn-reverse {
-  background: #fff;
-  color: #000;
+  background-color: #fff !important;
+  color: #000 !important;
 }
 
 .btn-block {
@@ -207,6 +207,10 @@ h3 {
 .btn-back {
   width: 150px;
   margin-bottom: 20px;
+}
+
+.btn-margin {
+  margin-right: 10px;
 }
 
 .btn:hover {
@@ -262,7 +266,7 @@ h3 {
   justify-self: center;
   border-radius: 10px;
   font-size: 16px;
-  text-align: center;
+  text-align: center
 }
 
 .status-new {
@@ -490,7 +494,7 @@ p.status-complete {
   border-radius: 4px;
 }
 
-.user-profile form button {
+.user-profile form .btn-profile {
   padding: 0.5rem 1rem;
   background-color: #000;
   color: #fff;
@@ -501,8 +505,8 @@ p.status-complete {
   appearance: button;
 }
 
-.user-profile form button:hover {
-  background-color: darkgray;
+.user-profile form .btn-profile:hover {
+  transform: scale(0.98);
 }
 
 .boxed-section {
@@ -549,6 +553,257 @@ p.status-complete {
   margin-top: 10px;
 }
 
+section {
+  padding: 2em 0;
+  min-height: 100%;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  z-index: 10;
+}
+
+.product-desc {
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+.inner-header {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.flex {
+  /*Flexbox for containers*/
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.waves {
+  position: relative;
+  width: 100%;
+  height: 150vh;
+  margin-bottom: -7px; /*Fix for safari gap*/
+  min-height: 100px;
+  max-height: 250px;
+}
+/* ===================================================================================================================== */
+.payment-card {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 1px solid #dddddd61;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.payment-desc {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.product-img {
+  width: 20%;
+}
+.product-main-flex {
+  display: flex;
+  align-items: center;
+}
+.product-img img {
+  width: 100%;
+  height: auto;
+}
+.product-flex {
+  display: flex;
+  align-items: center;
+}
+.product-card {
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+.pricing-price {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  padding: 0;
+  line-height: 0.75;
+}
+.left-container {
+  display: flex;
+  align-items: center;
+}
+.left-container-margin {
+  margin: 0 20px;
+  text-align: left;
+}
+.v-center {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.pricing-title {
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 0 !important;
+}
+.subscribe-btn {
+  padding: 10px 50px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  margin-left: 5px;
+}
+.not-allow:hover {
+  cursor: not-allowed;
+}
+.free-trial-btn {
+  padding: 10px 50px;
+  border: 1px solid #00000038;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  margin-left: 5px;
+  background-color: transparent;
+}
+.mt {
+  margin-top: 5px;
+}
+.status {
+  width: fit-content;
+  padding: 0px 7px;
+  border-radius: 5px;
+  color: #fff;
+  text-transform: capitalize;
+  font-size: 15px;
+  margin-left: 10px;
+  display: inline-flex;
+}
+
+.swal2-styled{
+  background-color: #000 !important;
+}
+.swal2-styled:focus{
+  box-shadow: none !important;
+}
+.swal2-styled:hover {
+  transform: scale(0.98) !important;
+}
+
+.trialing {
+  background-color: #008000a8;
+}
+.active {
+  background-color: #008000;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+.product-card-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.manage-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+  appearance: button;
+  margin-top: 10px;
+}
+.product-price-flex{
+  display: flex;
+  align-items: end;
+}
+.price-year-text{
+  font-size: 14px;
+  position: relative;
+  top: 4px;
+  left: 3px;
+  color: #000;
+}
+
+.back-flex{
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+@media screen and (max-width: 991px) {
+  .product-main-flex {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .product-card-flex {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .product-img {
+    width: 40%;
+  }
+  .left-container-margin{
+    margin-bottom: 15px;
+  }
+
+}
+@media screen and (max-width: 768px) {
+  .product-flex {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .left-container-margin {
+    width: 100%;
+  }
+  .left-container-margin{
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 15px;
+  }
+  .product-price-flex{
+    justify-content: center;
+  }
+}
+
+/* ===================================================================================================================== */
+
+/* Animation */
+
+.parallax > use {
+  animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+.parallax > use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+.parallax > use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+.parallax > use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+.parallax > use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
 .error {
   color: red;
 }
