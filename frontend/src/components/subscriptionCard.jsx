@@ -135,14 +135,14 @@ const SubscriptionCard = (props) => {
                       <button
                         className="free-trial-btn btn btn-reverse"
                         onClick={() =>
-                          handleOnClick("trial", product.default_price)
+                          handleOnClick("trial", product.price[0].id)
                         }
                       >
                         Free Trial
                       </button>
                       <button
                         className="subscribe-btn btn mt-20"
-                        onClick={() => handleOnClick("", product.default_price)}
+                        onClick={() => handleOnClick("", product.price[0].id)}
                       >
                         Subscribe
                       </button>
