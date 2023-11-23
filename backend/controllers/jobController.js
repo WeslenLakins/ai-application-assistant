@@ -26,7 +26,7 @@ const getJobs = asyncHandler(async (req, res) => {
 })
 
 // @desc:     Get job
-// @route:    GET /api/jobs/:id
+// @route:    GET /api/job/:id
 // @access:   Private
 const getJob = asyncHandler(async (req, res) => {
   // Get the user using the id in the token.

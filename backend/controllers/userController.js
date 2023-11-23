@@ -16,6 +16,18 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please complete all fields to register.");
   }
+  if (
+    !/^(?!\d+@)\w+([-+.']\w+)*@(?!\d+\.)\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(
+      email
+    )
+  ) {
+    res.status(400);
+    throw new Error("Please Enter valid email.");
+  }
+  if(password.length < 6){
+    res.status(400);
+    throw new Error("Password must be at least 6 characters");
+  }
 
   // Check if user already exists
   const userExists = await User.findOne({ email });
@@ -56,6 +68,12 @@ const registerUser = asyncHandler(async (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
 
+  // Validation & Error Handling
+  if (!password || !email) {
+    res.status(400);
+    throw new Error("Please complete all fields to login user.");
+  }
+
   const user = await User.findOne({ email });
 
   // If the user exists and the password is correct, send back the user object. Otherwise, throw an error.
@@ -95,7 +113,7 @@ const generateToken = (id) => {
 };
 
 // @desc:     Get user profile
-// @route:    GET /api/users/:id
+// @route:    GET /api/user/:id
 // @access:   Private
 const getUserProfile = asyncHandler(async (req, res) => {
   // Get the user
@@ -116,38 +134,63 @@ const getUserProfile = asyncHandler(async (req, res) => {
 });
 
 //@desc:      Update user profile
-//@route:     PUT /api/users/:id
+//@route:     PUT /api/user/:id
 //@access:    Private
 const updateUserProfile = asyncHandler(async (req, res) => {
+  const { name, email, password, currentPassword } = req.body;
+
+  // Validation & Error Handling
+  if (!name || !email) {
+    res.status(400);
+    throw new Error("Please complete all fields to update profile.");
+  }
+  if (
+    !/^(?!\d+@)\w+([-+.']\w+)*@(?!\d+\.)\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(
+      email
+    )
+  ) {
+    res.status(400);
+    throw new Error("Please Enter valid email.");
+  }
+  if((password && password.length < 6) || (currentPassword && currentPassword.length < 6)){
+    res.status(400);
+    throw new Error("Password must be at least 6 characters");
+  }
   // Get the user
   const user = await User.findById(req.user._id);
 
-  // If the user is not found, throw an error.
   if (!user) {
     res.status(401);
     throw new Error("User not found.");
   }
 
-  // Update the user fields
+  // Check if the current password is correct
+  if (
+    req.body.currentPassword &&
+    !(await bcrypt.compare(req.body.currentPassword, user.password))
+  ) {
+    res.status(400)
+    throw new Error('Current password is incorrect.')
+  }
+
   user.name = req.body.name || user.name;
   user.email = req.body.email || user.email;
-  if (req.body.password) {
+
+  if (req.body.newPassword) {
     const salt = await bcrypt.genSalt(10);
-    user.password = await bcrypt.hash(req.body.password, salt);
+    user.password = await bcrypt.hash(req.body.newPassword, salt);
   }
 
   // Save the updated user
   const updatedUser = await user.save();
 
-  // Return the updated user
   res.status(200).json({
     _id: updatedUser._id,
     name: updatedUser.name,
     email: updatedUser.email,
-    password: updatedUser.password,
-    token: generateToken(updatedUser._id),
-  });
-});
+    // Avoid sending back the password and token in response
+  })
+})
 // Export the functions
 module.exports = {
   registerUser,
