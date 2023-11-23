@@ -108,8 +108,12 @@ export const updateUserProfile = createAsyncThunk(
           error.response.data.message) ||
         error.message ||
         error.toString()
-
-      return thunkAPI.rejectWithValue(message)
+      // Send status code, to ensure user logs out if Unauthorized
+      // But stays login if other API error
+      return thunkAPI.rejectWithValue({
+        message,
+        status: error.response.status
+      })
     }
   }
 )
@@ -183,8 +187,11 @@ export const authSlice = createSlice({
       .addCase(updateUserProfile.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
-        state.message = action.payload
-        state.user = null
+        state.message = action.payload.message
+      // User logs out if Unauthorized
+        if(action.payload.status === 401) {
+          state.user = null
+        }
       })
   },
 })

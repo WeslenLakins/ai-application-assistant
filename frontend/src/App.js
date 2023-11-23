@@ -18,47 +18,51 @@ The following code is a React component named App. This component sets up the ma
     Finally, the App component is exported as the default export from this module, so it can be imported and used in other parts of the application.
 */
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
-import Header from './components/Header'
-import PrivateRoute from './components/PrivateRoute'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import Register from './pages/Register'
-import NewJob from './pages/NewJob'
-import Jobs from './pages/Jobs'
-import Job from './pages/Job'
-import UserProfile from './pages/UserProfile'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Header from "./components/Header";
+import PrivateRoute from "./components/PrivateRoute";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import NewJob from "./pages/NewJob";
+import Jobs from "./pages/Jobs";
+import Job from "./pages/Job";
+import UserProfile from "./pages/UserProfile";
+import Subscription from "./pages/Subscription";
 
 function App() {
   return (
     <>
       <Router>
-        <div class='container'>
+        <div className='container'>
           <Header />
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/new-job' element={<PrivateRoute />}>
-              <Route path='/new-job' element={<NewJob />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/new-job" element={<PrivateRoute checkSubscription />}>
+              <Route path="/new-job" element={<NewJob />} />
             </Route>
-            <Route path='/jobs' element={<PrivateRoute />}>
-              <Route path='/jobs' element={<Jobs />} />
+            <Route path="/jobs" element={<PrivateRoute />}>
+              <Route path="/jobs" element={<Jobs />} />
             </Route>
-            <Route path='/job/:jobId' element={<PrivateRoute />}>
-              <Route path='/job/:jobId' element={<Job />} />
+            <Route path="/job/:jobId" element={<PrivateRoute />}>
+              <Route path="/job/:jobId" element={<Job />} />
             </Route>
-            <Route path='/user/:userId' element={<PrivateRoute />}>
-              <Route path='/user/:userId' element={<UserProfile />} />
+            <Route path="/profile" element={<PrivateRoute />}>
+              <Route path="/profile" element={<UserProfile />} />
+            </Route>
+            <Route path="/subscription" element={<PrivateRoute />}>
+              <Route path="/subscription" element={<Subscription />} />
             </Route>
           </Routes>
         </div>
       </Router>
       <ToastContainer />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
