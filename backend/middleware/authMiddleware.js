@@ -46,9 +46,16 @@ const subscriptionProtect = expressAsyncHandler(async (req, res, next) => {
   const userJob = await Job.count({ user: _id });
   if (userJob >= 2) {
     const sub = await Subscription.findOne({
-      userId: _id,
-      subscriptionStatus: "active",
-      endDate: { $gte: new Date() },
+      $and: [
+        { userId: _id },
+        {
+          $or: [
+            { subscriptionStatus: "active" },
+            { subscriptionStatus: "trialing" },
+          ],
+        },
+        { endDate: { $gte: new Date() } },
+      ],
     }).select({ _id: 1 });
     if (sub) {
       if (userJob >= 10000) {

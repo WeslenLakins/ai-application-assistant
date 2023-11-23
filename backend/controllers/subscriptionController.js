@@ -290,10 +290,7 @@ const getCurrentSubscription = asyncHandler(async (req, res) => {
         current_period_end: stripeSub.current_period_end,
         current_period_start: stripeSub.current_period_start,
         status: stripeSub.status,
-        allowJob:
-          sub.subscriptionStatus === "active" ||
-          (!sub && userJob < 2) ||
-          (sub && sub.subscriptionStatus === "trialing" && userJob < 2),
+        allowJob: true,
         product: {
           name: product.name,
           description: product.description,
