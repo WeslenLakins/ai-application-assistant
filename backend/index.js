@@ -1,6 +1,7 @@
 // Bring in express to create the server, colors to color the console, dotenv to use the .env file, errorHandler to handle errors, & connectDB to connect to the database.
 const express = require('express')
 require('dotenv').config()
+require('colors')
 const { errorHandler } = require('./middleware/errorMiddleware')
 const connectDB = require('./config/db')
 
