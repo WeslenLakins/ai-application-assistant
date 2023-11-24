@@ -723,7 +723,7 @@ section {
 }
 .product-price-flex{
   display: flex;
-  align-items: end;
+  align-items: flex-end;
 }
 .price-year-text{
   font-size: 14px;
