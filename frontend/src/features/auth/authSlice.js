@@ -91,11 +91,10 @@ export const getUserProfile = createAsyncThunk(
 // Async thunk for updating user profile data using the API endpoint /api/user/:userId.
 export const updateUserProfile = createAsyncThunk(
   'auth/updateUserProfile',
-  async ({ userId, userData }, thunkAPI) => {
+  async ({ userData }, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token
       const updatedUser = await authService.updateUserProfile(
-        userId,
         userData,
         token
       )
@@ -182,7 +181,11 @@ export const authSlice = createSlice({
       .addCase(updateUserProfile.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
-        state.user = action.payload.user
+        state.user = {
+          ...action.payload,
+          // Due to new changes, token is not returned anymore.
+          token: state.user.token
+        }
       })
       .addCase(updateUserProfile.rejected, (state, action) => {
         state.isLoading = false
