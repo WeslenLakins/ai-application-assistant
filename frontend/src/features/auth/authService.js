@@ -55,15 +55,14 @@ const getUserProfile = async (userId, token) => {
 }
 
 // Update user profile data using the API endpoint /api/user/:userId
-const updateUserProfile = async (userId, userData, token) => {
+const updateUserProfile = async (userData, token) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`,
     },
   }
-
-  const response = await axios.put(API_URL + userId, userData, config)
+  const response = await axios.put(API_URL + "me", userData, config)
   return response.data
 }
 

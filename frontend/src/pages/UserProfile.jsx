@@ -19,7 +19,7 @@ const validationSchema = object({
   newPassword: passwordSchema.label("New Password"),
   currentPassword: passwordSchema
     .label("Current Password")
-    .when("newPassword", (newPassword, schema) => {
+    .when("newPassword", ([newPassword], schema) => {
       if (newPassword) return schema.required();
       return schema;
     }),
@@ -38,9 +38,8 @@ const UserProfile = () => {
 
   useEffect(() => {
     // When the component mounts, if the user is not already loaded, fetch the user profile
-    dispatch(getUserProfile());
+    dispatch(getUserProfile("me"));
   }, [dispatch]);
-
   const formik = useFormik({
     initialValues: {
       _id: user ? user._id : "",
@@ -51,7 +50,7 @@ const UserProfile = () => {
     },
     validationSchema,
     onSubmit: (values) => {
-      dispatch(updateUserProfile({ userId: user._id, userData: values }));
+      dispatch(updateUserProfile({ userData: values }));
     },
   });
 
