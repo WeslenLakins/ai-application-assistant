@@ -1,21 +1,3 @@
 {
-    "version": 2,
-    "builds": [
-        {
-            "src": "./backend/server.js",
-            "use": "@vercel/node"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/api/(.*)",
-            "dest": "/api"
-        }
-    ],
-    "functions": {
-        "backend/server.js": {
-            "maxDuration": 30,
-            "includeFiles": "backend/**/*"
-        }
-    }
-  }
+    "rewrites": [{ "source": "/api/(.*)", "destination": "/backend/server.js" }]
+}
