@@ -9,6 +9,7 @@
       "src": "/frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
+        "zeroConfig": true,
         "framework": "create-react-app"
       }
     }
