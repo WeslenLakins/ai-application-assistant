@@ -11,5 +11,11 @@
             "src": "/api/(.*)",
             "dest": "/api"
         }
-    ]
+    ],
+    "functions": {
+        "backend/server.js": {
+            "maxDuration": 30,
+            "includeFiles": "backend/**/*"
+        }
+    }
   }
