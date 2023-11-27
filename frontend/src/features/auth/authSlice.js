@@ -19,11 +19,9 @@ The reset action and the reducer function are exported from the module. The redu
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import authService from './authService'
 
-// Get user from local storage
-const user = JSON.parse(localStorage.getItem('user'))
 
 const initialState = {
-  user: user || null,
+  user :null,
   isError: false,
   isSuccess: false,
   isLoading: false,
