@@ -1,4 +1,4 @@
-const app = require("./backend/")
+const app = require("../backend/")
 
 
 module.exports = app;
