@@ -37,6 +37,7 @@ function App() {
   return (
     <>
       <Router>
+        <Analytics />
         <div className='container'>
           <Header />
           <Routes>
@@ -62,7 +63,6 @@ function App() {
         </div>
       </Router>
       <ToastContainer />
-      <Analytics />
     </>
   )
 }
