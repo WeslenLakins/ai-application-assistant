@@ -29,19 +29,6 @@ const createCheckoutSession = async (data, token) => {
   return response.data;
 };
 
-const cancelPayment = async (data, token) => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  };
-
-  const response = await axios.post(API_URL + "cancel-payment", data, config);
-
-  return response.data;
-};
-
 const getSubscription = async (token) => {
   const config = {
     headers: {
@@ -71,7 +58,6 @@ const cancelSubscription = async (data,token) => {
 const subscriptionService = {
   getSubscriptionProduct,
   createCheckoutSession,
-  cancelPayment,
   getSubscription,
   cancelSubscription,
 };

@@ -68,12 +68,7 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
     price: priceId,
     quantity: 1,
   };
-  const payment = await PaymentLog.create({
-    userId: _id,
-    request: reqObj,
-  });
   const metaDataObj = {
-    paymentLog: payment._id.toString(),
     userId: _id.toString(),
     priceId: priceId,
   };
@@ -94,9 +89,10 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
       line_items: [reqObj],
       mode: "subscription",
       subscription_data,
+      customer_email: user.email,
       metadata: metaDataObj,
       success_url: `${successUrl}`,
-      cancel_url: `${cancelUrl}&id=${payment._id.toString()}`,
+      cancel_url: `${cancelUrl}`,
     });
 
     res.status(200).json({ url: session.url });
@@ -110,93 +106,78 @@ const createCheckoutSession = asyncHandler(async (req, res) => {
 // @route:    /api/subscription/webhook
 // @access:   Private
 const webHook = asyncHandler(async (req, res) => {
-  const params = req.body;
-  const { type, data } = params;
-  const createObj = {
-    response: params,
-    status:
-      data.object && data.object.status ? data.object.status : "NO-STATUS",
-    event: type,
-  };
+  const sig = req.headers["stripe-signature"];
+  try {
+    const event = stripe.webhooks.constructEvent(
+      req.body,
+      sig,
+      process.env.STRIPE_WEBHOOK_SECRET_KEY
+    );
+    const { type, data } = event;
+    const paymentArr = [
+      "checkout.session.completed",
+      "payment_intent.created",
+      "payment_intent.succeeded",
+      "invoice.paid",
+    ];
+    const subscriptionArr = [
+      "customer.subscription.created",
+      "customer.subscription.updated",
+    ];
+    if (!paymentArr.includes(type) && !subscriptionArr.includes(type)) {
+      console.log("Event does not handle:-", type);
+      res.status(200).json({
+        message: "Event is not handled",
+        type
+      });
+      return;
+    }
+    if (paymentArr.includes(type)) {
+      //add data in paymentLog table
+      const createObj = {
+        response: event,
+        status:
+          data.object && data.object.status ? data.object.status : "NO-STATUS",
+        userId:
+          type === "invoice.paid"
+            ? data.object.subscription_details.userId
+            : data.object.metadata.userId,
 
-  //get userId inside metaData object
-  if (
-    type === "invoice.payment_succeeded" ||
-    type === "invoice.updated" ||
-    type === "invoice.created"
-  ) {
-    createObj.userId = data.object.subscription_details.userId;
-  } else if (
-    type === "customer.subscription.created" ||
-    type === "customer.subscription.updated" ||
-    type === "checkout.session.completed" ||
-    type === "payment_intent.succeeded" ||
-    type === "payment_intent.created"
-  ) {
-    createObj.userId = data.object.metadata.userId;
-  }
-
-  //add data in paymentLog table
-  if (type !== "charge.succeeded" && type !== "payment_method.attached") {
-    await PaymentLog.create(createObj);
-  }
-
-  //add data in subscription table when create subscription
-  if (type === "customer.subscription.created") {
+        event: type,
+      };
+      const log = await PaymentLog.create(createObj);
+      res.status(200).json(log);
+      return;
+    }
     const subData = data.object;
-    await handleCreateSubscription(subData, subData.status);
-  }
-  if (type === "customer.subscription.updated") {
-    const subData = data.object;
+    if (type === "customer.subscription.created") {
+      const sub = await handleCreateSubscription(subData, subData.status);
+      res.status(200).json(sub);
+      return;
+    }
     const sub = await Subscription.findOne({
       subscriptionId: subData.id,
       subscriptionStatus: "incomplete",
     });
-    if (sub) {
-      await Subscription.updateOne(
-        { _id: sub._id },
-        {
-          subscriptionStatus: "active",
-          subscriptionType: "new",
-        }
-      );
-    } else {
-      //check condition when call subscription update event for renewal subscription not a cancel
-      if (!subData.cancel_at_period_end) {
-        await handleCreateSubscription(subData, "renewal");
-        await PaymentLog.updateOne(
-          { _id: data.object.metadata.paymentLog },
-          {
-            response: params,
-            status:
-              data.object.status === "active" ? "success" : data.object.status,
-            event: type,
-          }
-        );
-      }
+    if (subData.cancel_at_period_end) {
+      res.status(200).json({
+        message: "Subscription is being cancelled."
+      });
+      return;
     }
-  }
-  res.status(200).json();
-});
+    const updatedSub = !sub ? await handleCreateSubscription(subData, "renewal") : await Subscription.updateOne(
+      { _id: sub._id },
+      {
+        subscriptionStatus: "active",
+        subscriptionType: "new",
+      }
+    );
 
-// @desc:     handle cancel payment.
-// @route:    /api/subscription/cancel-payment
-// @access:   Private
-const cancelPayment = asyncHandler(async (req, res) => {
-  const params = req.body;
-  const paymentId = params.paymentId ? params.paymentId : "";
-
-  if (!paymentId) {
-    res.status(400);
-    throw new Error("Please pass required all parameters.");
+    res.status(200).send(updatedSub);
+  } catch (err) {
+    console.log("error in ", err.message);
+    res.status(400).send(`Webhook Error: ${err.message}`);
   }
-  await PaymentLog.updateOne(
-    {
-      _id: paymentId,
-    },
-    { status: "cancel", event: "cancel" }
-  );
-  res.status(200).json({ success: true });
 });
 
 // @desc:     handle cancel subscription
@@ -311,7 +292,6 @@ const getCurrentSubscription = asyncHandler(async (req, res) => {
 module.exports = {
   createCheckoutSession,
   webHook,
-  cancelPayment,
   cancelSubscription,
   getProduct,
   getCurrentSubscription,

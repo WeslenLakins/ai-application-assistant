@@ -44,7 +44,6 @@ const SubscriptionCard = (props) => {
 
   return (
     <>
-      <h2>Manage subscription</h2>
       <div className="product-card">
         <div className="product-main-flex">
           <div className="product-flex">
