@@ -124,6 +124,14 @@ const webHook = asyncHandler(async (req, res) => {
       "customer.subscription.created",
       "customer.subscription.updated",
     ];
+    if (!paymentArr.includes(type) && !subscriptionArr.includes(type)) {
+      console.log("Event does not handle:-", type);
+      res.status(200).json({
+        message: "Event is not handled",
+        type
+      });
+      return;
+    }
     if (paymentArr.includes(type)) {
       //add data in paymentLog table
       const createObj = {
@@ -137,39 +145,35 @@ const webHook = asyncHandler(async (req, res) => {
 
         event: type,
       };
-      await PaymentLog.create(createObj);
-    } else if (subscriptionArr.includes(type)) {
-      const subData = data.object;
-
-      //add data in subscription table when create subscription
-      if (type === "customer.subscription.created") {
-        await handleCreateSubscription(subData, subData.status);
-      } else if (type === "customer.subscription.updated") {
-        const sub = await Subscription.findOne({
-          subscriptionId: subData.id,
-          subscriptionStatus: "incomplete",
-        });
-
-        if (sub) {
-          await Subscription.updateOne(
-            { _id: sub._id },
-            {
-              subscriptionStatus: "active",
-              subscriptionType: "new",
-            }
-          );
-        } else {
-          //check condition when call subscription update event for renewal subscription not for cancel
-          if (!subData.cancel_at_period_end) {
-            await handleCreateSubscription(subData, "renewal");
-          }
-        }
-      }
-    } else {
-      console.log("Event does not handle:-", type);
+      const log = await PaymentLog.create(createObj);
+      res.status(200).json(log);
+      return;
     }
+    const subData = data.object;
+    if (type === "customer.subscription.created") {
+      const sub = await handleCreateSubscription(subData, subData.status);
+      res.status(200).json(sub);
+      return;
+    }
+    const sub = await Subscription.findOne({
+      subscriptionId: subData.id,
+      subscriptionStatus: "incomplete",
+    });
+    if (subData.cancel_at_period_end) {
+      res.status(200).json({
+        message: "Subscription is being cancelled."
+      });
+      return;
+    }
+    const updatedSub = !sub ? await handleCreateSubscription(subData, "renewal") : await Subscription.updateOne(
+      { _id: sub._id },
+      {
+        subscriptionStatus: "active",
+        subscriptionType: "new",
+      }
+    );
 
-    res.status(200).json();
+    res.status(200).send(updatedSub);
   } catch (err) {
     console.log("error in ", err.message);
     res.status(400).send(`Webhook Error: ${err.message}`);
