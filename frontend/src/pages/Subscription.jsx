@@ -29,7 +29,6 @@ const Subscription = () => {
     setPopupVisibility(!isPopupVisible);
   };
 
-
   const handleSubscription = (type, id) => {
     const payload = {
       priceId: id,
@@ -91,6 +90,7 @@ const Subscription = () => {
   return (
     <>
       <div className="inner-header flex">
+        <h2>Manage subscription</h2>
         {params ? (
           <PaymentCard params={params} />
         ) : Object.keys(subscription).length > 1 ? (
