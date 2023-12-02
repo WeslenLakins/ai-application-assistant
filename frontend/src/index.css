@@ -1006,7 +1006,7 @@ section {
 
 /* Hero Section */
 .hero-section {
-  background-image: url('/hero-section-image.png') no-repeat center center/cover;
+  background: url('/hero-section-image.png') no-repeat center center/cover;
   background-size: cover;
   background-position: center;
   color: white;
