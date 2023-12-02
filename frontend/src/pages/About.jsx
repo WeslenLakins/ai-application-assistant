@@ -112,10 +112,11 @@ const About = () => {
     <div className='about-container'>
       <div className='about-section'>
         <section className='heading'>
-          <h1>
-            <FaLaptop /> AI Application Assistant
-          </h1>
-          <p>How can we help streamline your application process?</p>
+          <h1>About AI Application Assistant</h1>
+          <p>
+            Keep reading to learn more about what AI Application Assistant can
+            do for you and your business.
+          </p>
         </section>
       </div>
 

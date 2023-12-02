@@ -80,9 +80,9 @@ function Login() {
     <>
       <section className='heading'>
         <h1>
-          <FaSignInAlt /> Login
+          <FaSignInAlt /> Sign In
         </h1>
-        <p>Please login to access your account.</p>
+        <p>Welcome back, wise one. Please login to access your account.</p>
       </section>
 
       <section className='form'>
