@@ -11,19 +11,22 @@ const About = () => {
     {
       type: 'Individual Subscription',
       price: '$6.99/month',
-      description:
-        'Ideal for individual users. Includes two cover letter generations.',
+      description: 'Ideal for individual users.',
       features: [
-        '2 Cover Letters',
-        'Personalized Templates',
-        'AI-Assisted Writing',
+        '1. Unlimited Cover Letters',
+        '2. Personalized AI-Assisted Writing',
+        '3. Error-Checking Algorithms',
       ],
     },
     {
       type: 'Enterprise Subscription',
       price: '$25.99/month',
-      description: 'Best for teams. Includes five individual user accounts.',
-      features: ['5 User Accounts', 'Team Collaboration', 'Priority Support'],
+      description: 'Best for teams.',
+      features: [
+        '1. Up to 5 User Accounts',
+        '2. Advanced Keyword Recognition',
+        '3. Priority Support',
+      ],
     },
   ]
 
@@ -197,33 +200,54 @@ const About = () => {
             Step 4
           </button>
         </div>
+
+        <br />
+
         <div className='tab-content'>
           {activeTab === 1 && (
             <h2>
-              1. Input Job Details: Enter the job title, company name, and
-              location.
+              Input Job Details - enter the job title, company name, and
+              location. All of this information can typically be found in the
+              job description of the position you are applying for.
             </h2>
           )}
           {activeTab === 2 && (
             <h2>
-              2. Paste Job Description: Copy the job description to provide
-              context.
+              Copy & Paste Job Description - add the job description of the
+              position you are applying for to provide the AI with context. This
+              information can typically be found on the company's website or on
+              a job board.
             </h2>
           )}
           {activeTab === 3 && (
             <h2>
-              3. Copy & Paste Resume: Paste a copy of your resume for a
-              personalized touch.
+              Copy & Paste Your Resume - add the resume you plan to submit with
+              your application. This will allow the AI to tailor your cover
+              letter to your unique skills and experiences.
             </h2>
           )}
           {activeTab === 4 && (
             <h2>
-              4. Create the Letter: Submit the form and receive a tailored cover
-              letter in usually less than a minute.
+              Create the Letter - click the "Generate Cover Letter" button to
+              create your personalized cover letter that perfectly aligns your
+              skills and experiences with the job qualifications and
+              responsibilities listed in the description of the position you are
+              applying for.
             </h2>
           )}
         </div>
       </div>
+
+      <br />
+      <br />
+      <br />
+
+      {/* Embeded Image of UI*/}
+      <img
+        src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%217979&authkey=%21AF23JtpDEJBlVsM&width=1049&height=887'
+        width='1049'
+        height='887'
+      />
 
       <br />
       <br />
