@@ -25,6 +25,22 @@ import {
 function Home() {
   return (
     <>
+      <div className='hero-section'>
+        <div className='hero-overlay'>
+          <h1 className='hero-headline'>AI Application Assistant</h1>
+          <p className='hero-description'>
+            A brief and engaging description that complements your headline.
+          </p>
+        </div>
+      </div>
+      <div className='special-offer'>
+        <h2>Special Launch Offer</h2>
+        <p>Create Two Cover Letters for Free by Creating an Account!</p>
+        <Link to='/register' className='btn special-offer-btn'>
+          Sign Up Now
+        </Link>
+      </div>
+
       <section className='heading'>
         <h1>
           <FaLaptop /> AI Application Assistant
