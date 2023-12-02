@@ -967,7 +967,7 @@ section {
   font-size: 20px;
   font-style: italic;
   color: #333;
-  border-left: 4px solid #007bff;
+  border-left: 4px solid #2c0861;
   padding-left: 15px;
 }
 
@@ -975,7 +975,7 @@ section {
   display: block;
   font-style: normal;
   font-weight: bold;
-  color: #007bff;
+  color: #2c0861;
 }
 .testimonials-section button {
   background-color: #643b9f;
@@ -1079,7 +1079,7 @@ section {
 .features-list {
   list-style-type: none;
   padding: 0;
-  text-align: left;
+  text-align: center;
   margin-top: 15px;
 }
 

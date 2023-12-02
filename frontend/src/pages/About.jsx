@@ -13,9 +13,9 @@ const About = () => {
       price: '$6.99/month',
       description: 'Ideal for individual users.',
       features: [
-        '1. Unlimited Cover Letters',
-        '2. Personalized AI-Assisted Writing',
-        '3. Error-Checking Algorithms',
+        'Unlimited Cover Letters',
+        'Personalized AI-Assisted Writing',
+        'Error-Checking Algorithms',
       ],
     },
     {
@@ -23,9 +23,9 @@ const About = () => {
       price: '$25.99/month',
       description: 'Best for teams.',
       features: [
-        '1. Up to 5 User Accounts',
-        '2. Advanced Keyword Recognition',
-        '3. Priority Support',
+        'Up to 5 User Accounts',
+        'Advanced Keyword Recognition',
+        'Priority Support',
       ],
     },
   ]
@@ -166,7 +166,6 @@ const About = () => {
 
       <br />
       <br />
-      <br />
 
       {/* Interactive How It Works Section */}
       <div className='how-it-works'>
@@ -242,11 +241,18 @@ const About = () => {
       <br />
       <br />
 
-      {/* Embeded Image of UI*/}
+      {/* Embedded Image of UI */}
       <img
-        src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%217979&authkey=%21AF23JtpDEJBlVsM&width=1049&height=887'
-        width='1049'
-        height='887'
+        src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%217980&authkey=%21ANULjNV8NIkMzZc&width=701&height=792'
+        width='701'
+        height='792'
+        style={{
+          display: 'block', // Ensures the image is block-level for centering
+          marginLeft: 'auto', // Auto margin for center alignment
+          marginRight: 'auto', // Auto margin for center alignment
+          boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.2)', // Adds shadow to the image
+          border: '2px solid black', // Adds border to the image
+        }}
       />
 
       <br />
@@ -276,6 +282,7 @@ const About = () => {
       <br />
       <br />
       <br />
+      <br />
 
       {/* Interactive Testimonials Section */}
       <div className='testimonials-section'>
@@ -292,6 +299,7 @@ const About = () => {
         </div>
       </div>
 
+      <br />
       <br />
       <br />
       <br />
@@ -317,11 +325,13 @@ const About = () => {
       <br />
       <br />
 
-      <h1>Ready to give it a try?</h1>
-      <p>Create Two Cover Letters for Free by Creating an Account!</p>
-      <Link to='/register' className='btn special-offer-btn'>
-        Sign Up Now
-      </Link>
+      <div className='special-offer'>
+        <h2>Ready to give it a try?</h2>
+        <p>Create Two Cover Letters for Free by Creating an Account!</p>
+        <Link to='/register' className='btn special-offer-btn'>
+          Sign Up Now
+        </Link>
+      </div>
 
       <br />
       <br />
