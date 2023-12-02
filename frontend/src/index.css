@@ -1006,7 +1006,7 @@ section {
 
 /* Special Offer Section */
 .special-offer {
-  background-color: #007bff;
+  background-color: #36454f;
   color: #fff;
   padding: 40px;
   text-align: center;
@@ -1021,8 +1021,8 @@ section {
 }
 
 .special-offer-btn {
-  background-color: #ffcc00; /* A contrasting button color */
-  color: #000;
+  background-color: #643b9f; /* A contrasting button color */
+  color: #fff;
   padding: 10px 20px;
   border-radius: 5px;
   text-decoration: none;

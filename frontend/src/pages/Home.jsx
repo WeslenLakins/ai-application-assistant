@@ -61,6 +61,8 @@ function Home() {
       <br />
 
       <h1>What is AI Application Assistant?</h1>
+      <br />
+      <br />
       <p>
         AI Application Assistant is a cutting-edge web application designed to
         streamline the job application process. By leveraging advanced AI
@@ -69,6 +71,16 @@ function Home() {
         with the requirements and qualifications listed in job descriptions of
         the position you are applying for.
       </p>
+      <br />
+      <br />
+      <p>
+        Our application is designed to help you stand out from the crowd and
+        land your dream job. We are currently offering two free cover letters
+        for new users, so sign up today and see what we can do for you!
+      </p>
+      <br />
+      <br />
+      <br />
 
       <Link to='/about' className='btn btn-reverse btn-block'>
         <FaQuestionCircle /> Learn More

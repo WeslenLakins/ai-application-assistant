@@ -116,9 +116,14 @@ const About = () => {
         </p>
       </div>
 
+      <br />
+      <br />
+
       {/* Embedded Video or Demo Section */}
       <section className='video-demo-section'>
-        <h2>See It In Action</h2>
+        <h1>See It In Action</h1>
+        <br />
+        <br />
         <iframe
           width='560'
           height='315'
@@ -129,9 +134,13 @@ const About = () => {
           allowfullscreen></iframe>
       </section>
 
+      <br />
+      <br />
+      <br />
+
       {/* Interactive How It Works Section */}
       <div className='how-it-works'>
-        <h2>How It Works</h2>
+        <h1>How It Works</h1>
         <div className='tabs'>
           <button
             onClick={() => setActiveTab(1)}
@@ -156,35 +165,58 @@ const About = () => {
         </div>
         <div className='tab-content'>
           {activeTab === 1 && (
-            <p>
-              Input Job Details: Enter the job title, company name, and
+            <h2>
+              1. Input Job Details: Enter the job title, company name, and
               location.
-            </p>
+            </h2>
           )}
           {activeTab === 2 && (
-            <p>
-              Paste Job Description: Copy the job description to provide
+            <h2>
+              2. Paste Job Description: Copy the job description to provide
               context.
-            </p>
+            </h2>
           )}
           {activeTab === 3 && (
-            <p>
-              Copy & Paste Resume: Paste a copy of your resume for a
+            <h2>
+              3. Copy & Paste Resume: Paste a copy of your resume for a
               personalized touch.
-            </p>
+            </h2>
           )}
           {activeTab === 4 && (
-            <p>
-              Create the Letter: Submit the form and receive a tailored cover
+            <h2>
+              4. Create the Letter: Submit the form and receive a tailored cover
               letter in usually less than a minute.
-            </p>
+            </h2>
           )}
         </div>
       </div>
 
+      <br />
+      <br />
+      <br />
+
+      {/* Interactive Testimonials Section */}
+      <div className='testimonials-section'>
+        <h1>User Testimonials</h1>
+        <div className='testimonial'>
+          <blockquote>
+            "{testimonials[testimonialIndex].quote}" -{' '}
+            {testimonials[testimonialIndex].author}
+          </blockquote>
+          <div className='testimonial-buttons'>
+            <button onClick={previousTestimonial}>&lt;</button>
+            <button onClick={nextTestimonial}>&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
       {/* FAQ Section with More Questions and Answers */}
       <div className='faq-section'>
-        <h2>Frequently Asked Questions</h2>
+        <h1>Frequently Asked Questions</h1>
         <div className='faq-list'>
           {faqData.map((faq, index) => (
             <div key={index} className='faq-item'>
@@ -199,20 +231,21 @@ const About = () => {
         </div>
       </div>
 
-      {/* Interactive Testimonials Section */}
-      <div className='testimonials-section'>
-        <h2>User Testimonials</h2>
-        <div className='testimonial'>
-          <blockquote>
-            "{testimonials[testimonialIndex].quote}" -{' '}
-            {testimonials[testimonialIndex].author}
-          </blockquote>
-          <div className='testimonial-buttons'>
-            <button onClick={previousTestimonial}>&lt;</button>
-            <button onClick={nextTestimonial}>&gt;</button>
-          </div>
-        </div>
+      <br />
+      <br />
+      <br />
+
+      <div className='special-offer'>
+        <h1>Ready to give it a try?</h1>
+        <p>Create Two Cover Letters for Free by Creating an Account!</p>
+        <Link to='/register' className='btn special-offer-btn'>
+          Sign Up Now
+        </Link>
       </div>
+
+      <br />
+      <br />
+      <br />
     </div>
   )
 }
