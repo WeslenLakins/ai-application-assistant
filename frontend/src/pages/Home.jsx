@@ -15,7 +15,12 @@ The code below is a React component named Home. This component appears to be the
 */
 
 import { Link } from 'react-router-dom'
-import { FaLaptop, FaListAlt, FaSyncAlt } from 'react-icons/fa'
+import {
+  FaLaptop,
+  FaListAlt,
+  FaSyncAlt,
+  FaQuestionCircle,
+} from 'react-icons/fa'
 
 function Home() {
   return (
@@ -33,6 +38,24 @@ function Home() {
 
       <Link to='/jobs' className='btn btn-block'>
         <FaListAlt /> Review Cover Letters
+      </Link>
+
+      <br />
+      <hr />
+      <br />
+
+      <h1>What is AI Application Assistant?</h1>
+      <p>
+        AI Application Assistant is a cutting-edge web application designed to
+        streamline the job application process. By leveraging advanced AI
+        algorithms, our platform crafts personalized cover letters that
+        highlight your unique skills and experiences, aligning them perfectly
+        with the requirements and qualifications listed in job descriptions of
+        the position you are applying for.
+      </p>
+
+      <Link to='/about' className='btn btn-reverse btn-block'>
+        <FaQuestionCircle /> Learn More
       </Link>
     </>
   )

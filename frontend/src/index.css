@@ -26,7 +26,7 @@ The selected code is a CSS stylesheet that styles various elements of a web appl
 This CSS file is used to style a web application, and it includes styles for a variety of elements, including headers, links, paragraphs, lists, containers, forms, buttons, status labels, and a loading spinner.
 */
 
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 * {
   margin: 0;
@@ -35,7 +35,7 @@ This CSS file is used to style a web application, and it includes styles for a v
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   height: 100vh;
 }
 
@@ -266,7 +266,7 @@ h3 {
   justify-self: center;
   border-radius: 10px;
   font-size: 16px;
-  text-align: center
+  text-align: center;
 }
 
 .status-new {
@@ -676,6 +676,7 @@ section {
   margin-top: 5px;
 }
 .status {
+  width: -moz-fit-content;
   width: fit-content;
   padding: 0px 7px;
   border-radius: 5px;
@@ -686,10 +687,10 @@ section {
   display: inline-flex;
 }
 
-.swal2-styled{
+.swal2-styled {
   background-color: #000 !important;
 }
-.swal2-styled:focus{
+.swal2-styled:focus {
   box-shadow: none !important;
 }
 .swal2-styled:hover {
@@ -721,11 +722,11 @@ section {
   appearance: button;
   margin-top: 10px;
 }
-.product-price-flex{
+.product-price-flex {
   display: flex;
   align-items: flex-end;
 }
-.price-year-text{
+.price-year-text {
   font-size: 14px;
   position: relative;
   top: 4px;
@@ -733,7 +734,7 @@ section {
   color: #000;
 }
 
-.back-flex{
+.back-flex {
   display: flex;
   justify-content: center;
   margin-top: 10px;
@@ -750,10 +751,9 @@ section {
   .product-img {
     width: 40%;
   }
-  .left-container-margin{
+  .left-container-margin {
     margin-bottom: 15px;
   }
-
 }
 @media screen and (max-width: 768px) {
   .product-flex {
@@ -763,12 +763,12 @@ section {
   .left-container-margin {
     width: 100%;
   }
-  .left-container-margin{
+  .left-container-margin {
     text-align: center;
     margin-bottom: 20px;
     margin-top: 15px;
   }
-  .product-price-flex{
+  .product-price-flex {
     justify-content: center;
   }
 }
@@ -806,4 +806,178 @@ section {
 }
 .error {
   color: red;
+}
+
+/* ===================================================================================================================== */
+
+/* About Section */
+.about-section {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.about-section h1,
+.about-section h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about-section p {
+  color: #555;
+  line-height: 1.6;
+}
+
+.about-section .tabs,
+.about-section .faq-list,
+.about-section .testimonial {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.about-section .tab-content,
+.about-section .faq-toggle,
+.about-section .testimonial-buttons {
+  margin-top: 10px;
+}
+
+/* About Container */
+.about-container {
+  max-width: 1000px; /* Adjust the width as needed */
+  margin: auto;
+  padding: 20px;
+  background-color: #fff; /* Choose a color that fits your theme */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.about-container h1 {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.about-container h2 {
+  font-size: 1.5em;
+  color: #333;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.about-container p {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-container {
+    padding: 15px;
+  }
+
+  .about-container h1 {
+    font-size: 1.8em;
+  }
+
+  .about-container h2 {
+    font-size: 1.4em;
+  }
+}
+
+/* How It Works Section */
+.how-it-works .tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.how-it-works .tabs button {
+  padding: 10px 20px;
+  margin: 0 5px;
+  border: none;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.how-it-works .tabs button.active,
+.how-it-works .tabs button:hover {
+  background-color: #367c39;
+}
+
+.how-it-works .tab-content {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+/* FAQ Section */
+.faq-section .faq-toggle {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.faq-section .faq-toggle:hover {
+  background-color: #367c39;
+}
+
+.faq-section .faq-list p {
+  background-color: #f2f2f2;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Testimonials Section */
+.testimonials-section .testimonial {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.testimonials-section blockquote {
+  font-style: italic;
+  color: #555;
+}
+
+.testimonials-section button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.testimonials-section button:hover {
+  background-color: #367c39;
+}
+
+/* Video Section */
+.video-demo-section {
+  margin-bottom: 30px;
+}
+
+.demo-video {
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: 5px;
 }

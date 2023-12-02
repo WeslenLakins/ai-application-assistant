@@ -32,6 +32,7 @@ import Jobs from './pages/Jobs'
 import Job from './pages/Job'
 import UserProfile from './pages/UserProfile'
 import Subscription from './pages/Subscription'
+import About from './pages/About'
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Header />
           <Routes>
             <Route path='/' element={<Home />} />
+            <Route path='/about' element={<About />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/new-job' element={<PrivateRoute checkSubscription />}>
