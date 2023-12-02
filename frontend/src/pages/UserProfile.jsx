@@ -124,7 +124,7 @@ const UserProfile = () => {
           Update Profile
         </button>
         <button
-          className='btn-profile'
+          className='btn-profile btn-reverse btn-block'
           onClick={() =>
             (window.location.href =
               'https://billing.stripe.com/p/login/dR6cPA9kG3c4dX2288')
@@ -132,7 +132,7 @@ const UserProfile = () => {
           Manage Subscription
         </button>
         <button
-          className='btn-profile btn-reverse btn-block'
+          className='btn-profile'
           onClick={() => navigate('/subscription')}>
           Cancel Subscription
         </button>

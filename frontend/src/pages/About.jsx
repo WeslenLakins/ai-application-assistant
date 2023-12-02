@@ -6,6 +6,28 @@ const About = () => {
   const [activeFAQs, setActiveFAQs] = useState({ 0: true, 1: true, 2: true })
   const [testimonialIndex, setTestimonialIndex] = useState(0)
 
+  // Subscriptions Data
+  const subscriptionOptions = [
+    {
+      type: 'Individual Subscription',
+      price: '$6.99/month',
+      description:
+        'Ideal for individual users. Includes two cover letter generations.',
+      features: [
+        '2 Cover Letters',
+        'Personalized Templates',
+        'AI-Assisted Writing',
+      ],
+    },
+    {
+      type: 'Enterprise Subscription',
+      price: '$25.99/month',
+      description: 'Best for teams. Includes five individual user accounts.',
+      features: ['5 User Accounts', 'Team Collaboration', 'Priority Support'],
+    },
+  ]
+
+  // Testimonials Data
   const testimonials = [
     {
       quote:
@@ -37,6 +59,7 @@ const About = () => {
     // Add more testimonials here
   ]
 
+  // FAQ Data
   const faqData = [
     {
       question: 'How is each cover letter personalized to my profile?',
@@ -113,10 +136,7 @@ const About = () => {
       <div className='about-section'>
         <section className='heading'>
           <h1>About AI Application Assistant</h1>
-          <p>
-            Keep reading to learn more about what AI Application Assistant can
-            do for you and your business.
-          </p>
+          <p>See how we can help your application stand out!</p>
         </section>
       </div>
 
@@ -202,6 +222,30 @@ const About = () => {
               letter in usually less than a minute.
             </h2>
           )}
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+      {/* Subscription Options Section */}
+      <div className='subscription-section'>
+        <h2>Explore Our Subscription Plans</h2>
+        <div className='subscription-cards'>
+          {subscriptionOptions.map((option, index) => (
+            <div key={index} className='subscription-card'>
+              <h3>{option.type}</h3>
+              <span className='price'>{option.price}</span>
+              <p>{option.description}</p>
+              <ul className='features-list'>
+                {option.features.map((feature, i) => (
+                  <li key={i}>{feature}</li>
+                ))}
+              </ul>
+              <button className='learn-more-btn'>Learn More</button>
+            </div>
+          ))}
         </div>
       </div>
 
