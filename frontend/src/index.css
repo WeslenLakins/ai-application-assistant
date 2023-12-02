@@ -1004,33 +1004,6 @@ section {
   border-radius: 5px;
 }
 
-/* Hero Section */
-.hero-section {
-  background: url('/hero-section-image.png') no-repeat center center/cover;
-  background-size: cover;
-  background-position: center;
-  color: white;
-  text-align: center;
-  padding: 100px 0;
-}
-
-.hero-overlay {
-  background: rgba(0, 0, 0, 0.5); /* Adjust the alpha for transparency */
-  padding: 20px;
-  display: inline-block;
-}
-
-.hero-headline {
-  font-size: 40px; /* or larger, depending on your design */
-  font-weight: 700;
-  margin-bottom: 20px;
-}
-
-.hero-description {
-  font-size: 20px;
-  font-weight: 400;
-}
-
 /* Special Offer Section */
 .special-offer {
   background-color: #007bff;

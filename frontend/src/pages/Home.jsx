@@ -25,14 +25,15 @@ import {
 function Home() {
   return (
     <>
-      <div className='hero-section'>
-        <div className='hero-overlay'>
-          <h1 className='hero-headline'>AI Application Assistant</h1>
-          <p className='hero-description'>
-            A brief and engaging description that complements your headline.
-          </p>
-        </div>
-      </div>
+      <section className='heading'>
+        <h1>
+          <FaLaptop /> AI Application Assistant
+        </h1>
+        <p>How can we help streamline your application process?</p>
+      </section>
+
+      <br />
+
       <div className='special-offer'>
         <h2>Special Launch Offer</h2>
         <p>Create Two Cover Letters for Free by Creating an Account!</p>
@@ -41,12 +42,7 @@ function Home() {
         </Link>
       </div>
 
-      <section className='heading'>
-        <h1>
-          <FaLaptop /> AI Application Assistant
-        </h1>
-        <p>How can we help streamline your application process?</p>
-      </section>
+      <br />
 
       <Link to='/new-job' className='btn btn-reverse btn-block'>
         <FaSyncAlt /> Generate Cover Letter
@@ -57,7 +53,11 @@ function Home() {
       </Link>
 
       <br />
+      <br />
+      <br />
       <hr />
+      <br />
+      <br />
       <br />
 
       <h1>What is AI Application Assistant?</h1>
