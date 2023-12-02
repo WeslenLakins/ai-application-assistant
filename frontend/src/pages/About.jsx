@@ -111,10 +111,12 @@ const About = () => {
   return (
     <div className='about-container'>
       <div className='about-section'>
-        <h1>About AI Application Assistant</h1>
-        <p>
-          Keep reading to learn more about what our platform is capeable of.
-        </p>
+        <section className='heading'>
+          <h1>
+            <FaLaptop /> AI Application Assistant
+          </h1>
+          <p>How can we help streamline your application process?</p>
+        </section>
       </div>
 
       <br />
@@ -123,7 +125,10 @@ const About = () => {
       {/* Embedded Video or Demo Section */}
       <section className='video-demo-section'>
         <h1>See It In Action</h1>
-        <br />
+        <p>
+          Watch this short video to see how AI Application Assistant can help
+          you land your dream job.
+        </p>
         <br />
         <iframe
           width='560'
@@ -142,6 +147,13 @@ const About = () => {
       {/* Interactive How It Works Section */}
       <div className='how-it-works'>
         <h1>How It Works</h1>
+        <p>
+          Our AI-powered application is designed to be intuitive and easy to use
+          for all users. Simply follow the steps below to generate a
+          personalized cover letter in less than a minute.
+        </p>
+        <br />
+
         <div className='tabs'>
           <button
             onClick={() => setActiveTab(1)}
@@ -236,13 +248,11 @@ const About = () => {
       <br />
       <br />
 
-      <div className='special-offer'>
-        <h1>Ready to give it a try?</h1>
-        <p>Create Two Cover Letters for Free by Creating an Account!</p>
-        <Link to='/register' className='btn special-offer-btn'>
-          Sign Up Now
-        </Link>
-      </div>
+      <h1>Ready to give it a try?</h1>
+      <p>Create Two Cover Letters for Free by Creating an Account!</p>
+      <Link to='/register' className='btn special-offer-btn'>
+        Sign Up Now
+      </Link>
 
       <br />
       <br />

@@ -33,6 +33,16 @@ function Home() {
       </section>
 
       <br />
+      <Link to='/new-job' className='btn btn-reverse btn-block'>
+        <FaSyncAlt /> Generate Cover Letter
+      </Link>
+
+      <Link to='/jobs' className='btn btn-block'>
+        <FaListAlt /> Review Cover Letters
+      </Link>
+      <br />
+      <br />
+      <br />
 
       <div className='special-offer'>
         <h2>Special Launch Offer</h2>
@@ -43,14 +53,8 @@ function Home() {
       </div>
 
       <br />
-
-      <Link to='/new-job' className='btn btn-reverse btn-block'>
-        <FaSyncAlt /> Generate Cover Letter
-      </Link>
-
-      <Link to='/jobs' className='btn btn-block'>
-        <FaListAlt /> Review Cover Letters
-      </Link>
+      <br />
+      <br />
 
       <br />
       <br />
@@ -85,6 +89,10 @@ function Home() {
       <Link to='/about' className='btn btn-reverse btn-block'>
         <FaQuestionCircle /> Learn More
       </Link>
+
+      <br />
+      <br />
+      <br />
     </>
   )
 }
