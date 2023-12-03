@@ -1004,6 +1004,20 @@ section {
   border-radius: 5px;
 }
 
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* Special Offer Section */
 .special-offer h2 {
   font-size: 24px;
@@ -1033,6 +1047,17 @@ section {
 .special-offer button {
   background-color: #643b9f; /* Set button background color to purple */
   color: white; /* Set button text color to white */
+}
+
+/* Image Section */
+.responsive-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  border: 2px solid black;
 }
 
 /* Subscription Section Styles */

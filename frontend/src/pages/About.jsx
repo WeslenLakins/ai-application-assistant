@@ -154,14 +154,16 @@ const About = () => {
           you land your dream job.
         </p>
         <br />
-        <iframe
-          width='560'
-          height='315'
-          src='https://www.youtube.com/embed/1bJABKCcagg?si=tkbbXsP8IcaBz5bo'
-          title='YouTube video player'
-          frameborder='0'
-          allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-          allowfullscreen></iframe>
+        <div className='video-wrapper'>
+          <iframe
+            width='560'
+            height='315'
+            src='https://www.youtube.com/embed/1bJABKCcagg?si=tkbbXsP8IcaBz5bo'
+            title='YouTube video player'
+            frameborder='0'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+            allowfullscreen></iframe>
+        </div>
       </section>
 
       <br />
@@ -244,15 +246,7 @@ const About = () => {
       {/* Embedded Image of UI */}
       <img
         src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%217980&authkey=%21ANULjNV8NIkMzZc&width=701&height=792'
-        width='701'
-        height='792'
-        style={{
-          display: 'block', // Ensures the image is block-level for centering
-          marginLeft: 'auto', // Auto margin for center alignment
-          marginRight: 'auto', // Auto margin for center alignment
-          boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.2)', // Adds shadow to the image
-          border: '2px solid black', // Adds border to the image
-        }}
+        className='responsive-image'
       />
 
       <br />
@@ -273,7 +267,9 @@ const About = () => {
                   <li key={i}>{feature}</li>
                 ))}
               </ul>
-              <button className='learn-more-btn'>Learn More</button>
+              <Link to='/register' className='learn-more-btn'>
+                Learn More
+              </Link>
             </div>
           ))}
         </div>
