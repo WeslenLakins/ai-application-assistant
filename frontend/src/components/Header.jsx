@@ -43,46 +43,50 @@ function Header() {
 
   return (
     <header className='header'>
-      <div className='logo'>
-        <Link to='/'>
-          <FaHome /> Home
-        </Link>
+      <div className='header-left'>
+        <div className='logo'>
+          <Link to='/'>
+            <FaHome /> Home
+          </Link>
+        </div>
+        <div className='logo'>
+          <Link to='/about'>
+            <FaQuestionCircle /> About
+          </Link>
+        </div>
       </div>
-      <div className='logo'>
-        <Link to='/about'>
-          <FaQuestionCircle /> About
-        </Link>
+      <div className='header-right'>
+        <ul>
+          {user ? (
+            <>
+              <li>
+                <Link to={`/profile`}>
+                  <FaUserCircle /> Profile
+                </Link>
+              </li>
+              <li>
+                <button className='btn' onClick={onLogout}>
+                  <FaSignOutAlt />
+                  Sign Out
+                </button>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to='/login'>
+                  <FaSignInAlt /> Sign In
+                </Link>
+              </li>
+              <li>
+                <Link to='/register'>
+                  <FaUser /> Sign Up
+                </Link>
+              </li>
+            </>
+          )}
+        </ul>
       </div>
-      <ul>
-        {user ? (
-          <>
-            <li>
-              <Link to={`/profile`}>
-                <FaUserCircle /> Profile
-              </Link>
-            </li>
-            <li>
-              <button className='btn' onClick={onLogout}>
-                <FaSignOutAlt />
-                Sign Out
-              </button>
-            </li>
-          </>
-        ) : (
-          <>
-            <li>
-              <Link to='/login'>
-                <FaSignInAlt /> Sign In
-              </Link>
-            </li>
-            <li>
-              <Link to='/register'>
-                <FaUser /> Sign Up
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
     </header>
   )
 }
