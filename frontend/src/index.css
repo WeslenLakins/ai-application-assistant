@@ -73,7 +73,6 @@ h3 {
 
 .header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 20px 0;
   border-bottom: 1px solid #e6e6e6;
@@ -81,7 +80,7 @@ h3 {
 }
 
 .logo {
-  margin-right: 5px; /* Adjust this value as needed */
+  margin-right: 20px; /* Adjust this value as needed */
 }
 
 .header ul {
