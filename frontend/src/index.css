@@ -85,6 +85,12 @@ h3 {
   display: flex;
 }
 
+@media (max-width: 600px) {
+  .header-right li {
+    font-size: 12px; /* Adjust this value as needed */
+  }
+}
+
 .logo {
   margin-right: 20px; /* Adjust this value as needed */
 }
@@ -121,6 +127,13 @@ h3 {
 
 .heading p {
   color: #828282;
+}
+
+@media (max-width: 600px) {
+  .heading h1 {
+    font-size: 20px; /* Adjust this value as needed */
+    word-break: break-word;
+  }
 }
 
 .boxes {
