@@ -80,6 +80,10 @@ h3 {
   margin-bottom: 60px;
 }
 
+.logo {
+  margin-right: 20px; /* Adjust this value as needed */
+}
+
 .header ul {
   display: flex;
   align-items: center;

@@ -47,8 +47,8 @@ function Header() {
         <Link to='/'>
           <FaHome /> Home
         </Link>
-        <br />
-        <br />
+      </div>
+      <div className='logo'>
         <Link to='/about'>
           <FaQuestionCircle /> About
         </Link>
