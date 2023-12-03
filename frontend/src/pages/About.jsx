@@ -267,6 +267,7 @@ const About = () => {
                   <li key={i}>{feature}</li>
                 ))}
               </ul>
+              <br />
               <Link to='/register' className='learn-more-btn'>
                 Learn More
               </Link>

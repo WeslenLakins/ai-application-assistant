@@ -64,11 +64,11 @@ function Home() {
       <br />
       <br />
       <p>
-        AI Application Assistant is a cutting-edge web application designed to
+        AI Application Assistant is a cutting-edge web app designed to
         streamline the job application process. By leveraging advanced AI
         algorithms, our platform crafts personalized cover letters that
         highlight your unique skills and experiences, aligning them perfectly
-        with the requirements and qualifications listed in job descriptions of
+        with the requirements and qualifications listed in job description of
         the position you are applying for.
       </p>
       <br />
