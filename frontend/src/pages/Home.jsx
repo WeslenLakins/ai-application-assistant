@@ -23,6 +23,38 @@ import {
 } from 'react-icons/fa'
 
 function Home() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
+  const images = [
+    <img
+      src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218041&authkey=%21AN41AK7mik5Br0k&width=1069&height=1765'
+      width='1069'
+      height='1765'
+    />,
+    <img
+      src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218042&authkey=%21AIOp_iBCEzwEoAw&width=1075&height=1764'
+      width='1075'
+      height='1764'
+    />,
+    <img
+      src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218043&authkey=%21ANel_kPKqFJaetw&width=1075&height=1758'
+      width='1075'
+      height='1758'
+    />,
+  ]
+
+  const goToPrev = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    )
+  }
+
+  const goToNext = () => {
+    setActiveIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    )
+  }
+
   return (
     <>
       <section className='heading'>
@@ -89,6 +121,20 @@ function Home() {
       <br />
       <br />
       <br />
+
+      <div className='carousel'>
+        <div className='carousel-inner'>
+          {images.map((src, index) => (
+            <div
+              key={index}
+              className={index === activeIndex ? 'active' : 'inactive'}>
+              <img src={src} alt={`Slide ${index}`} />
+            </div>
+          ))}
+        </div>
+        <button onClick={goToPrev}>Previous</button>
+        <button onClick={goToNext}>Next</button>
+      </div>
     </>
   )
 }
