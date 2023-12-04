@@ -31,16 +31,19 @@ function Home() {
       src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218041&authkey=%21AN41AK7mik5Br0k&width=1069&height=1765'
       width='1069'
       height='1765'
+      alt='Image 1'
     />,
     <img
       src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218042&authkey=%21AIOp_iBCEzwEoAw&width=1075&height=1764'
       width='1075'
       height='1764'
+      alt='Image 2'
     />,
     <img
       src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218043&authkey=%21ANel_kPKqFJaetw&width=1075&height=1758'
       width='1075'
       height='1758'
+      alt='Image 3'
     />,
   ]
 
@@ -125,11 +128,11 @@ function Home() {
 
       <div className='carousel'>
         <div className='carousel-inner'>
-          {images.map((src, index) => (
+          {images.map((imageElement, index) => (
             <div
               key={index}
               className={index === activeIndex ? 'active' : 'inactive'}>
-              <img src={src} alt={`Slide ${index}`} />
+              {imageElement}
             </div>
           ))}
         </div>
