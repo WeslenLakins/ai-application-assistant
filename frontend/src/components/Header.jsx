@@ -4,7 +4,7 @@ import {
   FaSignOutAlt,
   FaUser,
   FaUserCircle,
-  FaQuestionCircle,
+  FaLaptop,
 } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -32,8 +32,8 @@ function Header() {
           </Link>
         </div>
         <div className='logo'>
-          <Link to='/about'>
-            <FaQuestionCircle /> About
+          <Link to='/dashboard'>
+            <FaLaptop /> Dashboard
           </Link>
         </div>
       </div>
