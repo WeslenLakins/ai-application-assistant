@@ -35,37 +35,37 @@ Before you begin, ensure you have the following:
 
 ### 📂 Installation 📂
 
-1. Clone the repository to your local machine: [How to clone a GitHub Repository in Visual Studio Code](https://learn.microsoft.com/en-us/azure/developer/javascript/how-to/with-visual-studio-code/clone-github-repository#:~:text=Open%20the%20command%20palette%20with,from%20GitHub%2C%20then%20press%20Enter.)
+- Clone the repository to your local machine: [How to clone a GitHub Repository in Visual Studio Code](https://learn.microsoft.com/en-us/azure/developer/javascript/how-to/with-visual-studio-code/clone-github-repository#:~:text=Open%20the%20command%20palette%20with,from%20GitHub%2C%20then%20press%20Enter.)
 
-```
+```bash
 git clone https://github.com/WeslenLakins/ai-application-assistant.git
 cd ai-application-assistant
 ```
 
-2. Remove .example from the .env file and add values for the variables. Set the NODE_ENV to development, the PORT to 5000 or wherever your sever usually runs, and the JWT_SECRET can be set to any value you would like. Input the values you obtained earlier for the MONGO_URI & OPENAI_API_KEY values.
+- Remove .example from the .env file and add values for the variables. Set the NODE_ENV to development, the PORT to 5000 or wherever your sever usually runs, and the JWT_SECRET can be set to any value you would like. Input the values you obtained earlier for the MONGO_URI & OPENAI_API_KEY values.
 
-3. Install the necessary dependencies for the backend in the root directory of the project:
+- Install the necessary dependencies for the backend in the root directory of the project:
 
-```
+```bash
 npm install
 ```
 
-4. In a new terminal, navigate to the frontend directory and install the necessary dependencies for the frontend:
+- In a new terminal, navigate to the frontend directory and install the necessary dependencies for the frontend:
 
-```
+```bash
 cd frontend
 npm install
 ```
 
-5. Ensure all neccesary dependencies have been installed in the root directory and frontend folder, then proceed to start the application by opening a new command prompt and executing the following command in the root directory of the project:
+- Ensure all neccesary dependencies have been installed in the root directory and frontend folder, then proceed to start the application by opening a new command prompt and executing the following command in the root directory of the project:
 
-```
+```bash
 npm run dev
 ```
 
-6. Your application should now be running on http://localhost:3000 🏁
+- Your application should now be running on http://localhost:3000 🏁
 
-7. Drown in job/scholarship offers 🏊
+- Drown in job/scholarship offers 🏊
 
 ## ⛑️ Support ⛑️
 
