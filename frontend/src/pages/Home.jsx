@@ -27,6 +27,7 @@ function Home() {
           <Link to='/new-job' className='hero-button'>
             Try for Free
           </Link>
+          <br />
           <p>No credit card required</p>
         </div>
         <div className='hero-image-container'>

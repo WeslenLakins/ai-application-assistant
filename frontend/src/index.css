@@ -1272,14 +1272,16 @@ section {
 
 .services {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 20px;
+  justify-content: space-between; /* This will put space between your items but not space at the start or end */
+  flex-wrap: wrap; /* This allows items to wrap onto the next line if the screen is too narrow */
+  padding: 20px; /* Add padding around the entire services container */
 }
 
 .service {
-  max-width: 300px;
-  margin: 10px;
+  flex-basis: calc(
+    33.333% - 40px
+  ); /* Adjust the width of each service card, subtracting the total margin */
+  margin: 20px; /* This adds space around each card, it will be 20px on each side */
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -1333,6 +1335,12 @@ section {
 }
 
 /* Responsive styles */
+@media (max-width: 1024px) {
+  .service {
+    flex-basis: calc(50% - 40px); /* Show 2 cards per row on medium screens */
+  }
+}
+
 @media (max-width: 768px) {
   .services {
     flex-direction: column;
@@ -1342,6 +1350,8 @@ section {
   .service {
     width: 80%;
     margin-bottom: 20px;
+    flex-basis: 100%; /* Stack the cards on top of each other on small screens */
+    margin: 20px 0; /* Adjust margin to only top and bottom */
   }
 }
 
