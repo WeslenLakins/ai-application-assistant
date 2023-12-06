@@ -27,8 +27,6 @@ function Home() {
           <Link to='/new-job' className='hero-button'>
             Try for Free
           </Link>
-          <br />
-          <p>No credit card required</p>
         </div>
         <div className='hero-image-container'>
           <img
@@ -58,11 +56,11 @@ function Home() {
             alt='AI-powered Quality'
             className='service-image'
           />
-          <h2 className='service-title'>Advanced Keyword Optimization</h2>
+          <h2 className='service-title'>Keyword Optimization</h2>
           <p className='service-description'>
             Leverage the power of AI to to identify and integrate key terms and
             phrases from job listings to ensure your application is not
-            incorrectly filtered out by the automated hiring systems.
+            incorrectly filtered out by automated hiring systems.
           </p>
         </div>
         <div className='service'>
