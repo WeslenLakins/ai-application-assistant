@@ -1,23 +1,3 @@
-/*
-The following code is a React component named App. This component sets up the main structure of a web application, including routing and toast notifications. Here's a breakdown of what the code does:
-
-    Several modules are imported at the top of the file. These include react-router-dom for routing, react-toastify for toast notifications, and several custom components and pages.
-
-    The App function is a functional component that returns a JSX structure. This structure represents the main layout of the web application.
-
-    Inside the returned JSX, a Router component is used to set up routing for the application. This component is a wrapper for the rest of the application and provides routing context.
-
-    Inside the Router, a div with a class of 'container' is used to wrap the main content of the application.
-
-    The Header component is included, which likely contains the main navigation for the application.
-
-    The Routes component is used to define the application's routes. Each Route component inside Routes defines a single route. The path prop is used to specify the URL path for the route, and the element prop is used to specify the component that should be rendered when the route is matched. In this case, there are three routes: '/', '/login', and '/register', which render the Home, Login, and Register components respectively.
-
-    Outside the Router, but still within the returned JSX, the ToastContainer component is included. This component is part of react-toastify and is used to display toast notifications.
-
-    Finally, the App component is exported as the default export from this module, so it can be imported and used in other parts of the application.
-*/
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'

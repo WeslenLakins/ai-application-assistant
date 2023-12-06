@@ -1,27 +1,8 @@
-/*
-The code below is a Redux slice for authentication using Redux Toolkit. It manages the state related to user authentication, including registering, logging in, and logging out users. Here's a breakdown of what the code does:
-
-The createSlice and createAsyncThunk functions are imported from Redux Toolkit, and the authService module is imported.
-
-The user is retrieved from local storage and the initial state for the authentication slice is defined.
-
-The register, login, and logout async thunks are created. These thunks use the authService to make API requests. If an error occurs during the request, the error message is extracted and returned using thunkAPI.rejectWithValue.
-
-The authSlice is created using createSlice. The slice is named 'auth' and it includes the initial state, some reducers, and extra reducers for handling the pending, fulfilled, and rejected states of the async thunks.
-
-The reset reducer is used to reset the state.
-
-In the extraReducers, the state is updated based on the action types of the async thunks. For example, when the register thunk is pending, isLoading is set to true. When it's fulfilled, isLoading is set to false, isSuccess is set to true, and the user data is stored in the state. When it's rejected, isLoading is set to false, isError is set to true, the error message is stored in the state, and the user data is cleared.
-
-The reset action and the reducer function are exported from the module. The reducer function is the default export, so it can be added to the Redux store.
-*/
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import authService from './authService'
 
-
 const initialState = {
-  user :null,
+  user: null,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -92,10 +73,7 @@ export const updateUserProfile = createAsyncThunk(
   async ({ userData }, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token
-      const updatedUser = await authService.updateUserProfile(
-        userData,
-        token
-      )
+      const updatedUser = await authService.updateUserProfile(userData, token)
 
       return updatedUser
     } catch (error) {
@@ -109,7 +87,7 @@ export const updateUserProfile = createAsyncThunk(
       // But stays login if other API error
       return thunkAPI.rejectWithValue({
         message,
-        status: error.response.status
+        status: error.response.status,
       })
     }
   }
@@ -182,15 +160,15 @@ export const authSlice = createSlice({
         state.user = {
           ...action.payload,
           // Due to new changes, token is not returned anymore.
-          token: state.user.token
+          token: state.user.token,
         }
       })
       .addCase(updateUserProfile.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload.message
-      // User logs out if Unauthorized
-        if(action.payload.status === 401) {
+        // User logs out if Unauthorized
+        if (action.payload.status === 401) {
           state.user = null
         }
       })

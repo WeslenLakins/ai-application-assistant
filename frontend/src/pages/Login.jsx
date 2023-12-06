@@ -1,23 +1,3 @@
-/*
-The code below is a React component named Login. This component is used to handle user login. Here's a breakdown of what the code does:
-
-    Several modules are imported at the top of the file. These include hooks from react and react-redux, toast from react-toastify, useNavigate from react-router-dom, an icon from react-icons/fa, actions from authSlice, and a Spinner component.
-
-    The Login function is a functional component that uses the useState hook to manage form data, useDispatch to dispatch Redux actions, and useSelector to select data from the Redux store.
-
-    The useEffect hook is used to handle side effects. If there's an error, it displays a toast notification. If the user is successfully logged in, it redirects to the home page. It also resets the auth state when the component is unmounted.
-
-    The onChange function is used to handle changes to the form inputs. It updates the form data in the component's state.
-
-    The onSubmit function is used to handle form submission. It prevents the default form submission, creates a userData object from the form data, and dispatches the login action with userData.
-
-    If the auth state is loading, it returns a Spinner component.
-
-    In the returned JSX, it displays a heading and a form. The form includes fields for email and password, and a submit button. The onChange function is attached to the input fields to handle changes, and the onSubmit function is attached to the form to handle submission.
-
-    Finally, the Login component is exported as the default export from this module, so it can be imported and used in other parts of the application.
-*/
-
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'

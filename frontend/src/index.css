@@ -1,31 +1,3 @@
-/*
-The selected code is a CSS stylesheet that styles various elements of a web application. Here's a breakdown of what the code does:
-
-    The @import rule is used to import a Google Font named 'Poppins' with different font weights.
-
-    The * selector is used to select all elements. The margin and padding are set to 0, and box-sizing is set to border-box, which includes padding and border in the element's total width and height.
-
-    The body selector is used to style the body of the document. The font family is set to 'Poppins', and the height is set to 100vh, which means it will take up the full height of the viewport.
-
-    Various other selectors are used to style specific elements, such as a, p, ul, li, h1, h2, h3, etc.
-
-    The .container class is used to style a container element. It is given a maximum width of 960px, and its left and right margins are set to auto, which centers the container.
-
-    The .header class is used to style a header element. It is displayed as a flex container, with space between the items and aligned items in the center.
-
-    The .form-group class is used to style form groups. It gives a margin-bottom of 10px and styles the input, textarea, and select elements within it.
-
-    The .btn class is used to style button elements. It gives them a padding of 10px 20px, a border, a background color, a font size and weight, and other styles.
-
-    The .status class and its variants (status-new, status-open, status-closed) are used to style status labels with different colors.
-
-    The .loadingSpinner class is used to style a loading spinner. It uses a keyframes animation to rotate the spinner.
-
-    The @media rule is used to apply styles only when the viewport is 600px or less. It changes the grid template columns for the .boxes class and the width for the .form class.
-
-This CSS file is used to style a web application, and it includes styles for a variety of elements, including headers, links, paragraphs, lists, containers, forms, buttons, status labels, and a loading spinner.
-*/
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 * {
