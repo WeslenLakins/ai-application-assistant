@@ -102,7 +102,9 @@ function Home() {
           saves you time and helps you stand out, but also improves your odds of
           getting hired.
         </p>
-        <button className='cta-button'>Beat the Bots</button>
+        <Link to='/new-job' className='cta-button'>
+          Beat the Bots
+        </Link>
       </section>
     </div>
   )

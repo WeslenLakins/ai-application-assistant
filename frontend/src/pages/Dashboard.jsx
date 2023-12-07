@@ -20,13 +20,8 @@ function Home() {
         <FaListAlt /> Review Cover Letters
       </Link>
 
-      <div className='special-offer'>
-        <h2>SPECIAL LAUNCH OFFER</h2>
-        <p>Create an account and generate 2 cover letters for free!</p>
-        <Link to='/register' className='btn special-offer-btn'>
-          Try for Free
-        </Link>
-      </div>
+      <br />
+      <br />
     </>
   )
 }

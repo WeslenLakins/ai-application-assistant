@@ -114,14 +114,15 @@ function NewJob() {
           </div>
         </form>
       </section>
-      <section className='footer boxed-section'>
-        <h1>Important Note</h1>
-        <p>
-          It can take up to 2 minutes to generate a new cover letter. Please do
-          not exit or refresh the page until your new cover letter has been
-          created.
-        </p>
-      </section>
+      <br />
+      <br />
+      <br />
+      <h1>Important Note</h1>
+      <p>
+        It can take up to 2 minutes to generate a new cover letter. Please do
+        not exit or refresh the page until your new cover letter has been
+        created.
+      </p>
       <br />
       <br />
       <br />
