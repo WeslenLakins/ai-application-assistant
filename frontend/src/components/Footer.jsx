@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
 
 function Footer() {
   return (
@@ -12,20 +13,20 @@ function Footer() {
           <a
             href='https://www.facebook.com/profile.php?id=61554165300225'
             className='social-link'>
-            Facebook
+            <FaFacebook />
           </a>
           <a
             href='https://www.instagram.com/aiapplicationassistant/'
             className='social-link'>
-            Instagram
+            <FaInstagram />
           </a>
           <a href='https://twitter.com/AIAppAssistant' className='social-link'>
-            Twitter
+            <FaTwitter />
           </a>
           <a
             href='https://www.youtube.com/channel/UCoRBqqnjSJKohGIW3qNimaw'
             className='social-link'>
-            YouTube
+            <FaYoutube />
           </a>
         </div>
         <div className='footer-links'>
@@ -46,12 +47,12 @@ function Footer() {
             <h4>Legal</h4>
             <Link to='/privacy'>Privacy</Link>
             <Link to='/terms'>Terms</Link>
-            <Link to='/cookies'>Cookie</Link>
+            <Link to='/cookies'>Cookies</Link>
           </div>
           <div className='link-section'>
             <h4>Solutions</h4>
-            <Link to='/'>Cover Letters</Link>
-            <Link to='/'>Resumes</Link>
+            <Link to='/dashboard'>Cover Letters</Link>
+            <Link to='/dashboard'>Resumes</Link>
           </div>
         </div>
       </div>

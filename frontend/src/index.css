@@ -1138,6 +1138,9 @@ section {
   text-align: center;
   margin-bottom: 20px;
   margin-top: 20px;
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-weight: bold;
 }
 
 .footer-links {
@@ -1158,11 +1161,14 @@ section {
   color: #ffffff;
   text-decoration: none;
   display: block; /* Stack links vertically */
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .footer-socials {
   margin-bottom: 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .social-link {
@@ -1199,8 +1205,9 @@ section {
   }
 
   .footer-tagline {
-    font-size: 14px;
+    font-size: 18px;
     margin-bottom: 15px;
+    font-weight: bold;
   }
 
   .link-section h4 {
@@ -1375,7 +1382,7 @@ section {
 .contact-container {
   padding: 50px;
   background: #f8f8f8; /* Light grey background */
-  height: 100vh; /* Full viewport height */
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;

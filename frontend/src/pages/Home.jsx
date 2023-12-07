@@ -37,6 +37,19 @@ function Home() {
         </div>
       </section>
 
+      <section className='video-demo-section'>
+        <div className='video-wrapper'>
+          <iframe
+            width='560'
+            height='315'
+            src='https://www.youtube.com/embed/fUCFuLOxcAc?si=VgK2Cstj3OaihQrU'
+            title='YouTube video player'
+            frameborder='0'
+            allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+            allowfullscreen></iframe>
+        </div>
+      </section>
+
       <section className='services'>
         <div className='service'>
           <img
@@ -44,7 +57,7 @@ function Home() {
             alt='Tailored Cover Letters'
             className='service-image'
           />
-          <h2 className='service-title'>Tailored cover letters</h2>
+          <h2 className='service-title'>Tailored Cover Letters</h2>
           <p className='service-description'>
             Craft customized cover letters that perfectly align your skills and
             experiences with the job's specific requirements.
@@ -80,14 +93,16 @@ function Home() {
 
       <section className='cta'>
         <h1 className='cta-title'>
-          Boost Your Job Applications with Personalized Cover Letters
+          Don't Let Your Application Get Lost in the Shuffle
         </h1>
         <p className='cta-subtext'>
-          Write dozens of customized cover letters that make an impact in
-          minutes. Stand out from the competition and increase your chances of
-          landing your dream job.
+          In the modern job market, AI algorithms are the new gatekeepers. They
+          scan, filter, and rank your application before a human ever sees it.
+          AI Application Assistant is excited to offer a solution that not only
+          saves you time and helps you stand out, but also improves your odds of
+          getting hired.
         </p>
-        <button className='cta-button'>Try for free</button>
+        <button className='cta-button'>Beat the Bots</button>
       </section>
     </div>
   )

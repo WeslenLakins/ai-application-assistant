@@ -146,6 +146,28 @@ const About = () => {
       <br />
       <br />
 
+      {/* Summary of App */}
+      <h1>What is AI Application Assistant?</h1>
+      <br />
+      <br />
+      <p>
+        AI Application Assistant is a cutting-edge web app designed to
+        streamline the job application process. By leveraging advanced AI
+        algorithms, our platform crafts personalized cover letters that
+        highlight your unique skills and experiences, aligning them perfectly
+        with the requirements and qualifications listed in job description of
+        the position you are applying for.
+      </p>
+
+      <p>
+        Our application is designed to help you stand out from the crowd and
+        land your dream job. We are currently offering two free cover letters
+        for new users, so sign up today and see what we can do for you!
+      </p>
+      <br />
+      <br />
+      <br />
+
       {/* Embedded Video or Demo Section */}
       <section className='video-demo-section'>
         <h1>See It In Action</h1>
@@ -158,7 +180,7 @@ const About = () => {
           <iframe
             width='560'
             height='315'
-            src='https://www.youtube.com/embed/1bJABKCcagg?si=tkbbXsP8IcaBz5bo'
+            src='https://www.youtube.com/embed/fUCFuLOxcAc?si=VgK2Cstj3OaihQrU'
             title='YouTube video player'
             frameborder='0'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'

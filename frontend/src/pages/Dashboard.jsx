@@ -4,14 +4,6 @@ import { FaLaptop, FaListAlt, FaSyncAlt } from 'react-icons/fa'
 function Home() {
   return (
     <>
-      <div className='special-offer'>
-        <h2>SPECIAL LAUNCH OFFER</h2>
-        <p>Create an account and generate 2 cover letters for free!</p>
-        <Link to='/register' className='btn special-offer-btn'>
-          Sign Up Now
-        </Link>
-      </div>
-
       <section className='heading'>
         <h1>
           <FaLaptop /> AI Application Assistant
@@ -27,6 +19,14 @@ function Home() {
       <Link to='/jobs' className='btn btn-block'>
         <FaListAlt /> Review Cover Letters
       </Link>
+
+      <div className='special-offer'>
+        <h2>SPECIAL LAUNCH OFFER</h2>
+        <p>Create an account and generate 2 cover letters for free!</p>
+        <Link to='/register' className='btn special-offer-btn'>
+          Try for Free
+        </Link>
+      </div>
     </>
   )
 }
