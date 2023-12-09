@@ -12,6 +12,9 @@ function Home() {
       </section>
 
       <br />
+      <section className='sub-heading'>
+        <h2>Cover Letters</h2>
+      </section>
       <Link to='/new-job' className='btn btn-reverse btn-block'>
         <FaSyncAlt /> Generate Cover Letter
       </Link>
@@ -19,6 +22,27 @@ function Home() {
       <Link to='/jobs' className='btn btn-block'>
         <FaListAlt /> Review Cover Letters
       </Link>
+
+      <br />
+      <section className='sub-heading'>
+        <h2>Resumes</h2>
+
+        <p>Coming Soon...</p>
+      </section>
+
+      <br />
+      <section className='sub-heading'>
+        <h2>Interviews</h2>
+
+        <p>Coming Soon...</p>
+      </section>
+
+      <br />
+      <section className='sub-heading'>
+        <h2>Networking</h2>
+
+        <p>Coming Soon...</p>
+      </section>
 
       <br />
       <br />
