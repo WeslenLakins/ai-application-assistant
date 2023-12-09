@@ -17,7 +17,7 @@ function Home() {
       <section className='hero-section'>
         <div className='hero-content'>
           <h1 className='hero-title'>
-            Boost Your Job Applications with Personalized Cover Letters
+            Boost Your Job Applications with AI Application Assistant
           </h1>
           <p className='hero-subtitle'>
             Write dozens of customized, high-impact cover letters in minutes.
