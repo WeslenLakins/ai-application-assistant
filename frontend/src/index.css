@@ -1283,26 +1283,22 @@ section {
 }
 
 .hero-image-container {
-  width: 100%; /* This ensures the container takes the full width of its parent */
-  margin: 0 auto; /* This centers the container */
-  display: flex; /* Flex display to align child elements */
-  justify-content: center; /* Center the image within the container */
-  padding: 20px; /* Add some padding */
+  width: 100%; /* Ensures the container is full width */
+  display: flex; /* Using flex to center the image in the container */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  overflow: hidden; /* Prevents the image from overflowing the container */
 }
 
 .hero-image {
-  width: 100%;
-  max-width: 100%; /* Adjust as needed */
-  height: auto;
+  width: auto; /* Allows the image to scale based on its height */
+  height: 50vh; /* Sets the height of the image to 50% of the viewport height */
+  max-width: none; /* Removes any max-width constraints */
 }
 
 @media (max-width: 768px) {
-  .hero-image-container {
-    padding: 10px;
-  }
-
   .hero-image {
-    max-width: 100%;
+    height: 75vh; /* Increases the height for mobile devices */
   }
 }
 
@@ -1493,7 +1489,7 @@ section {
 }
 
 .press-mentions h2 {
-  font-size: 1.5em; /* Larger size for desktop */
+  font-size: 2em; /* Larger size for desktop */
   margin-bottom: 20px;
 }
 
