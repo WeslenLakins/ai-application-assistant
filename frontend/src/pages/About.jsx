@@ -136,12 +136,15 @@ const About = () => {
   }
   return (
     <div className='about-container'>
-      <div className='about-section'>
-        <section className='heading'>
-          <h1>About AI Application Assistant</h1>
-          <p>See how we can help your application stand out!</p>
-        </section>
-      </div>
+      <section className='hero-section'>
+        <div className='hero-content'>
+          <h1 className='hero-title'>About AI Application Assistant</h1>
+          <p className='hero-subtitle'>
+            Keep reading to see how AI Application Assistant can help you land
+            your dream job!
+          </p>
+        </div>
+      </section>
 
       <br />
       <br />
@@ -317,6 +320,35 @@ const About = () => {
           </div>
         </div>
       </div>
+
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <section className='press-mentions'>
+        <h2>As Featured In</h2>
+        <div className='press-logos'>
+          <a
+            href='https://finance.yahoo.com/news/ai-application-assistant-launches-innovative-133200039.html'
+            target='_blank'
+            rel='noopener noreferrer'>
+            <img
+              src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218195&authkey=%21ANCR0O1xkw2RoqI&width=1600&height=586'
+              alt='Yahoo Finance Logo'
+            />
+          </a>
+          <a
+            href='https://www.marketwatch.com/press-release/ai-application-assistant-launches-innovative-tool-to-empower-job-seekers-and-recruiters-b4ac16a2?mod=search_headline'
+            target='_blank'
+            rel='noopener noreferrer'>
+            <img
+              src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218197&authkey=%21AD67u8PPQB_cU1U&width=900&height=500'
+              alt='MarketWatch Logo'
+            />
+          </a>
+        </div>
+      </section>
 
       <br />
       <br />

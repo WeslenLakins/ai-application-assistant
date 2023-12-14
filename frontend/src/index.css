@@ -1293,6 +1293,12 @@ section {
   height: auto;
 }
 
+@media (max-width: 768px) {
+  .hero-image {
+    max-width: 100%;
+  }
+}
+
 .services {
   display: flex;
   justify-content: space-between; /* This will put space between your items but not space at the start or end */
@@ -1471,4 +1477,43 @@ section {
 .cookies-container p {
   margin-bottom: 15px;
   color: #666;
+}
+
+/* Base styles for the press mentions */
+.press-mentions {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.press-mentions h2 {
+  font-size: 1.5em; /* Larger size for desktop */
+  margin-bottom: 20px;
+}
+
+/* Flex container for logos */
+.press-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap; /* Allows logos to wrap on smaller screens */
+}
+
+/* Styles for the logos */
+.press-logos img {
+  max-width: 150px; /* Large enough for desktop */
+  height: auto;
+  margin: 0 10px; /* Add some horizontal space between logos */
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .press-mentions h2 {
+    font-size: 1.2em; /* Smaller size for mobile */
+  }
+
+  .press-logos img {
+    max-width: 100px; /* Smaller logos for mobile */
+    margin: 0 5px; /* Less space between logos */
+  }
 }
