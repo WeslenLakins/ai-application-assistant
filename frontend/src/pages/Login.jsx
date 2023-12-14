@@ -5,6 +5,7 @@ import { FaSignInAlt } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
 import { login, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
+import { track } from '@vercel/analytics'
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -49,6 +50,8 @@ function Login() {
       password,
     }
 
+    // Track the 'Login' event without custom data
+    track('Signin')
     dispatch(login(userData))
   }
 

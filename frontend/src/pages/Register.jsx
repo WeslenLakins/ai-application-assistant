@@ -5,6 +5,7 @@ import { FaUser } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux'
 import { register, reset } from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
+import { track } from '@vercel/analytics'
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -54,6 +55,9 @@ function Register() {
         email,
         password,
       }
+
+      // Track the 'Signup' event without custom data
+      track('Signup')
 
       dispatch(register(userData))
     }

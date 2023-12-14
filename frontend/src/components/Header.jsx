@@ -10,6 +10,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { logout, reset } from '../features/auth/authSlice'
 import { reset as subscriptionReset } from '../features/subscription/subscriptionSlice'
+import { track } from '@vercel/analytics'
 
 function Header() {
   const navigate = useNavigate()
@@ -23,16 +24,20 @@ function Header() {
     navigate('/')
   }
 
+  const trackLinkClick = (linkName) => {
+    track('Link Clicked', { name: linkName })
+  }
+
   return (
     <header className='header'>
       <div className='header-left'>
         <div className='logo'>
-          <Link to='/'>
+          <Link to='/' onClick={() => trackLinkClick('Home')}>
             <FaHome /> Home
           </Link>
         </div>
         <div className='logo'>
-          <Link to='/dashboard'>
+          <Link to='/dashboard' onClick={() => trackLinkClick('Dashboard')}>
             <FaLaptop /> Dashboard
           </Link>
         </div>
@@ -42,7 +47,7 @@ function Header() {
           {user ? (
             <>
               <li>
-                <Link to={`/profile`}>
+                <Link to={`/profile`} onClick={() => trackLinkClick('Profile')}>
                   <FaUserCircle /> Profile
                 </Link>
               </li>
@@ -56,12 +61,12 @@ function Header() {
           ) : (
             <>
               <li>
-                <Link to='/login'>
+                <Link to='/login' onClick={() => trackLinkClick('Sign In')}>
                   <FaSignInAlt /> Sign In
                 </Link>
               </li>
               <li>
-                <Link to='/register'>
+                <Link to='/register' onClick={() => trackLinkClick('Sign Up')}>
                   <FaUser /> Sign Up
                 </Link>
               </li>
