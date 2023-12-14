@@ -1283,22 +1283,27 @@ section {
 }
 
 .hero-image-container {
-  width: 100%; /* Ensures the container is full width */
-  display: flex; /* Using flex to center the image in the container */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  overflow: hidden; /* Prevents the image from overflowing the container */
+  width: 100%; /* This ensures the container takes the full width of its parent */
+  margin: 0 auto; /* This centers the container */
+  display: flex; /* Flex display to align child elements */
+  justify-content: center; /* Center the image within the container */
+  padding: 20px; /* Add some padding */
 }
 
+/* Style for the hero image itself */
 .hero-image {
-  width: auto; /* Allows the image to scale based on its height */
-  height: 50vh; /* Sets the height of the image to 50% of the viewport height */
-  max-width: none; /* Removes any max-width constraints */
+  width: 100%; /* Make the image responsive */
+  max-width: 100%; /* Remove the max-width or set it to 100% */
+  height: auto; /* Maintain aspect ratio */
 }
 
 @media (max-width: 768px) {
+  .hero-image-container {
+    padding: 10px; /* Less padding on smaller screens */
+  }
+
   .hero-image {
-    height: 75vh; /* Increases the height for mobile devices */
+    max-width: 100%; /* Ensure the image can grow up to the full width of its container */
   }
 }
 
