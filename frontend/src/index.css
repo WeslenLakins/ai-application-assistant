@@ -1283,17 +1283,24 @@ section {
 }
 
 .hero-image-container {
-  max-width: 600px; /* Adjust as needed */
-  margin-bottom: 30px;
+  width: 100%; /* This ensures the container takes the full width of its parent */
+  margin: 0 auto; /* This centers the container */
+  display: flex; /* Flex display to align child elements */
+  justify-content: center; /* Center the image within the container */
+  padding: 20px; /* Add some padding */
 }
 
 .hero-image {
   width: 100%;
-  max-width: 400px; /* Adjust as needed */
+  max-width: 100%; /* Adjust as needed */
   height: auto;
 }
 
 @media (max-width: 768px) {
+  .hero-image-container {
+    padding: 10px;
+  }
+
   .hero-image {
     max-width: 100%;
   }
@@ -1499,21 +1506,27 @@ section {
   flex-wrap: wrap; /* Allows logos to wrap on smaller screens */
 }
 
-/* Styles for the logos */
+/* Styles for the logos themselves */
+.press-logos a {
+  flex: 1; /* Each link takes up equal space in the container */
+  display: block; /* Make the link block to allow width and height */
+  max-width: 200px; /* Maximum width for desktop */
+  margin: 0 10px; /* Space between logos */
+}
+
 .press-logos img {
-  max-width: 150px; /* Large enough for desktop */
-  height: auto;
-  margin: 0 10px; /* Add some horizontal space between logos */
+  width: 100%; /* The image will take up 100% of the link container */
+  height: auto; /* Maintain aspect ratio */
 }
 
 /* Mobile styles */
 @media (max-width: 768px) {
   .press-mentions h2 {
-    font-size: 1.2em; /* Smaller size for mobile */
+    font-size: 1.5em; /* Smaller size for mobile */
   }
 
   .press-logos img {
-    max-width: 100px; /* Smaller logos for mobile */
+    max-width: 120px; /* Smaller logos for mobile */
     margin: 0 5px; /* Less space between logos */
   }
 }
