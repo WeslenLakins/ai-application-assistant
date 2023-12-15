@@ -25,7 +25,7 @@ function Header() {
   }
 
   const trackLinkClick = (linkName) => {
-    track('Link Clicked', { name: linkName })
+    track('Header Link Clicked', { name: linkName })
   }
 
   return (
