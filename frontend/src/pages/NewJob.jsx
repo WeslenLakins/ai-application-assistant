@@ -74,7 +74,7 @@ function NewJob() {
               name='company'
               id='company'
               className='form-control'
-              placeholder='Company name'
+              placeholder='Company name or client name'
               value={company}
               onChange={(e) => setCompany(e.target.value)}></input>
           </div>
@@ -95,7 +95,7 @@ function NewJob() {
               name='jobDescription'
               id='jobDescription'
               className='form-control'
-              placeholder='Copy & paste the job description here'
+              placeholder='Copy & paste the job description or project requirements here'
               value={jobDescription}
               onChange={(e) => setJobDescription(e.target.value)}></textarea>
           </div>
@@ -105,7 +105,7 @@ function NewJob() {
               name='resume'
               id='resume'
               className='form-control'
-              placeholder='Copy & paste your resume here'
+              placeholder='Copy & paste your resume or add your skills & experience here'
               value={resume}
               onChange={(e) => setResume(e.target.value)}></textarea>
           </div>

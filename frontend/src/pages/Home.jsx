@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { track } from '@vercel/analytics'
 
@@ -37,25 +37,6 @@ function Home() {
   const trackVideoDemoClick = () => {
     track('Video Demo Clicked')
   }
-
-  // Function to track the time spent on the page
-  useEffect(() => {
-    const startTime = Date.now() // Record the start time when the component mounts
-
-    // Function to track time spent on page
-    const trackTimeOnPage = () => {
-      const endTime = Date.now() // Get the end time
-      const timeSpent = endTime - startTime // Calculate the duration
-
-      // Send the time spent on the page to Vercel Analytics
-      track('Time Spent on Home Page', { duration: timeSpent })
-    }
-
-    // When the component unmounts, track the time spent on the page
-    return () => {
-      trackTimeOnPage()
-    }
-  }, [])
 
   return (
     <div className='home-container'>
