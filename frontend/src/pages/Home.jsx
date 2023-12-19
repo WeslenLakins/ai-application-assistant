@@ -5,7 +5,7 @@ import { track } from '@vercel/analytics'
 function Home() {
   // URLs for hosted images
   const heroImageURL =
-    'https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218079&authkey=%21AFGzAbrOIssUjq8&width=512&height=512'
+    'https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218220&authkey=%21AIm9UaIBUns9Uh0&width=512&height=512'
   const tailoredCoverLetterImageURL =
     'https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218080&authkey=%21AKmqOfKoD9fwt5I&width=384&height=384'
   const dataSecurityImageURL =
