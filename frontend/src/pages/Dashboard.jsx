@@ -13,9 +13,6 @@ function Dashboard() {
     track('Review Cover Letters Clicked') // Tracking event
   }
 
-  const heroImageURL =
-    'https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218220&authkey=%21AIm9UaIBUns9Uh0&width=512&height=512'
-
   return (
     <>
       <section className='heading'>
@@ -45,14 +42,6 @@ function Dashboard() {
 
       <br />
 
-      <div className='hero-image-container'>
-        <img
-          src={heroImageURL}
-          alt='Job seeker with cover letters'
-          className='hero-image'
-        />
-      </div>
-      <br />
       <section className='sub-heading'>
         <h2>Resumes</h2>
 
