@@ -43,13 +43,12 @@ function Home() {
       <section className='hero-section'>
         <div className='hero-content'>
           <h1 className='hero-title'>
-            Boost Your Job Applications, Freelancer.com Bids, and UpWork
-            Proposals with AI Application Assistant
+            Boost Your Applications, Bids, and Proposals with AI
           </h1>
           <p className='hero-subtitle'>
-            Write dozens of customized, high-impact cover letters or freelancer
-            bids and propsals in minutes. Stand out from the competition and
-            increase the chances of landing your dream job.
+            Create customized, high-impact application materials in minutes.
+            Stand out from the competition and increase the chances of getting
+            an interview.
           </p>
           <Link
             to='/new-job'
