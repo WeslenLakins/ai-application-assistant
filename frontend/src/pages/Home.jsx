@@ -43,12 +43,13 @@ function Home() {
       <section className='hero-section'>
         <div className='hero-content'>
           <h1 className='hero-title'>
-            Boost Your Job Applications with AI Application Assistant
+            Boost Your Job Applications, Freelancer.com Bids, and UpWork
+            Proposals with AI Application Assistant
           </h1>
           <p className='hero-subtitle'>
-            Write dozens of customized, high-impact cover letters in minutes.
-            Stand out from the competition and increase the chances of landing
-            your dream job.
+            Write dozens of customized, high-impact cover letters or freelancer
+            bids and propsals in minutes. Stand out from the competition and
+            increase the chances of landing your dream job.
           </p>
           <Link
             to='/new-job'
@@ -151,11 +152,11 @@ function Home() {
           Don't Let Your Application Get Lost in the Shuffle
         </h1>
         <p className='cta-subtext'>
-          In the modern job market, AI algorithms are the new gatekeepers. They
-          scan, filter, and rank your application before a human ever sees it.
-          AI Application Assistant is excited to offer a solution that not only
-          saves you time and helps you stand out, but also improves your odds of
-          getting hired.
+          In the modern job market, AI Applicant Tracking Systems are the new
+          gatekeepers. They scan, filter, and rank your application before a
+          human ever sees it. AI Application Assistant is excited to offer a
+          solution that not only saves you time and helps you stand out, but
+          also improves your odds of getting hired.
         </p>
         <Link
           to='/new-job'

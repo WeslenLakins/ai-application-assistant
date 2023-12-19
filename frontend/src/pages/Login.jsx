@@ -65,7 +65,10 @@ function Login() {
         <h1>
           <FaSignInAlt /> Sign In
         </h1>
-        <p>Welcome back, wise one. Please login to access your account.</p>
+        <p>
+          Welcome back, wise one. Please sign in to access the job materials you
+          have created.
+        </p>
       </section>
 
       <section className='form'>

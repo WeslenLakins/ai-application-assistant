@@ -73,7 +73,10 @@ function Register() {
         <h1>
           <FaUser /> Sign Up
         </h1>
-        <p>Create an account. Get hired.</p>
+        <p>
+          Create an account for free. Get hired. No credit card information
+          required.
+        </p>
       </section>
 
       <section className='form'>
