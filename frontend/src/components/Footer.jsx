@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebook, FaInstagram, FaLinkedIn, FaYoutube } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from 'react-icons/fa';
 
 function Footer() {
   return (
@@ -23,7 +23,7 @@ function Footer() {
           <a
             href='https://www.linkedin.com/company/ai-application-assistant/'
             className='social-link'>
-            <FaLinkedIn />
+            <FaLinkedin />
           </a>
           <a
             href='https://www.youtube.com/channel/UCoRBqqnjSJKohGIW3qNimaw'
