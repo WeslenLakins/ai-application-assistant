@@ -1287,7 +1287,7 @@ section {
   margin: 0 auto; /* This centers the container */
   display: flex; /* Flex display to align child elements */
   justify-content: center; /* Center the image within the container */
-  padding: 10px; /* Add some padding */
+  padding: 20px; /* Add some padding */
   border: #000;
   border-radius: 5px; /* Add a border radius */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a box shadow */
@@ -1302,7 +1302,7 @@ section {
 
 @media (max-width: 768px) {
   .hero-image-container {
-    padding: 10px; /* Less padding on smaller screens */
+    padding: 15px; /* Less padding on smaller screens */
   }
 
   .hero-image {
