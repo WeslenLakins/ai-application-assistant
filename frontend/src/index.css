@@ -1396,7 +1396,7 @@ section {
   }
 
   .hero-image-container {
-    padding: 5px; /* Less padding on smaller screens */
+    padding: 10px; /* Less padding on smaller screens */
   }
 }
 
