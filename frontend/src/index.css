@@ -1287,7 +1287,7 @@ section {
   margin: 0 auto; /* This centers the container */
   display: flex; /* Flex display to align child elements */
   justify-content: center; /* Center the image within the container */
-  padding: 20px; /* Add some padding */
+  padding: 10px; /* Add some padding */
   border: #000;
   border-radius: 5px; /* Add a border radius */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a box shadow */
@@ -1295,9 +1295,9 @@ section {
 
 /* Style for the hero image itself */
 .hero-image {
-  width: 100%; /* Make the image responsive */
   max-width: 100%; /* Remove the max-width or set it to 100% */
   height: auto; /* Maintain aspect ratio */
+  display: block; /* This ensures the image is centered */
 }
 
 @media (max-width: 768px) {
@@ -1393,6 +1393,10 @@ section {
     margin-bottom: 20px;
     flex-basis: 100%; /* Stack the cards on top of each other on small screens */
     margin: 20px 0; /* Adjust margin to only top and bottom */
+  }
+
+  .hero-image-container {
+    padding: 5px; /* Less padding on smaller screens */
   }
 }
 

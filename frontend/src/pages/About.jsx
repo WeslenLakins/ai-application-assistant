@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const About = () => {
-  const [activeTab, setActiveTab] = useState(1)
-  const [activeFAQs, setActiveFAQs] = useState({ 0: true, 1: true, 2: true })
-  const [testimonialIndex, setTestimonialIndex] = useState(0)
+  const [activeTab, setActiveTab] = useState(1);
+  const [activeFAQs, setActiveFAQs] = useState({ 0: true, 1: true, 2: true });
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
 
   // Subscriptions Data
   const subscriptionOptions = [
@@ -28,7 +28,7 @@ const About = () => {
         'Priority Support',
       ],
     },
-  ]
+  ];
 
   // Testimonials Data
   const testimonials = [
@@ -60,7 +60,7 @@ const About = () => {
       author: 'Morgan',
     },
     // Add more testimonials here
-  ]
+  ];
 
   // FAQ Data
   const faqData = [
@@ -117,23 +117,23 @@ const About = () => {
       answer:
         'With a subscription, you can generate an unlimited number of cover letters during the subscription period.',
     },
-  ]
+  ];
 
   const nextTestimonial = () => {
-    setTestimonialIndex((testimonialIndex + 1) % testimonials.length)
-  }
+    setTestimonialIndex((testimonialIndex + 1) % testimonials.length);
+  };
 
   const previousTestimonial = () => {
     setTestimonialIndex(
       (testimonialIndex - 1 + testimonials.length) % testimonials.length
-    )
-  }
+    );
+  };
 
   const toggleFAQ = (index) => {
     setActiveFAQs((prevActiveFAQs) => {
-      return { ...prevActiveFAQs, [index]: !prevActiveFAQs[index] }
-    })
-  }
+      return { ...prevActiveFAQs, [index]: !prevActiveFAQs[index] };
+    });
+  };
   return (
     <div className='about-container'>
       <section className='hero-section'>
@@ -156,10 +156,11 @@ const About = () => {
       <p>
         AI Application Assistant is a cutting-edge web app designed to
         streamline the job application process. By leveraging advanced AI
-        algorithms, our platform crafts personalized cover letters that
-        highlight your unique skills and experiences, aligning them perfectly
-        with the requirements and qualifications listed in job description of
-        the position you are applying for.
+        algorithms, our platform crafts personalized cover letters,
+        freelancer.com proposals, and upwork.com bids that highlight your unique
+        skills and experiences, aligning them perfectly with the requirements
+        and qualifications listed in job description of the position you are
+        applying for.
       </p>
 
       <p>
@@ -270,7 +271,7 @@ const About = () => {
 
       {/* Embedded Image of UI */}
       <img
-        src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%217980&authkey=%21ANULjNV8NIkMzZc&width=701&height=792'
+        src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218219&authkey=%21AOFjX5GwubkAthQ&height=849&width=776'
         className='responsive-image'
       />
 
@@ -388,7 +389,7 @@ const About = () => {
       <br />
       <br />
     </div>
-  )
-}
+  );
+};
 
-export default About
+export default About;

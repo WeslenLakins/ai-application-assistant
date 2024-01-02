@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import { FaUser } from 'react-icons/fa'
-import { useSelector, useDispatch } from 'react-redux'
-import { register, reset } from '../features/auth/authSlice'
-import Spinner from '../components/Spinner'
-import { track } from '@vercel/analytics'
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { FaUser } from 'react-icons/fa';
+import { useSelector, useDispatch } from 'react-redux';
+import { register, reset } from '../features/auth/authSlice';
+import Spinner from '../components/Spinner';
+import { track } from '@vercel/analytics';
 
 function Register() {
   const [formData, setFormData] = useState({
@@ -13,58 +13,58 @@ function Register() {
     email: '',
     password: '',
     passwordConfirm: '',
-  })
+  });
 
-  const { name, email, password, passwordConfirm } = formData
+  const { name, email, password, passwordConfirm } = formData;
 
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
-  )
+  );
 
   useEffect(() => {
     if (isError) {
-      toast.error(message)
+      toast.error(message);
     }
 
     // Redirect if logged in
     if (isSuccess && user) {
-      navigate('/')
+      navigate('/');
     }
 
-    dispatch(reset())
-  }, [isError, isSuccess, isLoading, message, user, navigate, dispatch])
+    dispatch(reset());
+  }, [isError, isSuccess, isLoading, message, user, navigate, dispatch]);
 
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
-    }))
-  }
+    }));
+  };
 
   const onSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (password !== passwordConfirm) {
-      toast.error('Passwords do not match')
+      toast.error('Passwords do not match');
     } else {
       const userData = {
         name,
         email,
         password,
-      }
+      };
 
       // Track the 'Signup' event without custom data
-      track('Signup')
+      track('Signup');
 
-      dispatch(register(userData))
+      dispatch(register(userData));
     }
-  }
+  };
 
   if (isLoading) {
-    return <Spinner />
+    return <Spinner />;
   }
 
   return (
@@ -136,8 +136,15 @@ function Register() {
           </div>
         </form>
       </section>
+      <section>
+        {/* Embedded Image of UI */}
+        <img
+          src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218219&authkey=%21AOFjX5GwubkAthQ&height=849&width=776'
+          className='responsive-image'
+        />
+      </section>
     </>
-  )
+  );
 }
 
-export default Register
+export default Register;

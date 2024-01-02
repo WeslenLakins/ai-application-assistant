@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaFacebook, FaInstagram, FaLinkedIn, FaYoutube } from 'react-icons/fa';
 
 function Footer() {
   return (
@@ -20,8 +20,10 @@ function Footer() {
             className='social-link'>
             <FaInstagram />
           </a>
-          <a href='https://twitter.com/AIAppAssistant' className='social-link'>
-            <FaTwitter />
+          <a
+            href='https://www.linkedin.com/company/ai-application-assistant/'
+            className='social-link'>
+            <FaLinkedIn />
           </a>
           <a
             href='https://www.youtube.com/channel/UCoRBqqnjSJKohGIW3qNimaw'
@@ -53,6 +55,8 @@ function Footer() {
             <h4>Solutions</h4>
             <Link to='/dashboard'>Cover Letters</Link>
             <Link to='/dashboard'>Resumes</Link>
+            <Link to='/dashboard'>Interviews</Link>
+            <Link to='/dashboard'>Networking</Link>
           </div>
         </div>
       </div>
@@ -60,7 +64,7 @@ function Footer() {
         <p>© 2023 AI Application Assistant, Inc. All rights reserved.</p>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;

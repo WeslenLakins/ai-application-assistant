@@ -1,42 +1,42 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { track } from '@vercel/analytics'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { track } from '@vercel/analytics';
 
 function Home() {
   // URLs for hosted images
   const heroImageURL =
-    'https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218220&authkey=%21AIm9UaIBUns9Uh0&width=512&height=512'
+    'https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218220&authkey=%21AIm9UaIBUns9Uh0&width=512&height=512';
   const tailoredCoverLetterImageURL =
-    'https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218080&authkey=%21AKmqOfKoD9fwt5I&width=384&height=384'
+    'https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218080&authkey=%21AKmqOfKoD9fwt5I&width=384&height=384';
   const dataSecurityImageURL =
-    'https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218082&authkey=%21AMGQQGjKVTfaJs8&width=384&height=384'
+    'https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218082&authkey=%21AMGQQGjKVTfaJs8&width=384&height=384';
   const keywordOptimizationImageURL =
-    'https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218081&authkey=%21ABLyq1iz4rc7q_I&width=384&height=384'
+    'https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218081&authkey=%21ABLyq1iz4rc7q_I&width=384&height=384';
 
   // Event tracking for the "Try for Free" button
   const handleTryForFreeClick = () => {
-    track('Try for Free Clicked') // Custom event tracking
-  }
+    track('Try for Free Clicked'); // Custom event tracking
+  };
 
   // Event tracking for the "Beat the Bots" button
   const handleBeatTheBotsClick = () => {
-    track('Beat the Bots Clicked') // Custom event tracking
-  }
+    track('Beat the Bots Clicked'); // Custom event tracking
+  };
 
   // Function to track clicks on Yahoo Finance mention
   const trackYahooFinanceClick = () => {
-    track('Press Mention Clicked', { outlet: 'Yahoo Finance' })
-  }
+    track('Press Mention Clicked', { outlet: 'Yahoo Finance' });
+  };
 
   // Function to track clicks on MarketWatch mention
   const trackMarketWatchClick = () => {
-    track('Press Mention Clicked', { outlet: 'MarketWatch' })
-  }
+    track('Press Mention Clicked', { outlet: 'MarketWatch' });
+  };
 
   // Function to track when users click the area containing the video demo
   const trackVideoDemoClick = () => {
-    track('Video Demo Clicked')
-  }
+    track('Video Demo Clicked');
+  };
 
   return (
     <div className='home-container'>
@@ -71,7 +71,7 @@ function Home() {
           <iframe
             width='560'
             height='315'
-            src='https://www.youtube.com/embed/bEvKt9SNuW4?si=NIQEm-8VvzTgJLog'
+            src='https://www.youtube.com/embed/rTgrsSEL79Q?si=haiI9cV5ow_Le4tn'
             title='YouTube video player'
             frameborder='0'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
@@ -165,7 +165,7 @@ function Home() {
         </Link>
       </section>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
