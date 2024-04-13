@@ -18,6 +18,10 @@ import Posts from "./pages/Posts";
 import Post from "./pages/Post";
 import UpdatePost from "./pages/UpdatePost";
 import NetworkingPro from "./pages/NetworkingPro";
+import NewResume from "./pages/NewResume";
+import Resumes from "./pages/Resumes";
+import Resume from "./pages/Resume";
+import ResumeDashboard from "./pages/ResumeDashboard";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import Contact from "./pages/Contact";
@@ -32,6 +36,7 @@ function App() {
 				<div className='container'>
 					<Header />
 					<Routes>
+						<Route path='/resume-dashboard' element={<ResumeDashboard />} />
 						<Route path='/' element={<Home />} />
 						<Route path='/edit/:id' element={<UpdatePost />} />
 						<Route path='/post/:id' element={<Post />} />
@@ -56,6 +61,15 @@ function App() {
 						</Route>
 						<Route path='/networking-pro' element={<PrivateRoute />}>
 							<Route path='/networking-pro' element={<NetworkingPro />} />
+						</Route>
+						<Route path='/new-resume' element={<PrivateRoute />}>
+							<Route path='/new-resume' element={<NewResume />} />
+						</Route>
+						<Route path='/resumes' element={<PrivateRoute />}>
+							<Route path='/resumes' element={<Resumes />} />
+						</Route>
+						<Route path='/resume/:id' element={<PrivateRoute />}>
+							<Route path='/resume/:id' element={<Resume />} />
 						</Route>
 						<Route path='/profile' element={<PrivateRoute />}>
 							<Route path='/profile' element={<UserProfile />} />

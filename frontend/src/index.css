@@ -2181,3 +2181,160 @@ section {
 .domain-search-guide li strong {
 	color: #222; /* Even darker color for emphasis */
 }
+
+/* Resume Styles */
+.resume-page {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	color: #333;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+.job-details {
+	background-color: #f4f4f4;
+	border-radius: 5px;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.job-details h1 {
+	color: #444;
+	margin-bottom: 10px;
+}
+
+.job-details-content {
+	margin-bottom: 20px;
+}
+
+.scratch-resume {
+	background-color: #f4f4f4;
+	border-radius: 5px;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.resume {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	max-width: 800px;
+	margin: 20px auto;
+	padding: 20px;
+	color: #333;
+	background: #fff; /* Consider adding a background color if the page isn't already white */
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adds subtle shadow for depth */
+}
+
+.resume-section {
+	margin-bottom: 20px;
+}
+
+.resume-section h2 {
+	color: #333;
+	font-size: 22px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+	border-bottom: 2px solid #4a90e2;
+}
+
+/* Separate each job position within Work Experience */
+.job-position {
+	margin-bottom: 15px;
+}
+
+.job-position:not(:last-child) {
+	padding-bottom: 15px;
+	border-bottom: 1px solid #eaeaea; /* Adds a subtle line to separate job positions */
+}
+
+.job-title {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.job-description {
+	margin-top: 5px;
+}
+
+.actions {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px; /* Space between buttons */
+	margin-top: 30px; /* Space above the button container */
+	margin-bottom: 30px; /* Space below the button container */
+}
+
+.actions btn {
+	padding: 10px 20px;
+	border: 1px solid #000;
+	border-radius: 5px;
+	background: #000;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 700;
+	cursor: pointer;
+	text-align: center;
+	appearance: button;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.actions btn:hover {
+	transform: scale(0.98);
+}
+
+.paper {
+	background-color: #fff; /* White background */
+	padding: 40px; /* Ample padding around the text */
+	margin: 20px auto; /* Center the paper on the page and give some margin around it */
+	max-width: 800px; /* Maximum width for readability */
+	border: 1px solid #ddd; /* Light grey border around the paper */
+	box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for a lifted paper effect */
+	border-radius: 8px; /* Slightly rounded corners */
+}
+
+/* PDF-specific styles */
+.pdf-content {
+	font-family: "Times New Roman", serif;
+	color: #333;
+	line-height: 1.5;
+	font-size: 12pt;
+	max-width: 516pt; /* equivalent to 7.17 inches, which fits within an 8.5x11" page with 1-inch margins */
+	padding: 0;
+	margin: 0 auto;
+}
+
+.pdf-content h1,
+.pdf-content h2,
+.pdf-content h3 {
+	color: #000;
+}
+
+.pdf-content p,
+.pdf-content li,
+.pdf-content ul {
+	margin-bottom: 0; /* Adjust as needed to reduce space */
+	line-height: 1.2; /* Adjust for better text density */
+	font-size: 10pt; /* Smaller font size for more content per page */
+}
+
+.pdf-content ul {
+	padding-left: 20px; /* Adjust the padding for lists */
+}
+
+.pdf-page-break {
+	page-break-after: always;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	.resume {
+		margin: 10px;
+		padding: 10px;
+	}
+
+	.resume-section h2 {
+		font-size: 20px;
+	}
+}

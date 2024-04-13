@@ -1,5 +1,11 @@
 import { Link } from "react-router-dom";
-import { FaLaptop, FaListAlt, FaSyncAlt, FaUsers } from "react-icons/fa";
+import {
+	FaLaptop,
+	FaListAlt,
+	FaSyncAlt,
+	FaUsers,
+	FaFileAlt,
+} from "react-icons/fa";
 import { track } from "@vercel/analytics";
 
 function Dashboard() {
@@ -45,7 +51,9 @@ function Dashboard() {
 			<section className='sub-heading'>
 				<h2>Resumes</h2>
 
-				<p>Coming Soon...</p>
+				<Link to='/resume-dashboard' className='btn btn-block'>
+					<FaFileAlt /> Resume Dashboard
+				</Link>
 			</section>
 
 			<br />

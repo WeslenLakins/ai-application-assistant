@@ -35,6 +35,7 @@ app.use("/api/jobs", require("./routes/jobRoutes"));
 app.use("/api/subscription", require("./routes/subscriptionRoutes"));
 app.use("/api/posts", require("./routes/postRoutes"));
 app.use("/api/domain-search", require("./routes/domainSearchRoutes"));
+app.use("/api/resumes", require("./routes/resumeRoutes"));
 
 // Error Handler
 app.use(errorHandler);

@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^14.5.1",
     "axios": "^1.6.0",
     "formik": "^2.4.5",
+    "html2canvas": "^1.4.1",
     "jspdf": "^2.5.1",
     "react": "^18.2.0",
     "react-copy-to-clipboard": "^5.1.0",
