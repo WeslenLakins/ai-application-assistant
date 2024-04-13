@@ -1,38 +1,40 @@
-import { configureStore } from '@reduxjs/toolkit'
-import authReducer from '../features/auth/authSlice'
-import jobReducer from '../features/jobs/jobSlice'
-import subscriptionReducer from '../features/subscription/subscriptionSlice'
+import { configureStore } from "@reduxjs/toolkit";
+import authReducer from "../features/auth/authSlice";
+import jobReducer from "../features/jobs/jobSlice";
+import subscriptionReducer from "../features/subscription/subscriptionSlice";
+import postReducer from "../features/posts/postSlice";
 import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
+	persistStore,
+	persistReducer,
+	FLUSH,
+	REHYDRATE,
+	PAUSE,
+	PERSIST,
+	PURGE,
+	REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
-  key: 'auth',
-  storage,
-}
+	key: "auth",
+	storage,
+};
 
-const persistedReducer = persistReducer(persistConfig, authReducer)
+const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
-  reducer: {
-    auth: persistedReducer,
-    jobs: jobReducer,
-    subscription: subscriptionReducer,
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: {
-        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-      },
-    }),
-})
+	reducer: {
+		auth: persistedReducer,
+		jobs: jobReducer,
+		subscription: subscriptionReducer,
+		post: postReducer,
+	},
+	middleware: (getDefaultMiddleware) =>
+		getDefaultMiddleware({
+			serializableCheck: {
+				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+			},
+		}),
+});
 
-export const persistor = persistStore(store)
+export const persistor = persistStore(store);
