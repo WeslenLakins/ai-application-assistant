@@ -17,6 +17,7 @@ import NewPost from "./pages/NewPost";
 import Posts from "./pages/Posts";
 import Post from "./pages/Post";
 import UpdatePost from "./pages/UpdatePost";
+import NetworkingPro from "./pages/NetworkingPro";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import Contact from "./pages/Contact";
@@ -52,6 +53,9 @@ function App() {
 						</Route>
 						<Route path='/job/:jobId' element={<PrivateRoute />}>
 							<Route path='/job/:jobId' element={<Job />} />
+						</Route>
+						<Route path='/networking-pro' element={<PrivateRoute />}>
+							<Route path='/networking-pro' element={<NetworkingPro />} />
 						</Route>
 						<Route path='/profile' element={<PrivateRoute />}>
 							<Route path='/profile' element={<UserProfile />} />

@@ -1947,3 +1947,237 @@ section {
 	align-items: center;
 	justify-content: center;
 }
+
+/* Networking Pro Page */
+.hunter-tools {
+	margin-top: 20px; /* Adjust spacing as needed */
+}
+
+.hunter-tools h1 {
+	font-size: 3rem;
+	font-weight: 700;
+	margin-bottom: 30px;
+	color: #333; /* Match your existing heading color */
+}
+
+.hunter-tools p {
+	font-size: 1rem;
+	line-height: 1.7;
+	margin-bottom: 20px;
+	color: #666; /* Match your existing paragraph color */
+}
+
+/* Individual API Call Components */
+.domain-search h1 {
+	font-size: 2rem;
+	font-weight: 700;
+	margin-bottom: 20px;
+	color: #333; /* Match your existing heading color */
+}
+.email-finder,
+.email-verifier {
+	border: 1px solid #e6e6e6;
+	border-radius: 10px;
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.domain-search h3,
+.email-finder h3,
+.email-verifier h3 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 10px;
+	color: #333; /* Match your existing heading color */
+}
+
+.domain-search input,
+.email-finder input,
+.email-verifier input {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #e6e6e6;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	font-family: inherit;
+}
+
+.domain-search,
+.error {
+	color: red;
+	margin-top: 10px;
+}
+
+/* Additional CSS styles for improved DomainSearch.jsx */
+
+.domain-search-input,
+.domain-search-btn {
+	margin-bottom: 10px; /* Space between input, button, and results */
+}
+
+.search-results {
+	margin-top: 20px; /* Space above the results section */
+}
+
+.search-results h2 {
+	font-size: 1.5rem;
+	font-weight: 600;
+	margin-bottom: 10px;
+	color: #333; /* Match your existing heading color */
+}
+
+.email-list,
+.company-details,
+.social-links {
+	list-style-type: none; /* Remove default list styling */
+	padding: 0;
+}
+
+.email-item {
+	margin-bottom: 5px; /* Space between email items */
+}
+
+.company-info p,
+.social-links p {
+	margin: 5px 0; /* Vertical spacing for readability */
+}
+
+/* You might need to adjust the selectors to match your exact structure */
+/* New card-style layout */
+.company-info-container {
+	display: flex;
+	gap: 20px; /* Adjust as needed */
+	margin-top: 20px;
+}
+
+.company-info-card,
+.social-links-card {
+	flex: 1;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.company-details-card {
+	flex: 1;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	padding: 20px;
+	margin-bottom: 20px;
+}
+
+.company-info-card h2,
+.social-links-card h2 {
+	color: #333;
+	margin-bottom: 15px;
+}
+
+.company-info-card p,
+.social-links-card p {
+	margin: 10px 0;
+	line-height: 1.6;
+}
+
+.social-links-card a {
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none;
+	color: #007bff;
+	gap: 8px; /* Space between icon and text */
+}
+
+.social-links-card a:hover {
+	text-decoration: underline;
+}
+
+.email-details-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px; /* Adjust space between cards */
+}
+
+.email-details-card {
+	border: 1px solid #e0e0e0; /* Subtle border */
+	padding: 20px;
+	border-radius: 8px; /* Rounded corners for a modern look */
+	background-color: #ffffff; /* White background */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+	transition: box-shadow 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.email-details-card:hover {
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover for better focus */
+}
+
+.email-details-card p {
+	margin: 5px 0;
+	line-height: 1.5;
+}
+
+.email-details-card a {
+	color: #007bff; /* Link color */
+	text-decoration: none;
+}
+
+.email-details-card a:hover {
+	text-decoration: underline; /* Underline on hover for links */
+}
+
+.department-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 20px;
+	color: 333;
+}
+
+.department-filters label {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+	color: #000;
+	margin-bottom: 5px;
+}
+
+.department-filters input[type="checkbox"] {
+	margin-right: 5px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.domain-search-guide {
+	background-color: #f9f9f9; /* Light grey background for contrast */
+	border-radius: 8px; /* Rounded corners */
+	padding: 20px; /* Spacing inside the guide container */
+	margin-top: 20px; /* Add some space above the guide */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.domain-search-guide h2 {
+	color: #333; /* Dark color for the heading */
+	margin-bottom: 16px; /* Space below the heading */
+}
+
+.domain-search-guide ol {
+	list-style-position: inside; /* Ensure numbers are aligned inside the list */
+	padding-left: 0; /* Remove default padding */
+	color: #555; /* Slightly lighter text for readability */
+	text-align: left; /* Align text to the left */
+}
+
+.domain-search-guide li {
+	margin-bottom: 10px; /* Space between list items */
+	line-height: 1.6; /* Improve readability */
+	text-align: left; /* Align text to the left */
+}
+
+.domain-search-guide li strong {
+	color: #222; /* Even darker color for emphasis */
+}
