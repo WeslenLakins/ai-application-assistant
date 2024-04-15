@@ -2338,3 +2338,157 @@ section {
 		font-size: 20px;
 	}
 }
+
+/* Scratch Resume Page Styles */
+.scratch-resume-form-container {
+	max-width: 900px;
+	margin: 20px auto;
+	padding: 40px;
+	background-color: #ffffff; /* Lighter background */
+	border: 1px solid #e1e1e1; /* Subtle border */
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Softer shadow */
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Modern font */
+}
+
+.scratch-resume-form-group {
+	margin-bottom: 20px;
+}
+
+.scratch-resume-label {
+	font-weight: 600; /* Slightly heavier font-weight */
+	margin-bottom: 8px;
+	display: block;
+	color: #333333; /* Darker font color for better readability */
+	margin-top: 15px; /* Space above the label */
+}
+
+.scratch-resume-input {
+	width: 100%;
+	padding: 12px; /* Increased padding */
+	margin-top: 8px;
+	border: 1px solid #d7d7d7; /* Lighter border */
+	border-radius: 6px; /* Rounded borders */
+	box-sizing: border-box; /* Include padding and border in the element's total width and height */
+	font-size: 16px; /* Larger font size */
+}
+
+.scratch-resume-textarea {
+	width: 100%;
+	padding: 12px; /* Increased padding */
+	margin-top: 8px;
+	border: 1px solid #d7d7d7; /* Lighter border */
+	border-radius: 6px; /* Rounded borders */
+	box-sizing: border-box; /* Include padding and border in the element's total width and height */
+	font-size: 16px; /* Larger font size */
+}
+
+.scratch-resume-input:focus,
+.scratch-resume-textarea:focus {
+	border-color: #007bff; /* Highlight color on focus */
+	outline: none; /* Remove default focus outline */
+}
+
+.scratch-resume-textarea {
+	height: 120px; /* Larger default height */
+	resize: vertical;
+}
+
+.scratch-resume-checkbox-group {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 15px; /* Increased gap */
+	margin-top: 10px;
+}
+
+.scratch-resume-checkbox-label {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.scratch-resume-button {
+	background-color: #007bff;
+	color: white;
+	padding: 12px 20px; /* Larger padding for a bigger button */
+	border: none;
+	border-radius: 6px; /* Rounded borders */
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+	font-size: 16px; /* Larger font size */
+	font-weight: 600; /* Bolder text */
+	margin-bottom: 20px;
+}
+
+.scratch-resume-button:hover {
+	background-color: #0056b3; /* Darker shade on hover */
+}
+
+.scratch-resume-form-heading {
+	font-size: 22px; /* Larger font size for headings */
+	font-weight: 700; /* Bold font weight */
+	color: #333333; /* Dark color for contrast */
+	margin-top: 30px; /* Ample space above the heading */
+	margin-bottom: 15px; /* Space below the heading to separate from content */
+	padding-bottom: 10px; /* Padding to add space within the heading area */
+	border-bottom: 2px solid #eaeaea; /* A subtle line to define the section area */
+	text-transform: uppercase; /* Optional: UPPERCASE styling for a distinct look */
+}
+
+.scratch-resume-hidden {
+	display: none;
+}
+
+.scratch-resume-visible {
+	display: block;
+}
+
+@media (max-width: 768px) {
+	.scratch-resume-form-container {
+		padding: 20px;
+	}
+	.scratch-resume-input,
+	.scratch-resume-textarea {
+		padding: 10px; /* Smaller padding on mobile */
+	}
+	.scratch-resume-button {
+		padding: 10px 15px; /* Smaller button padding on mobile */
+	}
+}
+
+.resume-page h2 {
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+}
+
+.resume-page h3 {
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.resume-page .noBullet {
+	list-style-type: none; /* Removes bullet points */
+}
+
+/* Style adjustments for the paper-like layout */
+.resume-container {
+	background: #fff;
+	width: 8.5in;
+	min-height: 11in;
+	padding: 1in;
+	margin: auto; /* Add more margin to simulate a paper lying on a surface */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	position: relative;
+	box-sizing: border-box;
+}
+
+.resume-skill-item {
+	margin-left: 20px; /* Adjust as needed for proper indentation */
+	position: relative;
+	list-style-type: disc; /* This creates the bullet */
+	/* If you want to use a custom bullet, you can use 'list-style-type: none;' and add a custom bullet as a pseudo-element */
+}

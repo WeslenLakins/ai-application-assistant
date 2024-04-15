@@ -22,6 +22,10 @@ import NewResume from "./pages/NewResume";
 import Resumes from "./pages/Resumes";
 import Resume from "./pages/Resume";
 import ResumeDashboard from "./pages/ResumeDashboard";
+import NewScratchResume from "./pages/NewScratchResume";
+import ScratchResumes from "./pages/ScratchResumes";
+import ScratchResume from "./pages/ScratchResume";
+import ScratchResumeDashboard from "./pages/ScratchResumeDashboard";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import Contact from "./pages/Contact";
@@ -36,8 +40,12 @@ function App() {
 				<div className='container'>
 					<Header />
 					<Routes>
-						<Route path='/resume-dashboard' element={<ResumeDashboard />} />
 						<Route path='/' element={<Home />} />
+						<Route
+							path='/scratch-resume-dashboard'
+							element={<ScratchResumeDashboard />}
+						/>
+						<Route path='/resume-dashboard' element={<ResumeDashboard />} />
 						<Route path='/edit/:id' element={<UpdatePost />} />
 						<Route path='/post/:id' element={<Post />} />
 						<Route path='/posts' element={<Posts />} />
@@ -70,6 +78,18 @@ function App() {
 						</Route>
 						<Route path='/resume/:id' element={<PrivateRoute />}>
 							<Route path='/resume/:id' element={<Resume />} />
+						</Route>
+						<Route path='/new-scratch-resume' element={<PrivateRoute />}>
+							<Route
+								path='/new-scratch-resume'
+								element={<NewScratchResume />}
+							/>
+						</Route>
+						<Route path='/scratch-resumes' element={<PrivateRoute />}>
+							<Route path='/scratch-resumes' element={<ScratchResumes />} />
+						</Route>
+						<Route path='/scratch-resume/:id' element={<PrivateRoute />}>
+							<Route path='/scratch-resume/:id' element={<ScratchResume />} />
 						</Route>
 						<Route path='/profile' element={<PrivateRoute />}>
 							<Route path='/profile' element={<UserProfile />} />

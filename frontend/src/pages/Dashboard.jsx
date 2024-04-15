@@ -5,6 +5,7 @@ import {
 	FaSyncAlt,
 	FaUsers,
 	FaFileAlt,
+	FaFile,
 } from "react-icons/fa";
 import { track } from "@vercel/analytics";
 
@@ -36,14 +37,14 @@ function Dashboard() {
 				to='/new-job'
 				className='btn btn-reverse btn-block'
 				onClick={handleGenerateCoverLetterClick}>
-				<FaSyncAlt /> Generate Cover Letter
+				<FaSyncAlt /> Generate a New Cover Letter
 			</Link>
 
 			<Link
 				to='/jobs'
 				className='btn btn-block'
 				onClick={handleReviewCoverLettersClick}>
-				<FaListAlt /> Review Cover Letters
+				<FaListAlt /> View Cover Letters
 			</Link>
 
 			<br />
@@ -51,16 +52,15 @@ function Dashboard() {
 			<section className='sub-heading'>
 				<h2>Resumes</h2>
 
-				<Link to='/resume-dashboard' className='btn btn-block'>
-					<FaFileAlt /> Resume Dashboard
+				<Link
+					to='/scratch-resume-dashboard'
+					className='btn btn-reverse btn-block'>
+					<FaFile /> Create a New Resume from Scratch
 				</Link>
-			</section>
 
-			<br />
-			<section className='sub-heading'>
-				<h2>Interviews</h2>
-
-				<p>Coming Soon...</p>
+				<Link to='/resume-dashboard' className='btn btn-block'>
+					<FaFileAlt /> Create a New Resume Using Your Existing Resume
+				</Link>
 			</section>
 
 			<br />

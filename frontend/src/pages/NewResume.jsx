@@ -29,6 +29,7 @@ const NewResume = () => {
 
 		if (isSuccess) {
 			dispatch(reset());
+			toast.success("Resume created successfully!");
 			navigate("/resumes");
 		}
 	}, [isError, isSuccess, message, dispatch, navigate]);

@@ -55,8 +55,8 @@ function Footer() {
 						<h4>Solutions</h4>
 						<Link to='/dashboard'>Cover Letters</Link>
 						<Link to='/dashboard'>Resumes</Link>
-						<Link to='/dashboard'>Interviews</Link>
 						<Link to='/dashboard'>Networking</Link>
+						<Link to='/dashboard'>Headshots</Link>
 					</div>
 				</div>
 			</div>

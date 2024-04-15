@@ -6,7 +6,7 @@ function ResumeDashboard() {
 	return (
 		<>
 			<section className='heading'>
-				<h1>Revised Resumes Dashboard</h1>
+				<h1>Revised Resume Dashboard</h1>
 				<p>
 					Click the buttons below to generate new revised resumes or veiw the
 					revised resumes you've made.

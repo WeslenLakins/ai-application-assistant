@@ -4,6 +4,7 @@ import jobReducer from "../features/jobs/jobSlice";
 import subscriptionReducer from "../features/subscription/subscriptionSlice";
 import postReducer from "../features/posts/postSlice";
 import resumeReducer from "../features/resumes/resumeSlice";
+import scratchResumeReducer from "../features/scratchResumes/scratchResumeSlice";
 import {
 	persistStore,
 	persistReducer,
@@ -30,6 +31,7 @@ export const store = configureStore({
 		subscription: subscriptionReducer,
 		post: postReducer,
 		resume: resumeReducer,
+		scratchResume: scratchResumeReducer,
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({
