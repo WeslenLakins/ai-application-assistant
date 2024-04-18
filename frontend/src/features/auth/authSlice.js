@@ -100,6 +100,13 @@ export const authSlice = createSlice({
 	name: "auth",
 	initialState,
 	reducers: {
+		signInSuccess: (state, action) => {
+			state.user = action.payload.user;
+			state.isSuccess = true;
+			state.isLoading = false;
+			state.isError = false;
+			state.message = "";
+		},
 		reset: (state) => {
 			state.isError = false;
 			state.isSuccess = false;
@@ -178,5 +185,5 @@ export const authSlice = createSlice({
 	},
 });
 
-export const { reset } = authSlice.actions;
+export const { reset, signInSuccess } = authSlice.actions;
 export default authSlice.reducer;

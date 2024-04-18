@@ -2492,3 +2492,57 @@ section {
 	list-style-type: disc; /* This creates the bullet */
 	/* If you want to use a custom bullet, you can use 'list-style-type: none;' and add a custom bullet as a pseudo-element */
 }
+
+/* OAuth Icons */
+.socialIconDiv {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #4285f4; /* Google brand color */
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px; /* Adjust for desired curvature */
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+	cursor: pointer;
+	transition: box-shadow 0.3s ease;
+	width: 100%; /* Adjust this value as needed */
+	margin: 0 auto; /* Center the button if container width is larger */
+	font-weight: 600;
+	font-size: 16px;
+	text-transform: none; /* Normal case text */
+	max-width: none; /* Remove any max-width or adjust as necessary */
+}
+
+.socialIconDiv:hover {
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.socialIconImg {
+	margin-right: 10px; /* Space between icon and text */
+	width: 24px; /* Icon size */
+	height: 24px; /* Icon size */
+}
+
+.socialLogin {
+	margin-top: 4rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-size: 26px;
+	font-weight: 600;
+}
+
+.socialLogin p {
+	margin-bottom: 20px;
+	color: #757575; /* Google's text color for buttons */
+	font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+	.socialLogin {
+		margin-top: 2rem; /* Less margin on smaller screens */
+		font-size: 20px; /* Smaller font size on smaller screens */
+	}
+}

@@ -195,6 +195,38 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 		// Avoid sending back the password and token in response
 	});
 });
+
+// @desc    OAuth user handler
+// @route   POST /api/users/oauth
+// @access  Public
+const oauthUser = asyncHandler(async (req, res) => {
+	const { name, email } = req.body;
+
+	let user = await User.findOne({ email });
+
+	if (!user) {
+		// If user doesn't exist, create a new MongoDB user entry
+		user = new User({
+			name,
+			email,
+			isAdmin: false, // Set default permissions as needed
+			isOAuth: true, // Flag to indicate OAuth sign-in method
+		});
+		await user.save();
+	}
+
+	// Assuming your user model and generateToken method handle ID and token creation:
+	const token = generateToken(user._id);
+
+	res.status(201).json({
+		_id: user._id,
+		name: user.name,
+		email: user.email,
+		isAdmin: user.isAdmin,
+		token, // Send the token for client-side handling
+	});
+});
+
 // Export the functions
 module.exports = {
 	registerUser,
@@ -202,4 +234,5 @@ module.exports = {
 	getMe,
 	getUserProfile,
 	updateUserProfile,
+	oauthUser,
 };
