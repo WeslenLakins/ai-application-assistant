@@ -61,7 +61,7 @@ function Footer() {
 				</div>
 			</div>
 			<div className='footer-bottom'>
-				<p>© 2024 AI Application Assistant, Inc. All rights reserved.</p>
+				<p>© 2023-2024 AI Application Assistant. All rights reserved.</p>
 			</div>
 		</footer>
 	);

@@ -5,7 +5,7 @@ import { track } from "@vercel/analytics";
 function Home() {
 	// URLs for hosted images
 	const heroImageURL =
-		"https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218220&authkey=%21AIm9UaIBUns9Uh0&width=512&height=512";
+		"https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218079&authkey=%21AFGzAbrOIssUjq8&width=512&height=512";
 	const tailoredCoverLetterImageURL =
 		"https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218080&authkey=%21AKmqOfKoD9fwt5I&width=384&height=384";
 	const dataSecurityImageURL =
@@ -43,12 +43,12 @@ function Home() {
 			<section className='hero-section'>
 				<div className='hero-content'>
 					<h1 className='hero-title'>
-						Get your dream job with AI Application Assistant
+						Land your dream job with AI Application Assistant!
 					</h1>
 					<p className='hero-subtitle'>
-						Create customized, high-impact application materials in minutes.
-						Stand out from the competition and increase the chances of getting
-						an interview.
+						Get the job you deserve with AI Application Assistant's tailored
+						cover letter and resume creation, reliable email outreach tools for
+						networking, professional headshot generation, and more!
 					</p>
 					<Link
 						to='/new-job'
@@ -83,39 +83,40 @@ function Home() {
 				<div className='service'>
 					<img
 						src={tailoredCoverLetterImageURL}
-						alt='Tailored Cover Letters'
+						alt='Tailored Cover Letters & Resumes'
 						className='service-image'
 					/>
-					<h2 className='service-title'>Tailored Cover Letters</h2>
+					<h2 className='service-title'>
+						Tailored Cover Letter & Resume Creation
+					</h2>
 					<p className='service-description'>
-						Craft customized cover letters that perfectly align your skills and
-						experiences with the job's specific requirements.
+						Craft customized cover letters and resumes that perfectly align your
+						skills and experiences with the job's specific requirements.
 					</p>
 				</div>
 				<div className='service'>
 					<img
 						src={keywordOptimizationImageURL}
-						alt='AI-powered Quality'
+						alt='Email Outreach Tools'
 						className='service-image'
 					/>
-					<h2 className='service-title'>Keyword Optimization</h2>
+					<h2 className='service-title'>Reliable Email Outreach Tools</h2>
 					<p className='service-description'>
-						Leverage the power of AI to to identify and integrate key terms and
-						phrases from job listings to ensure your application is not
-						incorrectly filtered out by automated hiring systems.
+						Identify relevant contacts, find their contact details, and send
+						personalized emails to grow your network and increase your chances
+						of getting hired.
 					</p>
 				</div>
 				<div className='service'>
 					<img
 						src={dataSecurityImageURL}
-						alt='Data Privacy and Security'
+						alt='Professional Headshot Generation'
 						className='service-image'
 					/>
-					<h2 className='service-title'>Advanced Error Checking</h2>
+					<h2 className='service-title'>Professional Headshot Generation</h2>
 					<p className='service-description'>
-						AI Application Assistant integrates cutting-edge error checking
-						models to ensure the utmost accuracy and professionalism in every
-						application.
+						Generate professional headshots that make a great first impression
+						and help you stand out from the competition.
 					</p>
 				</div>
 			</section>
@@ -151,11 +152,8 @@ function Home() {
 					Don't Let Your Application Get Lost in the Shuffle
 				</h1>
 				<p className='cta-subtext'>
-					In the modern job market, AI Applicant Tracking Systems are the new
-					gatekeepers. They scan, filter, and rank your application before a
-					human ever sees it. AI Application Assistant is excited to offer a
-					solution that not only saves you time and helps you stand out, but
-					also improves your odds of getting hired.
+					AI Application Assistant helps you stand out from the crowd and land
+					your dream job. Get started today!
 				</p>
 				<Link
 					to='/new-job'

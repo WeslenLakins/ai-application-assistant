@@ -1288,9 +1288,6 @@ section {
 	display: flex; /* Flex display to align child elements */
 	justify-content: center; /* Center the image within the container */
 	padding: 20px; /* Add some padding */
-	border: #000;
-	border-radius: 5px; /* Add a border radius */
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a box shadow */
 }
 
 /* Style for the hero image itself */

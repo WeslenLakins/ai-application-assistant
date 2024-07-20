@@ -13,9 +13,9 @@ const About = () => {
 			price: "$6.99/month",
 			description: "Ideal for individual users.",
 			features: [
-				"Unlimited Cover Letters",
-				"Personalized AI-Assisted Writing",
-				"Error-Checking Algorithms",
+				"Unlimited Cover Letters and Resumes",
+				"Full Access to Networking Pro",
+				"Basic Headshot Generator",
 			],
 		},
 		{
@@ -23,8 +23,8 @@ const About = () => {
 			price: "$25.99/month",
 			description: "Best for teams.",
 			features: [
+				"Same Features as Individual Subscription",
 				"Up to 5 User Accounts",
-				"Advanced Keyword Recognition",
 				"Priority Support",
 			],
 		},
@@ -157,9 +157,6 @@ const About = () => {
 				</div>
 			</section>
 
-			<br />
-			<br />
-
 			{/* Embedded Video or Demo Section */}
 			<section className='video-demo-section'>
 				<h1>See It In Action</h1>
@@ -181,15 +178,14 @@ const About = () => {
 			</section>
 
 			<br />
-			<br />
 
 			{/* Interactive How It Works Section */}
 			<div className='how-it-works'>
 				<h1>How It Works</h1>
 				<p>
-					Our AI-powered application is designed to be intuitive and easy to use
-					for all users. Simply follow the steps below to generate a
-					personalized cover letter in less than a minute.
+					AI Application Assistant is designed to be intuitive and
+					user-friendly. Click on each tab to learn more about how to use our
+					platform to land your dream job.
 				</p>
 				<br />
 
@@ -197,22 +193,22 @@ const About = () => {
 					<button
 						onClick={() => setActiveTab(1)}
 						className={activeTab === 1 ? "active" : ""}>
-						Step 1
+						Cover Letter Creation
 					</button>
 					<button
 						onClick={() => setActiveTab(2)}
 						className={activeTab === 2 ? "active" : ""}>
-						Step 2
+						Resume Creation
 					</button>
 					<button
 						onClick={() => setActiveTab(3)}
 						className={activeTab === 3 ? "active" : ""}>
-						Step 3
+						Networking Pro
 					</button>
 					<button
 						onClick={() => setActiveTab(4)}
 						className={activeTab === 4 ? "active" : ""}>
-						Step 4
+						Headshot Generator
 					</button>
 				</div>
 
@@ -221,49 +217,45 @@ const About = () => {
 				<div className='tab-content'>
 					{activeTab === 1 && (
 						<h2>
-							Input Job Details - enter the job title, company name, and
-							location. All of this information can typically be found in the
-							job description of the position you are applying for.
+							To create a cover letter, click the "Generate a New Cover Letter"
+							button on the Dashboard page. Next, enter the job title, company
+							name, location of the position, job description, and paste your
+							resume. Then, click the "Generate Cover Letter" button to create a
+							personalized cover letter tailored to the job description.
 						</h2>
 					)}
 					{activeTab === 2 && (
 						<h2>
-							Copy & Paste Job Description - add the job description of the
-							position you are applying for to provide the AI with context. This
-							information can typically be found on the company's website or on
-							a job board.
+							To create a resume using your existing resume, click the "Create a
+							New Resuming Using Your Existing Resume" button on the Dashboard
+							page, and follow the same steps as creating a cover letter. To
+							create a resume from scratch, click the "Create a New Resume from
+							Scratch" button on the Dashboard page, and fill in the required
+							fields.
 						</h2>
 					)}
 					{activeTab === 3 && (
 						<h2>
-							Copy & Paste Your Resume - add the resume you plan to submit with
-							your application. This will allow the AI to tailor your cover
-							letter to your unique skills and experiences.
+							To use the Networking Pro feature, click the "Networking Pro"
+							button on the Dashboard page. Next, enter the domain name of the
+							target company into the search bar. Then, for a more focused
+							search, add filters to search for contacts within specific
+							departments. Finally, click the "Search" button to generate a list
+							of potential contacts at the target company.
 						</h2>
 					)}
 					{activeTab === 4 && (
 						<h2>
-							Create the Letter - click the "Generate Cover Letter" button to
-							create your personalized cover letter that perfectly aligns your
-							skills and experiences with the job qualifications and
-							responsibilities listed in the description of the position you are
-							applying for.
+							To use the Headshot Generator feature, click the "Headshot
+							Generator" button on the Dashboard page. Next, upload at least 3x
+							photos of yourself, and select the desired style. Then, click the
+							"Generate Headshot" button to create a professional headshot that
+							you can use for your job applications.
 						</h2>
 					)}
 				</div>
 			</div>
 
-			<br />
-			<br />
-			<br />
-
-			{/* Embedded Image of UI */}
-			<img
-				src='https://onedrive.live.com/embed?resid=4B1C8510CEF67D18%218219&authkey=%21AOFjX5GwubkAthQ&height=849&width=776'
-				className='responsive-image'
-			/>
-
-			<br />
 			<br />
 			<br />
 
@@ -292,8 +284,6 @@ const About = () => {
 
 			<br />
 			<br />
-			<br />
-			<br />
 
 			{/* Interactive Testimonials Section */}
 			<div className='testimonials-section'>
@@ -310,8 +300,6 @@ const About = () => {
 				</div>
 			</div>
 
-			<br />
-			<br />
 			<br />
 			<br />
 
@@ -341,8 +329,6 @@ const About = () => {
 
 			<br />
 			<br />
-			<br />
-			<br />
 
 			{/* FAQ Section with More Questions and Answers */}
 			<div className='faq-section'>
@@ -361,7 +347,6 @@ const About = () => {
 				</div>
 			</div>
 
-			<br />
 			<br />
 			<br />
 
