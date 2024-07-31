@@ -26,6 +26,9 @@ import NewScratchResume from "./pages/NewScratchResume";
 import ScratchResumes from "./pages/ScratchResumes";
 import ScratchResume from "./pages/ScratchResume";
 import ScratchResumeDashboard from "./pages/ScratchResumeDashboard";
+import NewHeadshot from "./pages/NewHeadshot";
+import Headshots from "./pages/Headshots";
+import Headshot from "./pages/Headshot";
 import About from "./pages/About";
 import Dashboard from "./pages/Dashboard";
 import Contact from "./pages/Contact";
@@ -96,6 +99,15 @@ function App() {
 						</Route>
 						<Route path='/subscription' element={<PrivateRoute />}>
 							<Route path='/subscription' element={<Subscription />} />
+						</Route>
+						<Route path='/new-headshot' element={<PrivateRoute />}>
+							<Route path='/new-headshot' element={<NewHeadshot />} />
+						</Route>
+						<Route path='/headshots' element={<PrivateRoute />}>
+							<Route path='/headshots' element={<Headshots />} />
+						</Route>
+						<Route path='/headshot/:id' element={<PrivateRoute />}>
+							<Route path='/headshot/:id' element={<Headshot />} />
 						</Route>
 					</Routes>
 					<Footer />

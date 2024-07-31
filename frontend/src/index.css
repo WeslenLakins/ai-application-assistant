@@ -2543,3 +2543,123 @@ section {
 		font-size: 20px; /* Smaller font size on smaller screens */
 	}
 }
+
+/* Headshot Page Styles */
+.headshot-container {
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 20px;
+	text-align: center;
+}
+
+.headshot-detail {
+	border: 1px solid #e6e6e6;
+	border-radius: 10px;
+	padding: 20px;
+	margin-bottom: 20px;
+	background-color: #f9f9f9;
+}
+
+.headshot-section {
+	margin-bottom: 30px;
+}
+
+.headshot-images img,
+.headshot-output img {
+	max-width: 150px; /* Adjust this value as needed */
+	height: auto;
+	border: 1px solid #e6e6e6;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+}
+
+.headshot-images img:hover,
+.headshot-output img:hover {
+	transform: scale(1.05);
+}
+
+/* Headshots Page Styles */
+.headshots-container {
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 20px;
+	text-align: center;
+}
+
+.headshots-list {
+	list-style: none;
+	padding: 0;
+}
+
+.headshots-list li {
+	padding: 10px;
+	border: 1px solid #e6e6e6;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	cursor: pointer;
+	background-color: #f9f9f9;
+}
+
+.headshots-list li:hover {
+	background-color: #e6e6e6;
+}
+
+/* New Headshot Page Styles */
+.new-headshot-container {
+	width: 100%;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 20px;
+	text-align: center;
+}
+
+.new-headshot-container header {
+	margin-bottom: 20px;
+}
+
+.pageHeader {
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+.form-group {
+	margin-bottom: 20px;
+	text-align: left;
+}
+
+.form-group label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: 600;
+}
+
+.form-group select,
+.form-group input[type="file"] {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #e6e6e6;
+	border-radius: 5px;
+	box-sizing: border-box;
+}
+
+.primaryButton {
+	padding: 10px 20px;
+	border: 1px solid #000;
+	border-radius: 5px;
+	background: #000;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 700;
+	cursor: pointer;
+	text-align: center;
+	appearance: button;
+	display: inline-block;
+	margin-top: 20px;
+}
+
+.primaryButton:hover {
+	transform: scale(0.98);
+}

@@ -37,7 +37,7 @@ function Dashboard() {
 				to='/new-job'
 				className='btn btn-reverse btn-block'
 				onClick={handleGenerateCoverLetterClick}>
-				<FaSyncAlt /> Generate a New Cover Letter
+				<FaSyncAlt /> Generate New Cover Letter
 			</Link>
 
 			<Link
@@ -55,11 +55,12 @@ function Dashboard() {
 				<Link
 					to='/scratch-resume-dashboard'
 					className='btn btn-reverse btn-block'>
-					<FaFile /> Create a New Resume from Scratch
+					<FaSyncAlt /> Generate New Resume from Scratch
 				</Link>
 
 				<Link to='/resume-dashboard' className='btn btn-block'>
-					<FaFileAlt /> Create a New Resume Using Your Existing Resume
+					<FaSyncAlt />
+					Generate New Resume Using Existing Resume
 				</Link>
 			</section>
 
@@ -75,8 +76,12 @@ function Dashboard() {
 			<br />
 			<section className='sub-heading'>
 				<h2>Professional Headshots</h2>
-
-				<p>Coming Soon...</p>
+				<Link to='/new-headshot' className='btn btn-reverse btn-block'>
+					<FaSyncAlt /> Generate New Headshot
+				</Link>
+				<Link to='/headshots' className='btn btn-block'>
+					<FaListAlt /> View Headshots
+				</Link>
 			</section>
 
 			<br />
