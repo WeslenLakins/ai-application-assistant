@@ -55,12 +55,12 @@ function Dashboard() {
 				<Link
 					to='/scratch-resume-dashboard'
 					className='btn btn-reverse btn-block'>
-					<FaSyncAlt /> Generate New Resume from Scratch
+					<FaFile /> New Resume from Scratch Dashboard
 				</Link>
 
 				<Link to='/resume-dashboard' className='btn btn-block'>
-					<FaSyncAlt />
-					Generate New Resume Using Existing Resume
+					<FaFileAlt />
+					New Resume Using Existing Resume Dashboard
 				</Link>
 			</section>
 
