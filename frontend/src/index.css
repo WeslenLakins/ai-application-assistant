@@ -1415,6 +1415,7 @@ section {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
 }
 
 .contact-section {
@@ -1424,6 +1425,7 @@ section {
 	border-radius: 8px;
 	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 	text-align: center;
+	margin-bottom: 20px;
 }
 
 .contact-title {
@@ -1437,6 +1439,27 @@ section {
 	color: #666666;
 	line-height: 1.6;
 	margin-bottom: 15px;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 768px) {
+	.contact-container {
+		padding: 20px;
+	}
+
+	.contact-section {
+		padding: 20px;
+	}
+
+	.contact-title {
+		font-size: 1.8em;
+		margin-bottom: 20px;
+	}
+
+	.contact-info p {
+		font-size: 1em;
+		margin-bottom: 10px;
+	}
 }
 
 /* Terms Page Styles */
