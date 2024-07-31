@@ -1,72 +1,33 @@
 # 💻 AI Application Assistant 💻
 
-[Live Site](https://www.aiapplicationassistant.com/)
+![ai-application-assistant-logo](https://github.com/WeslenLakins/ai-application-assistant/assets/90317130/82eb6549-27bd-458c-867b-04d66eef4124)
 
 ## 🧑‍🚀 General Information 🧑‍🚀
 
-- **Author:** Weslen T. Lakins
-- **Description:** A tool to empower job seekers and recruiters. The AI Application Assistant is a web application that uses the OpenAI API to generate personalized cover letters for job seekers. The application also allows users to manage their profile and view all the cover letters they have created. The application is deployed to Vercel and can be accessed at the link above.
-- [Twitter/X](https://twitter.com/WeslenLakins)
+**Live Site**: [Visit AI Application Assistant](https://www.aiapplicationassistant.com)
+**Author**: [Weslen T. Lakins](https://www.weslakins.com)
+**Description**: The AI Application Assistant is a web application that leverages the OpenAI API to generate personalized cover letters, create resumes from scratch, and provides additional features for comprehensive job application support such as reliable email outreach tools, and professional headshot creation. It is designed to empower job seekers, recruiters, and staffing agencies by streamlining routine parts of the application process. The application also includes profile management, subscription management, and OAuth integration.
+**Site Socials**:
 
-![ai-application-assistant-logo](https://github.com/WeslenLakins/ai-application-assistant/assets/90317130/82eb6549-27bd-458c-867b-04d66eef4124)
+- [Facebook](https://www.facebook.com/profile.php?id=61554165300225)
+- [Instagram](https://www.instagram.com/aiapplicationassistant/)
+- [LinkedIn](https://www.linkedin.com/company/ai-application-assistant/)
+- [Youtube](https://www.youtube.com/channel/UCoRBqqnjSJKohGIW3qNimaw)
 
-## ⭐Features ⭐
+## ⭐ Features ⭐
 
 - **User Authentication**: Secure login and registration system with JWT Authentication.
-- **Profile Management**: Users can view and update their personal information including their Name, Email, and Password.
-- **Create Cover Letter Functionality**: Users can input a job title, company name, location, copy & paste a job description, and copy & paste their resume to creat a personalized cover letter that aligns the user's educational background, skills, and professional history with the details highlighted in the job description. Each letter is crafted to be distinctive to the respective company or location and is adapted to suit the particular role applied for.
-- **View All Cover Letter Functionality**: Once a user generates a cover letter using the Create Cover Letter Functionality, the user is able to view a list of all the cover letters they have created.
-- **View Single Cover Letter Functionality**: In the list of all the cover letters the user has created, the user is able to view individual cover letters.
-- **Logout Functionality**: Users can logout using the button diplayed in the header when they are logged in.
-- **Stripe API Integration**: Users can purchase a subscription to the application using the Stripe API. The user's subscription is managed using the Stripe API and the user's subscription status is stored in the database.
+- **Profile Management**: Users can view and update their personal information including their name, email, and password.
+- **Create Cover Letter Functionality**: Users can input job details and generate personalized cover letters aligned with their educational background, skills, and professional history.
+- **From Scratch Resume Creation**: Users can create resumes from scratch using a guided process.
+- **View All Cover Letters**: Users can view a list of all the cover letters they have created.
+- **View Single Cover Letter**: Users can view individual cover letters from the list.
+- **OAuth Integration**: Secure login and registration using third-party OAuth providers.
+- **Stripe API Integration**: Users can purchase a subscription to the application using the Stripe API, with subscription status managed and stored in the database.
+- **Networking Pro Tools**: Provides users with tools like domain search, email finder, and email verifier for professional networking.
+- **Headshot Generation**: Users can generate professional headshots using the Leap AI API.
 - **Deployment**: The application is deployed to Vercel.
-
-## 👩‍💻 Running the App Locally 🧑‍💻
-
-### ⚙️ Prerequisites ⚙️
-
-Before you begin, ensure you have the following:
-
-- [Node.js](https://nodejs.org/en/download)
-- [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- [Create A Valid MongoDB MONGO_URI](https://www.mongodb.com/)
-- [Create an OpenAI_API_Key](https://openai.com/)
-- [Stripe API Keys](https://stripe.com/docs/development/quickstart)
-
-### 📂 Installation 📂
-
-- Clone the repository to your local machine: [How to clone a GitHub Repository in Visual Studio Code](https://learn.microsoft.com/en-us/azure/developer/javascript/how-to/with-visual-studio-code/clone-github-repository#:~:text=Open%20the%20command%20palette%20with,from%20GitHub%2C%20then%20press%20Enter.)
-
-```bash
-git clone https://github.com/WeslenLakins/ai-application-assistant.git
-cd ai-application-assistant
-```
-
-- Remove .example from the .env file and add values for the variables. Set the NODE_ENV to development, the PORT to 5000 or wherever your sever usually runs, and the JWT_SECRET can be set to any value you would like. Input the values you obtained earlier for the MONGO_URI & OPENAI_API_KEY values.
-
-- Install the necessary dependencies for the backend in the root directory of the project:
-
-```bash
-npm install
-```
-
-- In a new terminal, navigate to the frontend directory and install the necessary dependencies for the frontend:
-
-```bash
-cd frontend
-npm install
-```
-
-- Ensure all neccesary dependencies have been installed in the root directory and frontend folder, then proceed to start the application by opening a new command prompt and executing the following command in the root directory of the project:
-
-```bash
-npm run dev
-```
-
-- Your application should now be running on [http://localhost:3000](http://localhost:3000) 🏁
-
-- Drown in job/scholarship offers 🏊
 
 ## ⛑️ Support ⛑️
 
-If you encounter any issues or require assistance, please open an issue on the GitHub repository.
+If you encounter any issues or require assistance, please open an issue on the [GitHub repository](https://github.com/WeslenLakins/ai-application-assistant/issues).
